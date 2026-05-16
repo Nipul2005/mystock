@@ -1,7 +1,11 @@
 import React from 'react'
 
 function Dashboard() {
-  return <div className="border-2 border-primary sm:col-span-10 col-span-12">dashboard</div>;
+  return (
+    <div className="w-full h-full overflow-hidden lg:col-span-10 md:col-span-11 col-span-full md:row-span-12 row-span-11">
+      dashboard
+    </div>
+  );
 }
 
-export default Dashboard
+export default Dashboard 

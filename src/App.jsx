@@ -3,8 +3,9 @@ import Dashboard from "./landing/Dashboard";
 
 function App() {
   return (
-    <div className="w-full h-full border-2 border-success grid grid-cols-12">
+    <div className="w-full h-screen grid grid-cols-12 grid-rows-12 bg-bg relative text-black">
       <Sidebar />
+
       <Dashboard />
     </div>
   );
