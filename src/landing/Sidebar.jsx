@@ -37,46 +37,15 @@ function Sidebar() {
         />
       </div>
       <div className="w-full h-auto flex md:flex-col md:justify-start md:items-start flex-row justify-between items-center gap-x-4">
-        <span
-          href="/explore"
-          className="md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg shrink-0"
-        >
-          <i
-            className="ri-home-4-line text-2xl rounded-full"
-            title="Explore"
-          ></i>
-          <h2 className="font-semibold lg:flex hidden">Home</h2>
-        </span>
-        <span
-          href="/explore"
-          className="md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg shrink-0"
-        >
-          <i
-            className="ri-store-line text-2xl rounded-full"
-            title="Explore"
-          ></i>
-          <h2 className="font-semibold lg:flex hidden">Manage</h2>
-        </span>
-        <span
-          href="/explore"
-          className="md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg shrink-0"
-        >
-          <i
-            className="ri-search-line text-2xl rounded-full"
-            title="Explore"
-          ></i>
-          <h2 className="font-semibold lg:flex hidden">Explore</h2>
-        </span>
-        <span
-          href="/explore"
-          className="md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg shrink-0"
-        >
-          <i
-            className="ri-search-line text-2xl rounded-full"
-            title="Explore"
-          ></i>
-          <h2 className="font-semibold lg:flex hidden">Explore</h2>
-        </span>
+
+        {
+          manues.map((manue,index)=>{
+            return(
+              <Sidebar_menues key={index} name={manue.name} icon_name={manue.icon} />
+            )
+          })
+        }
+        
       </div>
       <div className="w-full md:flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg hidden shrink-0">
         <i className="ri-settings-2-line text-2xl" title="Settings"></i>
