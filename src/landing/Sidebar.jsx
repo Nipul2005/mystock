@@ -45,17 +45,14 @@ function Sidebar() {
             className="ri-search-line text-2xl rounded-full"
             title="Explore"
           ></i>
-          <h2 className="font-semibold lg:flex hidden">Explore</h2>
+          <h2 className="font-semibold lg:flex hidden">Search</h2>
         </span>
         <span
           href="/explore"
           className="md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg shrink-0"
         >
-          <i
-            className="ri-search-line text-2xl rounded-full"
-            title="Explore"
-          ></i>
-          <h2 className="font-semibold lg:flex hidden">Explore</h2>
+          <i className="ri-menu-add-line text-2xl rounded-full"></i>
+          <h2 className="font-semibold lg:flex hidden">Add New</h2>
         </span>
       </div>
       <div className="w-full md:flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg hidden shrink-0">
