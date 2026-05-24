@@ -26,7 +26,7 @@ function Sidebar() {
   ];
 
   return (
-    <div className="md:h-full md:w-auto w-full text-black lg:px-2 px-4 shadow-2xl md:py-5 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white transition-all duration-300 ease-in flex md:flex-col md:justify-between md:item-start flex-row justify-center items-center md:border-0 border-t border-black/40">
+    <div className="md:h-full md:w-auto w-full text-black lg:px-2 px-4 shadow-2xl md:py-5 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white transition-all duration-300 ease-in flex md:flex-col md:justify-between md:item-start flex-row justify-center items-center md:border-0 border-y border-border">
       <div className="justify-center items-center overflow-hidden w-full md:flex hidden">
         <img
           src="/outless_logo.png"
