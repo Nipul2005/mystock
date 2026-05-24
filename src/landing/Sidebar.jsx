@@ -2,31 +2,31 @@ import React from "react";
 import Sidebar_menues from "../components/Sidebar_menues";
 
 function Sidebar() {
-  let manues=[
+  let manues = [
     {
       name: "Home",
-      icon:"home-4"
+      icon: "home-4",
     },
     {
       name: "Manage",
-      icon:"store-line text-2xl rounded-full"
+      icon: "store",
     },
     {
       name: "Create",
-      icon:"apps-2-add"
+      icon: "apps-2-add",
     },
     {
       name: "Search",
-      icon:"search-line text-2xl"
+      icon: "search",
     },
     {
-      name: "Profile",
-      icon:"user-line text-2xl"
+      name: "Settings",
+      icon: "settings-2",
     },
-  ]
+  ];
 
   return (
-    <div className="md:h-full md:w-auto w-full text-black lg:px-2 px-4 shadow-2xl md:py-5 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white transition-all duration-300 ease-in flex md:flex-col md:justify-between md:item-start flex-row justify-center items-center z-10 md:border-0 border-t border-black/40">
+    <div className="md:h-full md:w-auto w-full text-black lg:px-2 px-4 shadow-2xl md:py-5 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white transition-all duration-300 ease-in flex md:flex-col md:justify-between md:item-start flex-row justify-center items-center md:border-0 border-t border-black/40">
       <div className="justify-center items-center overflow-hidden w-full md:flex hidden">
         <img
           src="/outless_logo.png"
@@ -51,8 +51,8 @@ function Sidebar() {
         }
         
       </div>
-        
-        <Sidebar_menues name={"Setting"} icon_name={"settings-2"} classes={"md:flex hidden"}/>
+
+      <div className=""></div>
 
     </div>
   );
