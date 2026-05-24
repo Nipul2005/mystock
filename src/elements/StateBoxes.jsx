@@ -60,7 +60,7 @@ export default function StatsBoxes() {
           {/* Content */}
           <p className="text-gray-500 text-sm">{item.title}</p>
 
-          <h2 className="text-4xl font-bold text-gray-900 mt-2">
+          <h2 className="text-4xl font-bold text-accent mt-2">
             {item.value}
           </h2>
 
