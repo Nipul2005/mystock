@@ -8,7 +8,7 @@ function Dashboard() {
       <header className="w-full flex justify-between items-center gap-4 px-4 py-4 bg-white z-10 overflow-hidden border-b border-border">
         <div className="w-full flex justify-start gap-5 items-center">
           <Icons icon_name="menu-2" name="Search" classes="cursor-pointer" />
-          <div className="w-full border border-border py-2 pl-4 pr-2 rounded-full flex justify-between items-center">
+          <div className="w-full border border-border md:py-2 py-1 pl-4 pr-2 rounded-full flex justify-between items-center">
             <input
               name="search"
               type="text"
