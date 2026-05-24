@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  /* Core brand colors */
-  --color-primary: #111827;        /* Charcoal */
+  --color-primary: #6366f1;         /* Indigo */
   --color-secondary: #374151;      /* Cool Gray */
-  --color-accent: #6366f1;         /* Indigo */
+  --color-accent: #111827;           /*charcoal*/
 
   /* Backgrounds & surfaces */
   --color-bg: #f9fafb;             /* Off-white */
@@ -20,4 +19,8 @@
 
   /* Borders & dividers */
   --color-border: #e5e7eb;
+}
+
+*{
+  font-family: jost;
 }

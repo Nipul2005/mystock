@@ -1,10 +1,10 @@
-function Sidebar_menues({name, icon_name}) {
+function Sidebar_menues({name, icon_name, classes}) {
 
     
   return (
  <span
           href="/explore"
-          className="md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-accent md:hover:text-white rounded-lg shrink-0"
+          className={`md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-primary md:hover:text-white rounded-lg shrink-0 ${classes}`}
         >
           <i
             className={`ri-${icon_name}-line text-2xl rounded-full`}//ri-search-line text-2xl rounded-full

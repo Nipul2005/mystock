@@ -19,6 +19,10 @@ function Sidebar() {
       name: "Search",
       icon:"search-line text-2xl"
     },
+    {
+      name: "Profile",
+      icon:"user-line text-2xl"
+    },
   ]
 
   return (
@@ -37,7 +41,7 @@ function Sidebar() {
         />
       </div>
       <div className="w-full h-auto flex md:flex-col md:justify-start md:items-start flex-row justify-between items-center gap-x-4">
-
+      {/* dashboard manues component */}
         {
           manues.map((manue,index)=>{
             return(
@@ -47,10 +51,9 @@ function Sidebar() {
         }
         
       </div>
-      <div className="w-full md:flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-black/50 md:hover:text-white rounded-lg hidden shrink-0">
-        <i className="ri-settings-2-line text-2xl" title="Settings"></i>
-        <h2 className="text-lg font-semibold lg:flex hidden">Settings</h2>
-      </div>
+        
+        <Sidebar_menues name={"Setting"} icon_name={"settings-2"} classes={"md:flex hidden"}/>
+
     </div>
   );
 }
