@@ -1,10 +1,11 @@
 import React from "react";
 import StatsBoxes from "./StateBoxes";
+import InventoryShowPeace from "./InventoryShowPeace";
 
 function DashboardBody() {
   return (
-    <div className="size-full px-5 pt-6 pb-4">
-      <div className="w-full space-y-1">
+    <div className="size-auto px-5 pt-6 pb-6">
+      <div className="w-full space-y-2">
         <h1 className="lg:text-5xl md:text-5xl text-3xl text-text-primary font-semibold">
           Dashboard
         </h1>
@@ -12,6 +13,7 @@ function DashboardBody() {
       </div>
 
       <StatsBoxes />
+      <InventoryShowPeace/>
     </div>
   );
 }
