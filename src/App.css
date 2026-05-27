@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6366f1;         /* Indigo */
-  --color-secondary: #374151;      /* Cool Gray */
-  --color-accent: #111827;           /*charcoal*/
 
-  /* Backgrounds & surfaces */
-  --color-bg: #f9fafb;             /* Off-white */
-  --color-white: #ffffff;        /* Cards, tables */
+  /* Brand */
+  --color-primary: #5b5ffb;
+  --color-primary-hover: #4b4fef;
+  --color-secondary: #8b7cff;
+  --color-accent: #38bdf8;
+
+  /* Layout */
+  --color-bg: #f5f7fb;
+  --color-sidebar: #ffffff;
+  --color-card: #ffffff;
 
   /* Text */
-  --color-text-primary: #030712;   /* Near black */
-  --color-text-muted: #6b7280;     /* Muted gray */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+
+  /* Borders */
+  --color-border: #e5e7eb;
 
   /* Status */
-  --color-success: #10b981;        /* Emerald */
-  --color-error: #f43f5e;          /* Rose */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
 
-  /* Borders & dividers */
-  --color-border: #e5e7eb;
+  /* Extra UI */
+  --color-hover: #f3f4f6;
+  --color-active: #eef2ff;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
+
+  /* Radius */
+  --radius-card: 24px;
+  --radius-button: 18px;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(
+    to right,
+    #5b5ffb,
+    #8b7cff
+  );
+
+  --gradient-accent: linear-gradient(
+    to right,
+    #38bdf8,
+    #5b5ffb
+  );
 }
 
 *{
-  font-family: jost;
+  font-family: inter;
 }
