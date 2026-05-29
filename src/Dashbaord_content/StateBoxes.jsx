@@ -44,39 +44,17 @@ export default function StatsBoxes() {
     },
   ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-2 gap-5 my-6">
-      {stats.map((item, index) => (
-        <div
-          key={index}
-          className="bg-white rounded-3xl p-6 border border-border shadow-xl relative overflow-hidden hover:scale-95 transition-all ease-in-out duration-300 flex justify-between"
-        >
-          <div className="">
-          <div
-            className={`w-14 h-14 rounded-2xl ${item.iconBg} flex items-center justify-center mb-5 text-2xl`}
-          >
-            {item.icon}
-            </div>
-            {/* Content */}
-            <p className="text-text-primary text-sm font-semibold">{item.title}</p>
-            <p className="text-sm text-text-muted mt-2">{item.subtitle}</p>
-
-          </div>
-          {/* Icon */}
-          
-
-          
-
-          <h2 className="text-4xl font-bold text-accent mt-2">
-            {item.value}
-          </h2>
-
-          
-          {/* Bottom Gradient */}
-          <div
-            className={`absolute bottom-0 left-0 w-full h-3 bg-linear-to-r ${item.gradient} opacity-90 rounded-t-full`}
-          />
-        </div>
-      ))}
+    <div className="w-full">
+      {/* {stats.map((item, index) => (
+        
+      ))} */}
+      <div className="border w-full">
+        
+        <h3 className="">Total Stock</h3>
+        <span className="w-full border inline-block bg-accent">
+          <span className="inline-block border-red-200 border"></span>
+        </span>
+      </div>
     </div>
   );
 }
