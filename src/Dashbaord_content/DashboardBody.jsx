@@ -4,10 +4,10 @@ import InventoryShowPeace from "./InventoryShowPeace";
 
 function DashboardBody() {
   return (
-    <div className="size-auto px-5 pt-6 pb-6">
-      <div className="w-full flex lg:flex-row flex-col justify-between items-center">
-        <div className="space-y-2 w-full">
-          <h1 className="lg:text-5xl md:text-5xl text-3xl text-text-primary font-semibold">
+    <div className="size-auto px-5 pt-12 pb-6">
+      <div className="w-full flex lg:flex-row flex-col justify-between items-start gap-8">
+        <div className="space-y-2 w-full bg-[url('/nature.jpg')] bg-cover bg-center">
+          <h1 className="lg:text-5xl md:text-5xl text-4xl text-text-primary font-semibold">
             Dashboard
           </h1>
           <p className="text-text-muted text-md pl-1">
