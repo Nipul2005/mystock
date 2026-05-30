@@ -6,7 +6,7 @@ function Sidebar() {
     {
       name: "Home",
       icon: "home-4",
-      page: "/Home",
+      page: "/",
     },
     {
       name: "Manage",
