@@ -1,11 +1,13 @@
-function Sidebar_menues({ name, icon_name, classes }) {
+function Sidebar_menues({ name, icon_name, classes, page }) {
+  let currentPage = window.location.pathname || "Home";
+  
   return (
     <span
       href="/explore"
-      className={`md:w-full w-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer md:hover:bg-primary md:hover:text-white rounded-lg shrink-0 transition-all duration-200 ease-in-out ${classes} `}
+      className={`md:w-full w-10 md:h-auto flex lg:justify-start justify-center items-center gap-3 md:px-3 md:py-2 md:my-1 cursor-pointer hover:bg-primary hover:text-white rounded-full shrink-0 transition-all duration-200 ease-in-out ${classes} p-1 bg-${currentPage === page ? "primary text-white" : ""} `}
     >
       <i
-        className={`ri-${icon_name}-line text-2xl rounded-full`} //ri-search-line text-2xl rounded-full
+        className={`ri-${icon_name}-line md:text-2xl text-xl`} //ri-search-line text-2xl rounded-full
         title={`${name}`} // icon adjacent name
       ></i>
       <h2 className="font-semibold lg:flex hidden">{name}</h2>

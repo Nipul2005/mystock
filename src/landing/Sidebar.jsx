@@ -6,22 +6,27 @@ function Sidebar() {
     {
       name: "Home",
       icon: "home-4",
+      page: "/",
     },
     {
       name: "Manage",
       icon: "store",
+      page: "/Manage",
     },
     {
       name: "Create",
       icon: "apps-2-add",
+      page: "/Create",
     },
     {
       name: "Search",
       icon: "search",
+      page: "/Search",
     },
     {
       name: "Settings",
       icon: "settings-2",
+      page: "/Settings",
     },
   ];
 
@@ -45,7 +50,7 @@ function Sidebar() {
         {
           manues.map((manue,index)=>{
             return(
-              <Sidebar_menues key={index} name={manue.name} icon_name={manue.icon} />
+              <Sidebar_menues key={index} name={manue.name} icon_name={manue.icon} page={manue.page}/>
             )
           })
         }

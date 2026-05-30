@@ -44,7 +44,7 @@ export default function StatsBoxes() {
     },
   ];
   return (
-    <div className="w-full space-y-8 px-6 py-9 bg-black/80 rounded-lg text-white ">
+    <div className="w-full space-y-8 px-6 py-9 bg-white/80 rounded-lg text-text-primary ">
       {stats.map((item, index) => (
         <div className="w-full flex flex-col items-start justify-between space-y-1">
           <h3 className="">{item.title}</h3>
