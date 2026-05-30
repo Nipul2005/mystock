@@ -4,11 +4,11 @@ import InventoryShowPeace from "./InventoryShowPeace";
 
 function DashboardBody() {
   return (
-    <div className="size-auto px-5 pt-12 pb-6">
-      <div className="w-full flex lg:flex-row flex-col justify-between items-stretch gap-8">
-        <div className="w-full bg-[url('/nature.jpg')] bg-cover bg-center p-8 flex justify-between items-end rounded-lg">
-          <div className="space-y-2 px-4 py-6 text-white bg-black/80 rounded-xl">
-            <h1 className="lg:text-5xl md:text-5xl text-4xl  font-semibold">
+    <div className="size-auto">
+      <div className="w-full flex lg:flex-row flex-col justify-between items-stretch gap-7 bg-[url('/nature.jpg')] bg-cover bg-center md:px-8 px-5 py-22">
+        <div className="w-full flex justify-between items-start rounded-lg">
+          <div className="space-y-2 text-white ">
+            <h1 className="lg:text-8xl md:text-6xl text-5xl  font-semibold">
               Outless
             </h1>
             <p className="text-text-muted text-md pl-1">

@@ -44,16 +44,20 @@ export default function StatsBoxes() {
     },
   ];
   return (
-    <div className="w-full space-y-8 px-6 py-9 bg-white shadow-xl rounded-lg">
+    <div className="w-full space-y-8 px-6 py-9 bg-black/80 rounded-lg text-white ">
       {stats.map((item, index) => (
         <div className="w-full flex flex-col items-start justify-between space-y-1">
           <h3 className="">{item.title}</h3>
-          <div style={{ "--after-content": `"${item.value}"` }} className={`w-full bg-text-primary/10 relative after:content-(--after-content) after:absolute after:right-0 after:bottom-2`}>
-            <div className={`w-1/2 h-1 bg-linear-to-r ${item.gradient} rounded-full`}></div>
+          <div
+            style={{ "--after-content": `"${item.value}"` }}
+            className={`w-full bg-white/20 relative after:content-(--after-content) after:absolute after:right-0 after:bottom-2  rounded-full`}
+          >
+            <div
+              className={`w-1/2 h-1 bg-linear-to-r ${item.gradient} rounded-full`}
+            ></div>
           </div>
-      </div>
+        </div>
       ))}
-      
     </div>
   );
 }
