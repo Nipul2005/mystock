@@ -7,7 +7,7 @@ function DashboardBody() {
     <div className="size-auto">
       <div className="w-full flex lg:flex-row flex-col justify-between items-stretch gap-7 bg-[url('/nature.jpg')] bg-cover bg-center md:px-8 px-5 md:py-22 py-12">
         <div className="w-full flex justify-between items-start rounded-lg">
-          <div className="space-y-2 text-white ">
+          <div className="space-y-1 text-white ">
             <h1 className="lg:text-8xl md:text-6xl text-5xl  font-semibold">
               Outless
             </h1>
@@ -19,7 +19,7 @@ function DashboardBody() {
         <StatsBoxes />
       </div>
 
-      {/* <InventoryShowPeace /> */}
+      <InventoryShowPeace />
     </div>
   );
 }
