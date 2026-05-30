@@ -1,5 +1,6 @@
 function Sidebar_menues({ name, icon_name, classes, page }) {
   let currentPage = window.location.pathname || "Home";
+  console.log(currentPage, page);
   
   return (
     <span
