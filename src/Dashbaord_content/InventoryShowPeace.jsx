@@ -65,7 +65,7 @@ function InventoryShowPeace() {
 
                 <td className="px-4 py-5 text-center">{product.price}</td>
 
-                <td className="px-4 py-5 md:text-right text-center">
+                <td className="px-4 py-5 text-right">
                   <span
                     className={`px-3 py-1 rounded-full text-sm md:inline hidden ${
                       product.status === "In Stock"
