@@ -1,63 +1,90 @@
 import React from "react";
 
+
+
 export default function StatsBoxes() {
   const stats = [
     {
-      title: "Total Stock",
-      value: "1,248",
-      subtitle: "Items in inventory",
-      icon: "📦",
-      iconBg: "bg-indigo-100",
-      gradient: "from-indigo-300 to-purple-150",
+      title: "Active Services",
+      value: "12",
+      icon: "ri-briefcase-line",
+      color: "bg-blue-50 text-blue-600",
     },
     {
-      title: "Products",
-      value: "342",
-      subtitle: "Across categories",
-      icon: "🧊",
-      iconBg: "bg-blue-100",
-      gradient: "from-blue-300 to-cyan-150",
+      title: "Pending Requests",
+      value: "28",
+      icon: "ri-file-list-3-line",
+      color: "bg-orange-50 text-orange-600",
     },
     {
-      title: "Orders",
-      value: "186",
-      subtitle: "This week",
-      icon: "🛒",
-      iconBg: "bg-green-100",
-      gradient: "from-green-300 to-emerald-150",
+      title: "Customers",
+      value: "184",
+      icon: "ri-user-heart-line",
+      color: "bg-green-50 text-green-600",
     },
     {
       title: "Revenue",
-      value: "₹2.4L",
-      subtitle: "This month",
-      icon: "₹",
-      iconBg: "bg-orange-100",
-      gradient: "from-orange-300 to-yellow-150",
-    },
-    {
-      title: "Profit",
-      value: "₹78K",
-      subtitle: "Net earnings",
-      icon: "📈",
-      iconBg: "bg-pink-100",
-      gradient: "from-pink-300 to-rose-150",
+      value: "₹48K",
+      icon: "ri-money-rupee-circle-line",
+      color: "bg-purple-50 text-purple-600",
     },
   ];
+
   return (
-    <div className="w-full space-y-8 px-6 py-9 bg-white/80 rounded-lg text-text-primary ">
-      {stats.map((item, index) => (
-        <div className="w-full flex flex-col items-start justify-between space-y-1">
-          <h3 className="">{item.title}</h3>
+    <section className="w-full px-4 md:px-8">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div>
+          <p className="text-primary text-sm font-semibold">
+            Business Overview
+          </p>
+
+          <h2 className="text-3xl font-bold text-text-primary mt-1">
+            Your Performance
+          </h2>
+
+          <p className="text-text-secondary mt-2">
+            Track services, requests and business growth.
+          </p>
+        </div>
+
+        <button className="px-5 py-3 rounded-2xl bg-primary text-white font-medium">
+          Add Service
+        </button>
+      </div>
+
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-5">
+        {stats.map((item) => (
           <div
-            style={{ "--after-content": `"${item.value}"` }}
-            className={`w-full bg-white/20 relative after:content-(--after-content) after:absolute after:right-0 after:bottom-2  rounded-full`}
+            key={item.title}
+            className="
+              bg-white
+              border
+              border-border
+              rounded-3xl
+              p-6
+              hover:shadow-lg
+              transition-all
+            "
           >
             <div
-              className={`w-1/2 h-1 bg-linear-to-r ${item.gradient} rounded-full`}
-            ></div>
+              className={`
+                w-12 h-12
+                rounded-2xl
+                flex items-center justify-center
+                ${item.color}
+              `}
+            >
+              <i className={`${item.icon} text-xl`} />
+            </div>
+
+            <h3 className="mt-5 text-sm text-text-secondary">{item.title}</h3>
+
+            <p className="mt-2 text-4xl font-bold text-text-primary">
+              {item.value}
+            </p>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 }

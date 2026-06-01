@@ -1,26 +1,56 @@
 function Sidebar_menues({ name, icon_name, classes, page }) {
-  let currentPage = window.location.pathname || "Home";
+  const currentPage = window.location.pathname;
   const isActive = currentPage === page;
-  
+
   return (
     <span
-    className={`
-      md:w-full w-10 md:h-auto
-      flex lg:justify-start justify-center items-center
-      gap-3 md:px-3 md:py-2 md:my-1
-      cursor-pointer rounded-full shrink-0
-      transition-all duration-200 ease-in-out
-      hover:bg-primary hover:text-white
-      ${classes}
-      p-1
-      ${isActive ? "bg-primary text-white" : "text-text-primary"}
-    `}
+      className={`
+        md:w-full
+        w-11
+        md:h-12
+        h-11
+
+        flex
+        items-center
+        justify-center
+        lg:justify-start
+
+        gap-3
+
+        md:px-4
+        px-0
+
+        rounded-2xl
+        cursor-pointer
+        shrink-0
+
+        transition-all
+        duration-200
+
+        ${
+          isActive
+            ? "bg-primary text-white shadow-lg shadow-primary/20"
+            : "text-text-secondary hover:bg-bg hover:text-primary"
+        }
+
+        ${classes}
+      `}
     >
       <i
-        className={`ri-${icon_name}-line md:text-2xl text-xl`} //ri-search-line text-2xl rounded-full
-        title={`${name}`} // icon adjacent name
+        className={`ri-${icon_name}-line text-xl`}
+        title={name}
       ></i>
-      <h2 className="font-semibold lg:flex hidden">{name}</h2>
+
+      <h2
+        className={`
+          hidden
+          lg:block
+          font-medium
+          text-[15px]
+        `}
+      >
+        {name}
+      </h2>
     </span>
   );
 }

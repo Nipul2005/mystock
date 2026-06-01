@@ -1,55 +1,57 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand Colors */
+  --color-primary: #005BFF;
+  --color-primary-light: #1A8CFF;
+  --color-primary-dark: #0030C5;
 
-  /* Brand */
-  --color-primary: #5b5ffb;
-  --color-primary-hover: #4b4fef;
-  --color-secondary: #8b7cff;
-  --color-accent: #38bdf8;
+  --color-accent: #FF8A00;
+  --color-accent-light: #FF9D00;
 
-  /* Layout */
-  --color-bg: #f5f7fb;
-  --color-sidebar: #ffffff;
+  /* Backgrounds */
+  --color-bg: #F8F8F8;
+  --color-surface: #FFFFFF;
 
   /* Text */
   --color-text-primary: #111827;
-  --color-text-secondary: #6b7280;
+  --color-text-secondary: #6B7280;
 
   /* Borders */
-  --color-border: #e5e7eb;
+  --color-border: #E5E7EB;
 
   /* Status */
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
-
-  /* Extra UI */
-  --color-hover: #f3f4f6;
-  --color-active: #eef2ff;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
 
   /* Shadows */
-  --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.06);
-  --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-soft: 0 4px 12px rgba(0, 91, 255, 0.08);
+  --shadow-card: 0 10px 30px rgba(0, 91, 255, 0.12);
 
   /* Radius */
   --radius-card: 24px;
-  --radius-button: 18px;
+  --radius-button: 16px;
 
   /* Gradients */
   --gradient-primary: linear-gradient(
-    to right,
-    #5b5ffb,
-    #8b7cff
+    135deg,
+    #0030C5 0%,
+    #005BFF 50%,
+    #1A8CFF 100%
   );
 
   --gradient-accent: linear-gradient(
-    to right,
-    #38bdf8,
-    #5b5ffb
+    135deg,
+    #FF8A00 0%,
+    #FF9D00 100%
   );
-}
 
-*{
-  font-family: inter;
+  --gradient-brand: linear-gradient(
+    135deg,
+    #0030C5 0%,
+    #005BFF 45%,
+    #1A8CFF 70%,
+    #FF8A00 100%
+  );
 }

@@ -4,21 +4,45 @@ import InventoryShowPeace from "./InventoryShowPeace";
 
 function DashboardBody() {
   return (
-    <div className="size-auto">
-      <div className="w-full flex lg:flex-row flex-col justify-between items-stretch gap-7 bg-[url('/nature.jpg')] bg-cover bg-center md:px-8 px-5 md:py-22 py-12">
-        <div className="w-full flex justify-between items-start rounded-lg">
-          <div className="space-y-1 text-white ">
-            <h1 className="lg:text-8xl md:text-6xl text-5xl  font-semibold">
-              Outless
-            </h1>
-            <p className="text-text-muted text-md pl-1">
-              Welcome back, John! Here's what's happening with your store today
-            </p>
+    <div className="space-y-8">
+      {/* Welcome Banner */}
+      <section className="relative overflow-hidden bg-linear-to-r from-primary to-blue-500 p-8 md:p-10">
+        <div className="relative max-w-3xl">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 text-white text-sm">
+            <span className="w-2 h-2 rounded-full bg-green-400"></span>
+            Business Overview
+          </span>
+
+          <h1 className="mt-5 text-4xl md:text-5xl font-bold text-white">
+            Welcome back, John 👋
+          </h1>
+
+          <p className="mt-4 text-white/80 text-lg max-w-2xl">
+            Track customer requests, manage your services, and monitor business
+            performance from one place.
+          </p>
+
+          <div className="flex flex-wrap gap-3 mt-8">
+            <button className="px-6 py-3 bg-white text-primary rounded-2xl font-semibold">
+              Add Service
+            </button>
+
+            <button className="px-6 py-3 border border-white/20 text-white rounded-2xl">
+              View Requests
+            </button>
           </div>
         </div>
-        <StatsBoxes />
-      </div>
 
+        {/* Decorative */}
+        <div className="absolute right-0 top-0 h-full w-1/3 opacity-10">
+          <i className="ri-briefcase-4-line text-[300px] text-white"></i>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <StatsBoxes />
+
+      {/* Services */}
       <InventoryShowPeace />
     </div>
   );

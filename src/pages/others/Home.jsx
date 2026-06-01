@@ -11,6 +11,7 @@ export default function Home() {
       provider: "Turtlabs",
       price: "₹15,000",
       rating: "4.9",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     },
     {
       id: 2,
@@ -18,6 +19,7 @@ export default function Home() {
       provider: "Creative Studio",
       price: "₹5,000",
       rating: "4.8",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5",
     },
     {
       id: 3,
@@ -25,6 +27,7 @@ export default function Home() {
       provider: "Vision Media",
       price: "₹8,000",
       rating: "4.7",
+      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d",
     },
     {
       id: 4,
@@ -32,6 +35,7 @@ export default function Home() {
       provider: "Growth Agency",
       price: "₹12,000",
       rating: "4.9",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
     },
   ];
 
@@ -49,16 +53,13 @@ export default function Home() {
       {/* NAVBAR */}
       <nav className="sticky top-0 z-50 h-16 bg-white border-b border-border">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-          <Link
-            to="/"
-            className="text-2xl font-bold text-primary"
-          >
+          <Link to="/" className="text-2xl font-bold text-primary">
             Outless
           </Link>
 
           {/* Desktop */}
           <div className="hidden lg:flex items-center gap-8">
-            <Link to="/">Home</Link>
+            <Link to="/dashboard">Home</Link>
             <Link to="/services">Services</Link>
             <Link to="/providers">Providers</Link>
             <Link to="/categories">Categories</Link>
@@ -124,8 +125,8 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-white/90 text-base sm:text-lg">
-            Find professionals and businesses offering services
-            tailored to your needs.
+            Find professionals and businesses offering services tailored to your
+            needs.
           </p>
 
           <div className="mt-10 max-w-3xl mx-auto flex flex-col sm:flex-row gap-3">
@@ -144,9 +145,7 @@ export default function Home() {
 
       {/* CATEGORIES */}
       <section className="max-w-7xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center">
-          Popular Categories
-        </h2>
+        <h2 className="text-3xl font-bold text-center">Popular Categories</h2>
 
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {categories.map((category) => (
@@ -163,14 +162,9 @@ export default function Home() {
       {/* SERVICES */}
       <section className="max-w-7xl mx-auto px-4 pb-20">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">
-            Featured Services
-          </h2>
+          <h2 className="text-3xl font-bold">Featured Services</h2>
 
-          <Link
-            to="/services"
-            className="text-primary"
-          >
+          <Link to="/services" className="text-primary">
             View All
           </Link>
         </div>
@@ -182,16 +176,18 @@ export default function Home() {
               className="bg-white rounded-3xl overflow-hidden shadow-soft"
             >
               {/* Replace with actual image */}
-              <div className="h-52 bg-hover" />
+              <div className="h-52 bg-hover">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="h-52 w-full object-cover"
+                />
+              </div>
 
               <div className="p-5">
-                <h3 className="font-semibold text-lg">
-                  {service.title}
-                </h3>
+                <h3 className="font-semibold text-lg">{service.title}</h3>
 
-                <p className="text-text-secondary mt-1">
-                  {service.provider}
-                </p>
+                <p className="text-text-secondary mt-1">{service.provider}</p>
 
                 <div className="mt-4 flex justify-between">
                   <span className="font-semibold text-primary">
@@ -216,31 +212,20 @@ export default function Home() {
       {/* PROVIDERS */}
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center">
-            Top Providers
-          </h2>
+          <h2 className="text-3xl font-bold text-center">Top Providers</h2>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className="border border-border rounded-3xl p-6"
-              >
+              <div key={item} className="border border-border rounded-3xl p-6">
                 <div className="w-16 h-16 rounded-full bg-hover" />
 
-                <h3 className="mt-4 font-semibold">
-                  Provider Name
-                </h3>
+                <h3 className="mt-4 font-semibold">Provider Name</h3>
 
-                <p className="text-text-secondary">
-                  24 Services
-                </p>
+                <p className="text-text-secondary">24 Services</p>
 
                 <p className="mt-2">⭐ 4.9</p>
 
-                <button className="mt-4 text-primary">
-                  View Profile
-                </button>
+                <button className="mt-4 text-primary">View Profile</button>
               </div>
             ))}
           </div>
@@ -249,15 +234,11 @@ export default function Home() {
 
       {/* HOW IT WORKS */}
       <section className="max-w-7xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center">
-          How It Works
-        </h2>
+        <h2 className="text-3xl font-bold text-center">How It Works</h2>
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="bg-white rounded-3xl p-8">
-            <h3 className="text-xl font-bold mb-6">
-              For Buyers
-            </h3>
+            <h3 className="text-xl font-bold mb-6">For Buyers</h3>
 
             <div className="space-y-4">
               <p>1. Search Services</p>
@@ -268,9 +249,7 @@ export default function Home() {
           </div>
 
           <div className="bg-white rounded-3xl p-8">
-            <h3 className="text-xl font-bold mb-6">
-              For Providers
-            </h3>
+            <h3 className="text-xl font-bold mb-6">For Providers</h3>
 
             <div className="space-y-4">
               <p>1. Create Account</p>
@@ -284,10 +263,8 @@ export default function Home() {
 
       {/* CTA */}
       <section className="px-4 pb-20">
-        <div className="max-w-7xl mx-auto rounded-[32px] bg-gradient-to-r from-primary to-secondary p-8 md:p-14 text-center text-white">
-          <h2 className="text-3xl md:text-5xl font-bold">
-            Own A Business?
-          </h2>
+        <div className="max-w-7xl mx-auto rounded-4xl bg-linear-to-r from-primary to-secondary p-8 md:p-14 text-center text-white">
+          <h2 className="text-3xl md:text-5xl font-bold">Own A Business?</h2>
 
           <p className="mt-4 text-white/90">
             List your services and receive customer inquiries.
@@ -305,9 +282,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="bg-white border-t border-border">
         <div className="max-w-7xl mx-auto px-4 py-10">
-          <h2 className="font-bold text-2xl text-primary">
-            Outless
-          </h2>
+          <h2 className="font-bold text-2xl text-primary">Outless</h2>
 
           <p className="mt-2 text-text-secondary">
             Connecting buyers with trusted service providers.
