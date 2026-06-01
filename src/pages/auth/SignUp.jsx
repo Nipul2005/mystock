@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function SignUp() {
   return (
     <div className="min-h-screen bg-bg flex">
@@ -5,7 +6,13 @@ export default function SignUp() {
       <div className="hidden lg:flex lg:w-1/2 bg-linear-to-r from-primary to-secondary p-12 text-white flex-col justify-between">
         <div>
           {/* Add Logo Here */}
-          <h1 className="text-4xl font-bold">Outless</h1>
+          <Link to="/">
+            <img
+              src="/bizsphere_icon.png"
+              alt="BizSphere"
+              className="w-14 h-14 object-contain"
+            />
+          </Link>
         </div>
 
         <div>
@@ -21,7 +28,7 @@ export default function SignUp() {
           {/* Add Illustration Here */}
         </div>
 
-        <div className="text-white/60">© 2026 Outless</div>
+        <div className="text-white/60">© 2026 BizSphere</div>
       </div>
 
       {/* Right Section */}

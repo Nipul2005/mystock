@@ -40,42 +40,47 @@ export default function Home() {
   ];
 
   const categories = [
-    "Web Development",
-    "Graphic Design",
+    "Web Dev",
+    "Design",
     "Marketing",
-    "Video Editing",
-    "Photography",
+    "Video",
+    "Photo",
     "Consulting",
   ];
 
   return (
-    <main className="min-h-dvh bg-bg">
-      {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 h-16 bg-white border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-primary">
-            Outless
+    <main className="min-h-dvh bg-gray-50 text-gray-900">
+      {/* NAV */}
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+          <Link to="/" className="font-bold text-xl text-indigo-600">
+            <img
+              src="/bizsphere_icon.png"
+              alt="BizSphere"
+              className="w-14 h-14  object-contain"
+            />
           </Link>
 
           {/* Desktop */}
-          <div className="hidden lg:flex items-center gap-8">
-            <Link to="/dashboard">Home</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/providers">Providers</Link>
-            <Link to="/categories">Categories</Link>
-          </div>
+          <nav className="hidden lg:flex gap-6 text-sm text-gray-600">
+            <Link className="hover:text-black" to="/services">
+              Services
+            </Link>
+            <Link className="hover:text-black" to="/providers">
+              Providers
+            </Link>
+            <Link className="hover:text-black" to="/categories">
+              Categories
+            </Link>
+          </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              to="/login"
-              className="px-4 py-2 border border-border rounded-xl"
-            >
+          <div className="hidden lg:flex gap-3">
+            <Link className="px-4 py-2 text-sm border rounded-xl" to="/login">
               Login
             </Link>
-
             <Link
+              className="px-4 py-2 text-sm bg-indigo-600 text-white rounded-xl"
               to="/signup"
-              className="px-5 py-2 bg-primary text-white rounded-xl"
             >
               Become Provider
             </Link>
@@ -90,70 +95,64 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Mobile Drawer */}
         {menuOpen && (
-          <div className="lg:hidden bg-white border-t border-border">
-            <div className="flex flex-col p-4 gap-4">
-              <Link to="/">Home</Link>
-              <Link to="/services">Services</Link>
-              <Link to="/providers">Providers</Link>
-              <Link to="/categories">Categories</Link>
-              <Link to="/login">Login</Link>
-              <Link
-                to="/signup"
-                className="bg-primary text-white text-center py-3 rounded-xl"
-              >
-                Become Provider
-              </Link>
-            </div>
+          <div className="lg:hidden border-t bg-white px-4 py-3 space-y-3 text-sm">
+            <Link to="/services">Services</Link>
+            <Link to="/providers">Providers</Link>
+            <Link to="/categories">Categories</Link>
+            <Link to="/login">Login</Link>
+            <Link
+              className="block bg-indigo-600 text-white text-center py-2 rounded-xl"
+              to="/signup"
+            >
+              Become Provider
+            </Link>
           </div>
         )}
-      </nav>
+      </header>
 
       {/* HERO */}
-      <section
-        className="min-h-[calc(100dvh-64px)] flex items-center justify-center relative bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/nature.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/55" />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-          <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl">
-            Discover Trusted Services
+      <section className="relative">
+        <div className="max-w-7xl mx-auto px-4 py-24 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            Find trusted services <br /> in seconds
           </h1>
 
-          <p className="mt-6 text-white/90 text-base sm:text-lg">
-            Find professionals and businesses offering services tailored to your
-            needs.
+          <p className="mt-5 text-gray-600 max-w-2xl mx-auto">
+            Connect with verified professionals for development, design,
+            marketing and more.
           </p>
 
-          <div className="mt-10 max-w-3xl mx-auto flex flex-col sm:flex-row gap-3">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
             <input
-              type="text"
+              className="flex-1 px-4 py-3 rounded-xl border bg-white"
               placeholder="Search services..."
-              className="flex-1 bg-white rounded-xl px-5 py-4 outline-none"
             />
-
-            <button className="bg-primary text-white px-8 py-4 rounded-xl">
+            <button className="px-6 py-3 bg-indigo-600 text-white rounded-xl">
               Search
             </button>
+          </div>
+
+          {/* quick stats */}
+          <div className="mt-10 flex justify-center gap-8 text-sm text-gray-500">
+            <p>10k+ Services</p>
+            <p>2k+ Providers</p>
+            <p>4.8 avg rating</p>
           </div>
         </div>
       </section>
 
       {/* CATEGORIES */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center">Popular Categories</h2>
+      <section className="max-w-7xl mx-auto px-4 pb-16">
+        <h2 className="text-xl font-semibold mb-6">Popular Categories</h2>
 
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {categories.map((category) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          {categories.map((c) => (
             <div
-              key={category}
-              className="bg-white rounded-2xl p-5 text-center shadow-soft hover:-translate-y-1 transition"
+              key={c}
+              className="bg-white border rounded-xl py-4 text-center text-sm hover:shadow-md transition"
             >
-              {category}
+              {c}
             </div>
           ))}
         </div>
@@ -161,118 +160,59 @@ export default function Home() {
 
       {/* SERVICES */}
       <section className="max-w-7xl mx-auto px-4 pb-20">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">Featured Services</h2>
-
-          <Link to="/services" className="text-primary">
-            View All
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold">Featured Services</h2>
+          <Link className="text-indigo-600 text-sm" to="/services">
+            View all
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {services.map((service) => (
-            <article
-              key={service.id}
-              className="bg-white rounded-3xl overflow-hidden shadow-soft"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {services.map((s) => (
+            <div
+              key={s.id}
+              className="bg-white rounded-2xl overflow-hidden border hover:shadow-lg transition"
             >
-              {/* Replace with actual image */}
-              <div className="h-52 bg-hover">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-52 w-full object-cover"
-                />
-              </div>
+              <img
+                src={s.image}
+                alt={s.title}
+                className="h-40 w-full object-cover"
+              />
 
-              <div className="p-5">
-                <h3 className="font-semibold text-lg">{service.title}</h3>
+              <div className="p-4">
+                <h3 className="font-semibold">{s.title}</h3>
+                <p className="text-sm text-gray-500">{s.provider}</p>
 
-                <p className="text-text-secondary mt-1">{service.provider}</p>
-
-                <div className="mt-4 flex justify-between">
-                  <span className="font-semibold text-primary">
-                    {service.price}
+                <div className="flex justify-between mt-3 text-sm">
+                  <span className="font-semibold text-indigo-600">
+                    {s.price}
                   </span>
-
-                  <span>⭐ {service.rating}</span>
+                  <span>⭐ {s.rating}</span>
                 </div>
 
                 <Link
-                  to={`/service/${service.id}`}
-                  className="mt-5 block text-center bg-primary text-white py-3 rounded-xl"
+                  to={`/service/${s.id}`}
+                  className="block mt-4 text-center text-sm bg-gray-900 text-white py-2 rounded-xl"
                 >
-                  View Details
+                  View details
                 </Link>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* PROVIDERS */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center">Top Providers</h2>
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="border border-border rounded-3xl p-6">
-                <div className="w-16 h-16 rounded-full bg-hover" />
-
-                <h3 className="mt-4 font-semibold">Provider Name</h3>
-
-                <p className="text-text-secondary">24 Services</p>
-
-                <p className="mt-2">⭐ 4.9</p>
-
-                <button className="mt-4 text-primary">View Profile</button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center">How It Works</h2>
-
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-3xl p-8">
-            <h3 className="text-xl font-bold mb-6">For Buyers</h3>
-
-            <div className="space-y-4">
-              <p>1. Search Services</p>
-              <p>2. View Details</p>
-              <p>3. Send Request</p>
-              <p>4. Get Contacted</p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-3xl p-8">
-            <h3 className="text-xl font-bold mb-6">For Providers</h3>
-
-            <div className="space-y-4">
-              <p>1. Create Account</p>
-              <p>2. Add Services</p>
-              <p>3. Receive Notifications</p>
-              <p>4. Grow Business</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="px-4 pb-20">
-        <div className="max-w-7xl mx-auto rounded-4xl bg-linear-to-r from-primary to-secondary p-8 md:p-14 text-center text-white">
-          <h2 className="text-3xl md:text-5xl font-bold">Own A Business?</h2>
-
-          <p className="mt-4 text-white/90">
-            List your services and receive customer inquiries.
+      <section className="max-w-7xl mx-auto px-4 pb-20">
+        <div className="bg-indigo-600 text-white rounded-3xl p-10 text-center">
+          <h2 className="text-3xl font-bold">Start earning today</h2>
+          <p className="mt-2 text-white/80">
+            List your service and get discovered by customers.
           </p>
 
           <Link
             to="/signup"
-            className="inline-block mt-8 bg-white text-primary px-8 py-4 rounded-xl font-semibold"
+            className="inline-block mt-6 bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold"
           >
             Become Provider
           </Link>
@@ -280,12 +220,15 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-white border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 py-10">
-          <h2 className="font-bold text-2xl text-primary">Outless</h2>
-
-          <p className="mt-2 text-text-secondary">
-            Connecting buyers with trusted service providers.
+      <footer className="bg-white border-t">
+        <div className="max-w-7xl mx-auto px-4 py-10 text-sm text-gray-500">
+          <img
+            src="/bizsphere_icon.png"
+            alt="BizSphere"
+            className="w-14 h-14 object-contain"
+          />
+          <p className="mt-2">
+            Connecting people with trusted service providers.
           </p>
         </div>
       </footer>

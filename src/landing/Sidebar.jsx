@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar_menues from "../components/Sidebar_menues";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   let manues = [
@@ -33,17 +34,19 @@ function Sidebar() {
   return (
     <div className="md:h-full md:w-auto w-full text-black lg:px-2 px-4 shadow-2xl md:py-5 md:pt-3 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white transition-all duration-300 ease-in flex md:flex-col md:justify-between md:item-start flex-row justify-center items-center md:border-0 border-y border-border z-20">
       <div className="w-full md:flex hidden flex-col items-center pt-4">
-        <img
-          src="/bizsphere_logo.png"
-          alt="BizSphere"
-          className="hidden lg:block object-contain"
-        />
+        <Link to="/">
+          <img
+            src="/bizsphere_logo.png"
+            alt="BizSphere"
+            className="hidden lg:block object-contain"
+          />
 
-        <img
-          src="/bizsphere_icon.png"
-          alt="BizSphere"
-          className="w-14 h-14 lg:hidden object-contain"
-        />
+          <img
+            src="/bizsphere_icon.png"
+            alt="BizSphere"
+            className="w-14 h-14 lg:hidden object-contain"
+          />
+        </Link>
       </div>
 
       <div className="w-full h-auto flex md:flex-col md:justify-start md:items-start flex-row justify-between items-center gap-x-4 md:gap-y-2">
