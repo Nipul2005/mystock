@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 export default function Login() {
   return (
     <div className="min-h-screen bg-bg flex">
       {/* Left Section */}
-      <div className="hidden lg:flex lg:w-1/2 bg-linear-to-r from-primary to-secondary p-12 text-white flex-col justify-between">
+      <div className="hidden lg:flex lg:w-1/2 bg-linear-to-l from-secondary to-primary p-12 text-white flex-col justify-between">
         <div>
           {/* Add Logo Here */}
           <Link to="/">
@@ -82,9 +84,9 @@ export default function Login() {
 
             <p className="text-center text-text-secondary">
               Don't have an account?
-              <a href="/signup" className="text-primary ml-1">
+              <Link to="/signup" className="text-primary ml-1">
                 Sign Up
-              </a>
+              </Link>
             </p>
           </form>
         </div>
