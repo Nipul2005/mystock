@@ -78,9 +78,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 h-18 flex items-center justify-between">
           <Link to="/">
             <img
-              src="/bizsphere_logo.png"
+              src="/bizsphere_icon.png"
               alt="BizSphere"
-              className="h-10 object-contain"
+              className="h-15 object-contain"
             />
           </Link>
 
@@ -152,8 +152,8 @@ export default function Home() {
 
       {/* HERO */}
 
-      <section className="max-w-7xl mx-auto px-5 pt-8">
-        <div className="relative overflow-hidden rounded-[40px] bg-linear-to-br from-primary to-blue-600 px-6 md:px-14 py-16 md:py-24 text-white">
+      <section className="max-w-full mx-auto">
+        <div className="relative overflow-hidden bg-linear-to-br from-primary to-blue-600 px-6 md:px-14 py-16 md:py-24 text-white">
           <div className="max-w-3xl relative z-10">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
               <span className="w-2 h-2 rounded-full bg-green-400"></span>
@@ -184,8 +184,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2">
-            <i className="ri-service-line text-[320px] text-white/10"></i>
+          <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2">
+            <i className="ri-service-line text-[320px] text-white/20"></i>
           </div>
         </div>
       </section>
@@ -376,9 +376,9 @@ export default function Home() {
       <footer className="bg-white border-t border-border">
         <div className="max-w-7xl mx-auto px-5 py-12">
           <img
-            src="/bizsphere_logo.png"
+            src="/bizsphere_icon.png"
             alt="BizSphere"
-            className="h-10 object-contain"
+            className="h-20 object-contain"
           />
 
           <p className="mt-4 text-text-secondary max-w-md">

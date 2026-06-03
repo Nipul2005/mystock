@@ -1,22 +1,14 @@
 import { Link } from "react-router-dom";
 
 export default function SignUp() {
-  return (
+  return ( 
     <div className="min-h-dvh bg-bg flex">
       {/* LEFT */}
 
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary to-blue-600 text-white p-14 flex-col justify-between relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-1/2 bg-linear-to-br from-primary to-blue-600 text-white p-14 flex-col justify-between relative overflow-hidden">
         <div className="absolute right-0 top-1/2 -translate-y-1/2">
           <i className="ri-service-line text-[320px] text-white/10"></i>
         </div>
-
-        <Link to="/" className="relative z-10">
-          <img
-            src="/bizsphere_logo.png"
-            alt="BizSphere"
-            className="h-10 object-contain"
-          />
-        </Link>
 
         <div className="relative z-10 max-w-lg">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
