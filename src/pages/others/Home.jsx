@@ -351,7 +351,7 @@ export default function Home() {
 
       {/* CTA */}
 
-      <section className="w-full relative">
+      <section className="w-full relative overflow-hidden">
         <div className="bg-linear-to-r from-primary to-blue-600 p-10 md:p-16 text-center text-white">
           <h2 className="text-4xl md:text-6xl font-bold">
             Ready To Grow Your Business?
