@@ -1,6 +1,6 @@
-import React from "react";
-import Sidebar_menues from "../components/Sidebar_menues";
 import { Link } from "react-router-dom";
+import Sidebar_menues from "./Sidebar_menues";
+
 
 function Sidebar() {
   let manues = [

@@ -1,11 +1,9 @@
-import Sidebar from "./landing/Sidebar";
-import Dashboard from "./landing/Dashboard";
-import Container from "./components/Container";
 import {Routes, Route} from "react-router-dom"
+import Home from "./pages/others/Home";
 import DashbaordHome from "./pages/others/DashboardHome";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
-import Home from "./pages/others/Home";
+
 
 function App() {
   return (

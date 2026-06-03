@@ -1,7 +1,7 @@
 import React from 'react'
-import Container from '../../components/Container';
-import Sidebar from '../../landing/Sidebar';
-import Dashboard from '../../landing/Dashboard';
+import Container from '../../components/Common/Container';
+import Sidebar from '../../components/DashbaordPage/Sidebar';
+import Dashboard from '../../components/DashbaordPage/Dashboard';
 
 function DashbaordHome() {
   return (

@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "../Dashbaord_content/Header";
-import DashboardBody from "../Dashbaord_content/DashboardBody";
+import DashboardBody from "./DashboardBody";
+import Header from "./Header";
+
 
 function Dashboard() {
   return (
