@@ -7,27 +7,27 @@ function Sidebar() {
     {
       name: "Home",
       icon: "home-4",
-      page: "/",
+      page: 0,
     },
     {
       name: "Manage",
       icon: "store",
-      page: "/Manage",
+      page: 1,
     },
     {
       name: "Create",
       icon: "apps-2-add",
-      page: "/Create",
+      page: 3,
     },
     {
       name: "Search",
       icon: "search",
-      page: "/Search",
+      page: 4,
     },
     {
       name: "Settings",
       icon: "settings-2",
-      page: "/Settings",
+      page: 5,
     },
   ];
 

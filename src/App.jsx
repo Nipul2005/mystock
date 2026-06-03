@@ -1,6 +1,6 @@
 import {Routes, Route} from "react-router-dom"
 import Home from "./pages/others/ConsumerPages/Home";
-import DashbaordHome from "./pages/others/ProviderPages/DashboardHome";
+import Layout from "./pages/others/ProviderPages/Layout";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import Services from "./pages/others/ConsumerPages/Service";
@@ -15,7 +15,7 @@ function App() {
       <Route path="/services" element={<Services />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/providers" element={<Providers />} />
-      <Route path="/dashboard" element={<DashbaordHome />} />
+      <Route path="/dashboard" element={<Layout />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
     </Routes>
