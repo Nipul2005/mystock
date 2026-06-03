@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HomePageHeader from "../../components/HomePage/HomePageHeader";
+import HomePageHeader from "../../../components/HomePage/HomePageHeader";
+import HomePageFooter from "../../../components/HomePage/HomePageFooter";
+import Cta from "../../../components/Common/Cta";
 
 export default function Home() {
 
@@ -104,7 +106,7 @@ export default function Home() {
                 className="flex-1 px-5 py-4 rounded-2xl bg-white text-black outline-none"
               />
 
-              <button className="px-8 py-4 rounded-2xl bg-black text-white font-medium">
+              <button className="px-8 py-4 rounded-2xl bg-white text-text-primary font-medium">
                 Search
               </button>
             </div>
@@ -236,90 +238,18 @@ export default function Home() {
 
       {/* PROVIDERS */}
 
-      <section className="max-w-7xl mx-auto px-5 pb-24">
-        <div className="mb-12 text-center">
-          <p className="text-primary font-medium">Professionals</p>
-
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Top Providers
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((item) => (
-            <div
-              key={item}
-              className="bg-white rounded-3xl border border-border p-8 text-center"
-            >
-              <div className="w-20 h-20 rounded-full bg-primary text-white flex items-center justify-center mx-auto text-2xl font-bold">
-                T
-              </div>
-
-              <h3 className="mt-5 text-xl font-bold">
-                Turtlabs
-              </h3>
-
-              <p className="text-text-secondary">
-                24 Active Services
-              </p>
-
-              <div className="mt-3 text-amber-500">
-                ⭐ 4.9
-              </div>
-
-              <button className="mt-6 w-full py-3 rounded-2xl border border-border hover:bg-hover transition">
-                View Profile
-              </button>
-            </div>
-          ))}
-        </div>
-      </section>
+      
 
       {/* CTA */}
-
-      <section className="w-full relative overflow-hidden">
-        <div className="bg-linear-to-r from-primary to-blue-600 p-10 md:p-16 text-center text-white">
-          <h2 className="text-4xl md:text-6xl font-bold">
-            Ready To Grow Your Business?
-          </h2>
-
-          <p className="mt-5 text-white/80 max-w-2xl mx-auto">
-            Join thousands of providers already receiving customer inquiries
-            through BizSphere.
-          </p>
-
-          <Link
-            to="/signup"
-            className="inline-block mt-8 px-8 py-4 rounded-2xl bg-white text-primary font-semibold"
-          >
-            Become Provider
-          </Link>
-        </div>
-        <div className="absolute md:right-10 -right-30 top-1/2 -translate-y-1/2">
-            <i className="ri-verified-badge-line text-[320px] text-white/20"></i>
-          </div>
-      </section>
+      <Cta
+        heading="Ready To Grow Your Business?"
+        text="Join thousands of providers already receiving customer inquiries through BizSphere."
+        icon="verified-badge-line"
+      />
 
       {/* FOOTER */}
 
-      <footer className="bg-white border-t border-border">
-        <div className="max-w-7xl mx-auto px-5 py-12">
-          <img
-            src="/bizsphere_icon.png"
-            alt="BizSphere"
-            className="h-20 object-contain"
-          />
-
-          <p className="mt-4 text-text-secondary max-w-md">
-            BizSphere connects customers with trusted service providers and
-            helps businesses grow through a modern digital marketplace.
-          </p>
-
-          <div className="mt-8 text-sm text-text-secondary">
-            © 2026 BizSphere. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <HomePageFooter />
     </main>
   );
 }
