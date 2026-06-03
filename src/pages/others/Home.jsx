@@ -351,8 +351,8 @@ export default function Home() {
 
       {/* CTA */}
 
-      <section className="max-w-7xl mx-auto px-5 pb-24">
-        <div className="rounded-[40px] bg-linear-to-r from-primary to-blue-600 p-10 md:p-16 text-center text-white">
+      <section className="w-full">
+        <div className="bg-linear-to-r from-primary to-blue-600 p-10 md:p-16 text-center text-white">
           <h2 className="text-4xl md:text-6xl font-bold">
             Ready To Grow Your Business?
           </h2>
