@@ -1,46 +1,74 @@
 import { Link } from "react-router-dom";
+
 export default function SignUp() {
   return (
-    <div className="min-h-screen bg-bg flex">
-      {/* Left Section */}
-      <div className="hidden lg:flex lg:w-1/2 bg-linear-to-l from-secondary to-primary p-12 text-white flex-col justify-between">
-        <div>
-          {/* Add Logo Here */}
-          <Link to="/">
-            <img
-              src="/bizsphere_icon.png"
-              alt="BizSphere"
-              className="w-14 h-14 object-contain"
-            />
-          </Link>
+    <div className="min-h-dvh bg-bg flex">
+      {/* LEFT */}
+
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary to-blue-600 text-white p-14 flex-col justify-between relative overflow-hidden">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2">
+          <i className="ri-service-line text-[320px] text-white/10"></i>
         </div>
 
-        <div>
-          <h2 className="text-5xl font-bold leading-tight">
-            Start Managing Your Inventory Today
-          </h2>
+        <Link to="/" className="relative z-10">
+          <img
+            src="/bizsphere_logo.png"
+            alt="BizSphere"
+            className="h-10 object-contain"
+          />
+        </Link>
 
-          <p className="mt-5 text-lg text-white/80 max-w-md">
-            Create your workspace and organize products, stock movements,
-            suppliers and analytics.
+        <div className="relative z-10 max-w-lg">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
+            <span className="w-2 h-2 rounded-full bg-green-400"></span>
+            Join Thousands Of Providers
+          </span>
+
+          <h1 className="mt-6 text-6xl font-bold leading-tight">
+            Grow Your
+            <br />
+            Service Business
+          </h1>
+
+          <p className="mt-6 text-white/80 text-lg">
+            Create your provider account, list services, receive inquiries,
+            and connect with customers across BizSphere.
           </p>
 
-          {/* Add Illustration Here */}
+          <div className="mt-10 space-y-4">
+            <div className="flex items-center gap-3">
+              <i className="ri-check-line text-xl"></i>
+              <span>List unlimited services</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <i className="ri-check-line text-xl"></i>
+              <span>Receive customer inquiries</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <i className="ri-check-line text-xl"></i>
+              <span>Build your provider profile</span>
+            </div>
+          </div>
         </div>
 
-        <div className="text-white/60">© 2026 BizSphere</div>
+        <div className="relative z-10 text-white/60">
+          © 2026 BizSphere
+        </div>
       </div>
 
-      {/* Right Section */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center p-6">
-        <div className="w-full max-w-md bg-white shadow-card rounded-[24px] p-8">
+      {/* RIGHT */}
+
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
+        <div className="w-full max-w-md">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-text-primary">
+            <h2 className="text-4xl font-bold text-text-primary">
               Create Account
             </h2>
 
             <p className="text-text-secondary mt-2">
-              Build your inventory workspace
+              Start offering services on BizSphere
             </p>
           </div>
 
@@ -50,31 +78,47 @@ export default function SignUp() {
                 Full Name
               </label>
 
-              <input
-                type="text"
-                placeholder="John Doe"
-                className="w-full border border-border rounded-xl px-4 py-3 outline-none focus:border-primary"
-              />
+              <div className="relative">
+                <i className="ri-user-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+
+                <input
+                  type="text"
+                  placeholder="John Doe"
+                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
+                />
+              </div>
             </div>
 
             <div>
-              <label className="block mb-2 text-sm font-medium">Email</label>
+              <label className="block mb-2 text-sm font-medium">
+                Email Address
+              </label>
 
-              <input
-                type="email"
-                placeholder="john@example.com"
-                className="w-full border border-border rounded-xl px-4 py-3 outline-none focus:border-primary"
-              />
+              <div className="relative">
+                <i className="ri-mail-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+
+                <input
+                  type="email"
+                  placeholder="john@example.com"
+                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
+                />
+              </div>
             </div>
 
             <div>
-              <label className="block mb-2 text-sm font-medium">Password</label>
+              <label className="block mb-2 text-sm font-medium">
+                Password
+              </label>
 
-              <input
-                type="password"
-                placeholder="Create password"
-                className="w-full border border-border rounded-xl px-4 py-3 outline-none focus:border-primary"
-              />
+              <div className="relative">
+                <i className="ri-lock-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+
+                <input
+                  type="password"
+                  placeholder="Create password"
+                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
+                />
+              </div>
             </div>
 
             <div>
@@ -82,24 +126,54 @@ export default function SignUp() {
                 Confirm Password
               </label>
 
-              <input
-                type="password"
-                placeholder="Confirm password"
-                className="w-full border border-border rounded-xl px-4 py-3 outline-none focus:border-primary"
-              />
+              <div className="relative">
+                <i className="ri-lock-password-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+
+                <input
+                  type="password"
+                  placeholder="Confirm password"
+                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
+                />
+              </div>
             </div>
 
-            {/* Add Terms & Conditions Checkbox */}
+            <label className="flex items-start gap-3 text-sm">
+              <input
+                type="checkbox"
+                className="mt-1 accent-primary"
+              />
 
-            <button className="w-full bg-primary hover:bg-primary-hover text-white py-3 rounded-xl font-medium transition">
+              <span className="text-text-secondary">
+                I agree to the Terms of Service and Privacy Policy.
+              </span>
+            </label>
+
+            <button className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition">
               Create Account
             </button>
 
-            {/* Add Social Signup Buttons Here */}
+            <div className="relative py-2">
+              <div className="border-t border-border"></div>
+
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-bg px-4 text-sm text-text-secondary">
+                OR
+              </span>
+            </div>
+
+            <button
+              type="button"
+              className="w-full py-4 rounded-2xl border border-border flex items-center justify-center gap-3 font-medium"
+            >
+              <i className="ri-google-fill text-lg"></i>
+              Continue with Google
+            </button>
 
             <p className="text-center text-text-secondary">
               Already have an account?
-              <Link to="/login" className="text-primary ml-1">
+              <Link
+                to="/login"
+                className="text-primary ml-1 font-medium"
+              >
                 Sign In
               </Link>
             </p>
