@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Cta({heading, text, icon}) {
   return (
-    <section className="w-full relative">
+    <section className="w-full relative overflow-hidden">
       <div className="bg-primary text-white p-10 md:p-16 text-center">
         <h2 className="text-4xl font-bold">{heading}</h2>
 
