@@ -184,7 +184,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2">
+          <div className="absolute md:right-10 -right-20 top-1/2 -translate-y-1/2">
             <i className="ri-service-line text-[320px] text-white/20"></i>
           </div>
         </div>
