@@ -351,7 +351,7 @@ export default function Home() {
 
       {/* CTA */}
 
-      <section className="w-full">
+      <section className="w-full relative">
         <div className="bg-linear-to-r from-primary to-blue-600 p-10 md:p-16 text-center text-white">
           <h2 className="text-4xl md:text-6xl font-bold">
             Ready To Grow Your Business?
@@ -369,6 +369,9 @@ export default function Home() {
             Become Provider
           </Link>
         </div>
+        <div className="absolute md:right-10 -right-30 top-1/2 -translate-y-1/2">
+            <i className="ri-verified-badge-line text-[320px] text-white/20"></i>
+          </div>
       </section>
 
       {/* FOOTER */}
