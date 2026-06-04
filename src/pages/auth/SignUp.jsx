@@ -1,7 +1,61 @@
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signupUser } from "../../store/thunks/authThunk";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 export default function SignUp() {
-  return ( 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.auth,
+  );
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (
+      formData.name === "" ||
+      formData.email === "" ||
+      formData.password === "" ||
+      formData.confirmPassword === ""
+    ) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+    dispatch(
+      signupUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      }),
+    );
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
+
+  return (
     <div className="min-h-dvh bg-bg flex">
       {/* LEFT */}
 
@@ -23,8 +77,8 @@ export default function SignUp() {
           </h1>
 
           <p className="mt-6 text-white/80 text-lg">
-            Create your provider account, list services, receive inquiries,
-            and connect with customers across BizSphere.
+            Create your provider account, list services, receive inquiries, and
+            connect with customers across BizSphere.
           </p>
 
           <div className="mt-10 space-y-4">
@@ -45,9 +99,7 @@ export default function SignUp() {
           </div>
         </div>
 
-        <div className="relative z-10 text-white/60">
-          © 2026 BizSphere
-        </div>
+        <div className="relative z-10 text-white/60">© 2026 BizSphere</div>
       </div>
 
       {/* RIGHT */}
@@ -64,7 +116,7 @@ export default function SignUp() {
             </p>
           </div>
 
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
               <label className="block mb-2 text-sm font-medium">
                 Full Name
@@ -76,6 +128,9 @@ export default function SignUp() {
                 <input
                   type="text"
                   placeholder="John Doe"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
                 />
               </div>
@@ -91,6 +146,9 @@ export default function SignUp() {
 
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="john@example.com"
                   className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
                 />
@@ -98,9 +156,7 @@ export default function SignUp() {
             </div>
 
             <div>
-              <label className="block mb-2 text-sm font-medium">
-                Password
-              </label>
+              <label className="block mb-2 text-sm font-medium">Password</label>
 
               <div className="relative">
                 <i className="ri-lock-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
@@ -108,6 +164,9 @@ export default function SignUp() {
                 <input
                   type="password"
                   placeholder="Create password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
                 />
               </div>
@@ -124,24 +183,27 @@ export default function SignUp() {
                 <input
                   type="password"
                   placeholder="Confirm password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
                   className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
                 />
               </div>
             </div>
 
             <label className="flex items-start gap-3 text-sm">
-              <input
-                type="checkbox"
-                className="mt-1 accent-primary"
-              />
+              <input type="checkbox" className="mt-1 accent-primary" />
 
               <span className="text-text-secondary">
                 I agree to the Terms of Service and Privacy Policy.
               </span>
             </label>
-
-            <button className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition">
-              Create Account
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            <button
+              disabled={loading}
+              className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition"
+            >
+              {loading ? "Creating Account..." : "Create Account"}
             </button>
 
             <div className="relative py-2">
@@ -162,10 +224,7 @@ export default function SignUp() {
 
             <p className="text-center text-text-secondary">
               Already have an account?
-              <Link
-                to="/login"
-                className="text-primary ml-1 font-medium"
-              >
+              <Link to="/login" className="text-primary ml-1 font-medium">
                 Sign In
               </Link>
             </p>

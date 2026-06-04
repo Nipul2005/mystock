@@ -1,7 +1,49 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../store/thunks/authThunk";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Login() {
-  return ( 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.auth,
+  );
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (formData.email === "" || formData.password === "") {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    dispatch(
+      loginUser({
+        email: formData.email,
+        password: formData.password,
+      }),
+    );
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
+
+  return (
     <div className="min-h-dvh bg-bg flex">
       {/* LEFT */}
 
@@ -23,8 +65,8 @@ export default function Login() {
           </h1>
 
           <p className="mt-6 text-white/80 text-lg">
-            Access your provider dashboard, manage services, respond to
-            customer inquiries and track your business performance.
+            Access your provider dashboard, manage services, respond to customer
+            inquiries and track your business performance.
           </p>
 
           <div className="mt-6 space-y-2">
@@ -45,9 +87,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className="relative z-10 text-white/60 ">
-          © 2026 BizSphere
-        </div>
+        <div className="relative z-10 text-white/60 ">© 2026 BizSphere</div>
       </div>
 
       {/* RIGHT */}
@@ -55,16 +95,14 @@ export default function Login() {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
         <div className="w-full max-w-md">
           <div className="mb-8">
-            <h2 className="text-4xl font-bold text-text-primary">
-              Sign In
-            </h2>
+            <h2 className="text-4xl font-bold text-text-primary">Sign In</h2>
 
             <p className="text-text-secondary mt-2">
               Access your BizSphere account
             </p>
           </div>
 
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
               <label className="block mb-2 text-sm font-medium">
                 Email Address
@@ -76,15 +114,16 @@ export default function Login() {
                 <input
                   type="email"
                   placeholder="john@example.com"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block mb-2 text-sm font-medium">
-                Password
-              </label>
+              <label className="block mb-2 text-sm font-medium">Password</label>
 
               <div className="relative">
                 <i className="ri-lock-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
@@ -92,6 +131,9 @@ export default function Login() {
                 <input
                   type="password"
                   placeholder="Enter password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
                 />
               </div>
@@ -99,23 +141,21 @@ export default function Login() {
 
             <div className="flex justify-between items-center text-sm">
               <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="accent-primary"
-                />
+                <input type="checkbox" className="accent-primary" />
                 Remember me
               </label>
 
-              <Link
-                to="/forgot-password"
-                className="text-primary font-medium"
-              >
+              <Link to="/forgot-password" className="text-primary font-medium">
                 Forgot Password?
               </Link>
             </div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
 
-            <button className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition">
-              Sign In
+            <button
+              disabled={loading}
+              className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition"
+            >
+              {loading ? "Signing In..." : "Sign In"}
             </button>
 
             <div className="relative py-2">
@@ -136,10 +176,7 @@ export default function Login() {
 
             <p className="text-center text-text-secondary">
               Don't have an account?
-              <Link
-                to="/signup"
-                className="text-primary ml-1 font-medium"
-              >
+              <Link to="/signup" className="text-primary ml-1 font-medium">
                 Create Account
               </Link>
             </p>
