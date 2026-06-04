@@ -43,8 +43,8 @@ function HomePageHeader() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navbar.map((item, index) => (
-            <NavStyle key={index} link={item.link} name={item.name}>
-            </NavStyle>
+            <NavStyle key={index} link={item.link} name={item.name}/>
+            
           ))}
         </nav>
 
