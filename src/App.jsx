@@ -12,7 +12,7 @@ import Providers from "./pages/others/ConsumerPages/Providers";
 import AuthGuard from './components/auth/AuthGuard.jsx'
 import GuestGuard from './components/auth/GuestGuard.jsx'
 
-import { getCurrentUser } from "./store/thunks/authThunk";
+import { getCurrentUser } from "./store/thunks/auththunk.js";
 
 function App() {
   const dispatch = useDispatch();
