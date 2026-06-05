@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../store/thunks/authThunk";
+import { loginUser } from "../../store/thunks/auththunk.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 

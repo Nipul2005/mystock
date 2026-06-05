@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signupUser } from "../../store/thunks/authThunk";
+import { signupUser } from "../../store/thunks/auththunk.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 export default function SignUp() {
