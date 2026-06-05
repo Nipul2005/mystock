@@ -45,6 +45,7 @@ export default function SignUp() {
         email: formData.email,
         password: formData.password,
       }).unwrap()
+      console.log(res);
       toast.success("Welcome to BizSphere")
     } catch (err) {
       toast.error("Something went wrong")
