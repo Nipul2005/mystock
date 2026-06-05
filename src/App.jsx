@@ -9,18 +9,14 @@ import SignUp from "./pages/auth/SignUp";
 import Services from "./pages/others/ConsumerPages/Service";
 import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
-import AuthGuard from './components/auth/AuthGuard.jsx'
-import GuestGuard from './components/auth/GuestGuard.jsx'
-
-import { getCurrentUser } from "./store/thunks/auththunk.js";
 
 function App() {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(getCurrentUser());
+  // }, [dispatch]);
   return (
     <Routes>
       {/* Public */}
@@ -33,18 +29,18 @@ function App() {
       <Route
         path="/login"
         element={
-          <GuestGuard>
+          // <GuestGuard>
             <Login />
-          </GuestGuard>
+          // </GuestGuard>
         }
       />
 
       <Route
         path="/signup"
         element={
-          <GuestGuard>
+          // <GuestGuard>
             <SignUp />
-          </GuestGuard>
+          // </GuestGuard>
         }
       />
 
@@ -52,9 +48,9 @@ function App() {
       <Route
         path="/dashboard"
         element={
-          <AuthGuard>
+          // <AuthGuard>
             <Layout />
-          </AuthGuard>
+          // </AuthGuard>
         }
       />
     </Routes>

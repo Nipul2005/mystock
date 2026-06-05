@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signupUser } from "../../store/thunks/auththunk.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useSignUpMutation } from "../../store/reducers/user";
+
+
 export default function SignUp() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const { loading, error, isAuthenticated } = useSelector(
-    (state) => state.auth,
-  );
+  const [signUp, {isLoading, error}]=useSignUpMutation()
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +21,7 @@ export default function SignUp() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     if (
@@ -37,23 +35,24 @@ export default function SignUp() {
     }
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
-    dispatch(
-      signupUser({
+
+    try {
+      const res = await signUp({
         name: formData.name,
         email: formData.email,
         password: formData.password,
-      }),
-    );
+      }).unwrap()
+      toast.success("Welcome to BizSphere")
+    } catch (err) {
+      toast.error("Something went wrong")
+      return
+    }
+
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/dashboard");
-    }
-  }, [isAuthenticated, navigate]);
 
   return (
     <div className="min-h-dvh bg-bg flex">
@@ -198,12 +197,12 @@ export default function SignUp() {
                 I agree to the Terms of Service and Privacy Policy.
               </span>
             </label>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+
             <button
-              disabled={loading}
+
               className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition"
             >
-              {loading ? "Creating Account..." : "Create Account"}
+              {isLoading? "Creating Account..." : "Create Account"}
             </button>
 
             <div className="relative py-2">

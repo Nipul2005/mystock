@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../store/thunks/auththunk.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import {useLoginMutation} from '../../store/reducers/user.js'
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loading, error, isAuthenticated } = useSelector(
-    (state) => state.auth,
-  );
+  const [login, { isLoading, error }] = useLoginMutation()
+
 
   const [formData, setFormData] = useState({
     email: "",
@@ -22,26 +21,22 @@ export default function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
     if (formData.email === "" || formData.password === "") {
-      toast.error("Please fill in all fields");
-      return;
+      toast.error("Fill the all field")
+      return
     }
-    dispatch(
-      loginUser({
-        email: formData.email,
-        password: formData.password,
-      }),
-    );
+    try {
+      const res = await login(formData).unwrap();
+  
+      toast.success("Welcome to BizSphere")
+    } catch (err) {
+      toast.error("Something went wrong")
+      return
+    }
+    
   };
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/dashboard");
-    }
-  }, [isAuthenticated, navigate]);
 
   return (
     <div className="min-h-dvh bg-bg flex">
@@ -149,13 +144,11 @@ export default function Login() {
                 Forgot Password?
               </Link>
             </div>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-
             <button
-              disabled={loading}
+              disabled={isLoading}
               className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition"
             >
-              {loading ? "Signing In..." : "Sign In"}
+              {isLoading ? "Logging..." : "Sign in"}
             </button>
 
             <div className="relative py-2">
