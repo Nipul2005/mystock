@@ -9,10 +9,10 @@ import SignUp from "./pages/auth/SignUp";
 import Services from "./pages/others/ConsumerPages/Service";
 import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
+import AuthGuard from './components/auth/AuthGuard.jsx'
+import GuestGuard from './components/auth/GuestGuard.jsx'
 
 import { getCurrentUser } from "./store/thunks/authThunk";
-import GuestGuard from "./components/auth/GuestGuard.js";
-import AuthGuard from "./components/auth/AuthGuard.js";
 
 function App() {
   const dispatch = useDispatch();
