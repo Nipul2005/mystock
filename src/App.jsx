@@ -11,8 +11,8 @@ import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
 
 import { getCurrentUser } from "./store/thunks/authThunk";
-import GuestGuard from "./components/auth/GuestGuard";
-import AuthGuard from "./components/auth/AuthGuard";
+import GuestGuard from "./components/auth/GuestGuard.js";
+import AuthGuard from "./components/auth/AuthGuard.js";
 
 function App() {
   const dispatch = useDispatch();
