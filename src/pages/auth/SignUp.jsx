@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useSignUpMutation } from "../../store/reducers/user";
 
-
 export default function SignUp() {
   const dispatch = useDispatch();
-  const [signUp, {isLoading, error}]=useSignUpMutation()
+  const [signUp, { isLoading, error }] = useSignUpMutation();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -21,7 +20,7 @@ export default function SignUp() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
@@ -44,16 +43,14 @@ export default function SignUp() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-      }).unwrap()
+      }).unwrap();
       console.log(res);
-      toast.success("Welcome to BizSphere")
+      toast.success("Welcome to BizSphere");
     } catch (err) {
-      toast.error("Something went wrong")
-      return
+      toast.error(err?.data?.message || "Something went wrong");
+      return;
     }
-
   };
-
 
   return (
     <div className="min-h-dvh bg-bg flex">
@@ -199,11 +196,8 @@ export default function SignUp() {
               </span>
             </label>
 
-            <button
-
-              className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition"
-            >
-              {isLoading? "Creating Account..." : "Create Account"}
+            <button className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition">
+              {isLoading ? "Creating Account..." : "Create Account"}
             </button>
 
             <div className="relative py-2">
