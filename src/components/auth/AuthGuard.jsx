@@ -1,25 +1,18 @@
+import { useGetCurrentUserQuery } from "../../store/reducers/user";
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-function AuthGuard({ children }) {
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
-  console.log(isAuthenticated, loading);
+function AuthGuard() {
+  const { data, isLoading } = useGetCurrentUserQuery();
 
-  if (loading) {
-    return (
-      <div className="h-screen flex flex-col items-center justify-center bg-bg">
-        <img
-          src="/bizsphere_icon.png"
-          alt="BizSphere"
-          className="w-16 h-16 object-contain mb-6"
-        />
+  console.log(data);
 
-        <div className="w-10 h-10 rounded-full border-[3px] border-primary/20 border-t-primary animate-spin"></div>
-      </div>
-    );
+  if (isLoading) return null;
+
+  if (data?.data) {
+    return <Navigate to="/dashboard" replace />;
   }
 
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  return children;
 }
 
 export default AuthGuard;

@@ -9,18 +9,20 @@ import SignUp from "./pages/auth/SignUp";
 import Services from "./pages/others/ConsumerPages/Service";
 import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
+import AuthGuard from "./components/auth/AuthGuard";
 
 function App() {
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getCurrentUser());
-  // }, [dispatch]);
   return (
     <Routes>
       {/* Public */}
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={
+          <AuthGuard>
+            <Home />
+          </AuthGuard>
+        }
+      />
       <Route path="/services" element={<Services />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/providers" element={<Providers />} />
@@ -30,7 +32,7 @@ function App() {
         path="/login"
         element={
           // <GuestGuard>
-            <Login />
+          <Login />
           // </GuestGuard>
         }
       />
@@ -39,7 +41,7 @@ function App() {
         path="/signup"
         element={
           // <GuestGuard>
-            <SignUp />
+          <SignUp />
           // </GuestGuard>
         }
       />
@@ -49,7 +51,7 @@ function App() {
         path="/dashboard"
         element={
           // <AuthGuard>
-            <Layout />
+          <Layout />
           // </AuthGuard>
         }
       />
