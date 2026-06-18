@@ -32,7 +32,8 @@ export default function Login() {
   
       toast.success("Welcome to BizSphere")
     } catch (err) {
-      toast.error("Something went wrong")
+      console.log(err)
+      toast.error(err?.data?.message || "Something went wrong")
       return
     }
     

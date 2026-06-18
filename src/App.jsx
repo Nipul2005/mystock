@@ -10,51 +10,25 @@ import Services from "./pages/others/ConsumerPages/Service";
 import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
 import AuthGuard from "./components/auth/AuthGuard";
+import {useGetCurrentUserQuery} from "./store/reducers/user.js";
 
 function App() {
+  useGetCurrentUserQuery()
   return (
     <Routes>
       {/* Public */}
-      <Route
-        path="/"
-        element={
-          <AuthGuard>
-            <Home />
-          </AuthGuard>
-        }
-      />
+      <Route path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/providers" element={<Providers />} />
 
       {/* Guest Only */}
-      <Route
-        path="/login"
-        element={
-          // <GuestGuard>
-          <Login />
-          // </GuestGuard>
-        }
-      />
+      <Route path="/login" element={<Login />} />
 
-      <Route
-        path="/signup"
-        element={
-          // <GuestGuard>
-          <SignUp />
-          // </GuestGuard>
-        }
-      />
+      <Route path="/signup" element={<SignUp />} />
 
       {/* Protected */}
-      <Route
-        path="/dashboard"
-        element={
-          // <AuthGuard>
-          <Layout />
-          // </AuthGuard>
-        }
-      />
+      <Route path="/dashboard" element={<Layout />} />
     </Routes>
   );
 }

@@ -15,7 +15,7 @@ const userSlice = createApi({
         method: "POST",
         body: formData,
       }),
-      providesTags: ["User"],
+      providesTags: ["user"],
     }),
     signUp: builder.mutation({
       query: (formData) => ({
@@ -23,7 +23,7 @@ const userSlice = createApi({
         method: "POST",
         body: formData,
       }),
-      providesTags: ["User"],
+      providesTags: ["user"],
     }),
 
     logout: builder.mutation({
@@ -31,7 +31,7 @@ const userSlice = createApi({
         url: "/logout",
         method: "POST",
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["user"],
     }),
 
     getCurrentUser: builder.query({
@@ -39,7 +39,7 @@ const userSlice = createApi({
         url: "/guess",
         method: "GET",
       }),
-      providesTags: ["User"],
+      providesTags: ["user"],
     }),
   }),
 });

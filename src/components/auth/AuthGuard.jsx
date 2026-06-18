@@ -4,8 +4,6 @@ import { Navigate } from "react-router-dom";
 function AuthGuard() {
   const { data, isLoading } = useGetCurrentUserQuery();
 
-  console.log(data);
-
   if (isLoading) return null;
 
   if (data?.data) {
