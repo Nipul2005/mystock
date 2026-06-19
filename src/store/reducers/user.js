@@ -37,7 +37,7 @@ const userSlice = createApi({
     getCurrentUser: builder.query({
       query: () => ({
         url: "/guess",
-        method: "GET",
+        method: "POST",
       }),
       providesTags: ["user"],
     }),

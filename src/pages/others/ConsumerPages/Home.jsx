@@ -93,7 +93,6 @@ export default function Home() {
               <br />
               Service Providers
             </h1>
-            <button className="px-8 py-4 rounded-2xl bg-white text-text-primary font-medium">checkmwe</button>
 
             <p className="mt-5 text-white/80 text-lg">
               Discover verified professionals, compare services and connect
