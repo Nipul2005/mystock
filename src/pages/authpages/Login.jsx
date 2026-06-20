@@ -3,15 +3,15 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import {useLoginMutation} from '../../store/reducers/user.js'
+import { useLoginMutation } from "../../store/reducers/user.js";
+import { setCredentials, finishLoading } from "../../store/reducers/auth.js";
 
 export default function Login() {
   const [see, setSee] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading, error }] = useLoginMutation()
-
+  const [login, { isLoading, error }] = useLoginMutation();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -22,21 +22,21 @@ export default function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.email === "" || formData.password === "") {
-      toast.error("Fill the all field")
-      return
+      return toast.error("Fill the all field");
     }
     try {
       const res = await login(formData).unwrap();
-  
-      toast.success("Welcome to BizSphere")
+      toast.success("Welcome to BizSphere");
+      dispatch(setCredentials(res?.data));
+      dispatch(finishLoading());
+
+      return navigate("/dashboard");
     } catch (err) {
-      toast.error(err?.data?.message || "Something went wrong")
-      return
+      return toast.error(err?.data?.message || "Something went wrong");
     }
-    
   };
 
   return (
@@ -138,16 +138,6 @@ export default function Login() {
               </div>
             </div>
 
-            <div className="flex justify-between items-center text-sm">
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-primary" />
-                Remember me
-              </label>
-
-              <Link to="/forgot-password" className="text-primary font-medium">
-                Forgot Password?
-              </Link>
-            </div>
             <button
               disabled={isLoading}
               className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition"

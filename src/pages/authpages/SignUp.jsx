@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useSignUpMutation } from "../../store/reducers/user";
+import { finishLoading, setCredentials } from "../../store/reducers/auth";
 
 export default function SignUp() {
   const [see, setSee] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signUp, { isLoading, error }] = useSignUpMutation();
 
@@ -42,6 +44,11 @@ export default function SignUp() {
         userName: formData.userName,
       }).unwrap();
       toast.success("Welcome to BizSphere");
+
+      dispatch(setCredentials(res?.data));
+      dispatch(finishLoading());
+
+      return navigate("/dashboard");
     } catch (err) {
       toast.error(err?.data?.message || "Something went wrong");
       return;
