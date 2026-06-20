@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useSignUpMutation } from "../../store/reducers/user";
 
 export default function SignUp() {
+  const [see, setSee] = useState(false);
   const dispatch = useDispatch();
   const [signUp, { isLoading, error }] = useSignUpMutation();
 
@@ -13,7 +14,7 @@ export default function SignUp() {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    userName: "",
   });
 
   const handleChange = (e) => {
@@ -27,14 +28,9 @@ export default function SignUp() {
       formData.name === "" ||
       formData.email === "" ||
       formData.password === "" ||
-      formData.confirmPassword === ""
+      formData.userName === ""
     ) {
       toast.error("Please fill in all fields");
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match");
       return;
     }
 
@@ -43,8 +39,8 @@ export default function SignUp() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
+        userName: formData.userName,
       }).unwrap();
-      console.log(res);
       toast.success("Welcome to BizSphere");
     } catch (err) {
       toast.error(err?.data?.message || "Something went wrong");
@@ -156,10 +152,13 @@ export default function SignUp() {
               <label className="block mb-2 text-sm font-medium">Password</label>
 
               <div className="relative">
-                <i className="ri-lock-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+                <i
+                  onClick={() => setSee((prev) => !prev)}
+                  className={`ri-${see ? "eye" : "eye-close"}-line absolute cursor-pointer left-4 top-1/2 -translate-y-1/2 text-text-secondary`}
+                ></i>
 
                 <input
-                  type="password"
+                  type={see ? "text" : "password"}
                   placeholder="Create password"
                   name="password"
                   value={formData.password}
@@ -170,33 +169,23 @@ export default function SignUp() {
             </div>
 
             <div>
-              <label className="block mb-2 text-sm font-medium">
-                Confirm Password
-              </label>
+              <label className="block mb-2 text-sm font-medium">UserName</label>
 
               <div className="relative">
-                <i className="ri-lock-password-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+                <i className="ri-at-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
 
                 <input
-                  type="password"
-                  placeholder="Confirm password"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
+                  type="text"
+                  placeholder="Enter Username"
+                  name="userName"
+                  value={formData.userName}
                   onChange={handleChange}
                   className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
                 />
               </div>
             </div>
 
-            <label className="flex items-start gap-3 text-sm">
-              <input type="checkbox" className="mt-1 accent-primary" />
-
-              <span className="text-text-secondary">
-                I agree to the Terms of Service and Privacy Policy.
-              </span>
-            </label>
-
-            <button className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition">
+            <button className="w-full bg-primary hover:bg-primary-hover cursor-pointer text-white py-4 rounded-2xl font-semibold transition">
               {isLoading ? "Creating Account..." : "Create Account"}
             </button>
 

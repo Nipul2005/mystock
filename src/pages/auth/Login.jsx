@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import {useLoginMutation} from '../../store/reducers/user.js'
 
 export default function Login() {
+  const [see, setSee] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -121,10 +122,13 @@ export default function Login() {
               <label className="block mb-2 text-sm font-medium">Password</label>
 
               <div className="relative">
-                <i className="ri-lock-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+                <i
+                  onClick={() => setSee((prev) => !prev)}
+                  className={`ri-${see ? "eye" : "eye-close"}-line absolute cursor-pointer left-4 top-1/2 -translate-y-1/2 text-text-secondary`}
+                ></i>
 
                 <input
-                  type="password"
+                  type={see ? "text" : "password"}
                   placeholder="Enter password"
                   name="password"
                   value={formData.password}
