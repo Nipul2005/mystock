@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar_menues from "./Sidebar_menues";
-import Logout from "../../functions/logout";
+import Logout from "../../functions/Logout";
 
 function Sidebar() {
   
