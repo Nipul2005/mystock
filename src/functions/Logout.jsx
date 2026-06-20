@@ -12,11 +12,11 @@ function Logout() {
 
   const handleLogout = async () => {
     try {
-      const response = await logoutUser().unwrap();
+      await logoutUser().unwrap();
 
       dispatch(logOut());
 
-      toast.success(response?.message || "Logged out successfully");
+      toast.success("Logged out successfully");
 
       navigate("/", { replace: true });
     } catch (error) {
