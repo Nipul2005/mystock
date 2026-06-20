@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import Home from "./pages/others/ConsumerPages/Home";
@@ -10,14 +9,24 @@ import Services from "./pages/others/ConsumerPages/Service";
 import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
 import AuthGuard from "./components/auth/AuthGuard";
-import {useGetCurrentUserQuery} from "./store/reducers/user.js";
+import { useGetCurrentUserQuery } from "./store/reducers/user.js";
+import { setCredentials } from "./store/reducers/loggedUser.js";
+import { useEffect } from "react";
 
 function App() {
-  useGetCurrentUserQuery()
+  const dispatch = useDispatch();
+
+  const { data, isSuccess } = useGetCurrentUserQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setCredentials(data.data));
+    }
+  }, [isSuccess, data, dispatch]);
   return (
     <Routes>
       {/* Public */}
-      <Route path="/" element={<Home />} />
+      <Route path="" element={<Home />} />
       <Route path="/services" element={<Services />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/providers" element={<Providers />} />

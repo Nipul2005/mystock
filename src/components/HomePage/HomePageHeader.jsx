@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import NavStyle from '../Common/NavStyle';
+import { useSelector } from 'react-redux';
 
 function HomePageHeader() {
+  const data = useSelector((state) => state.loggedIn)
     const [menuOpen, setMenuOpen] = useState(false);
     const navbar=[
       {

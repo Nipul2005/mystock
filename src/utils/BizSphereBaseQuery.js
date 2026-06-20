@@ -2,7 +2,7 @@ import BizSphere from "./BizSphere";
 
 const BizSphereBaseQuery =
   () =>
-    async ({ url, method, body, params, headers }) => {
+  async ({ url, method, body, params, headers }) => {
     try {
       const res = await BizSphere({
         url: url,
@@ -22,4 +22,6 @@ const BizSphereBaseQuery =
     }
   };
 
+
+  
 export default BizSphereBaseQuery;
