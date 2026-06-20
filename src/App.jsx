@@ -12,6 +12,7 @@ import AuthGuard from "./components/auth/AuthGuard";
 import { useGetCurrentUserQuery } from "./store/reducers/user.js";
 import { setCredentials, finishLoading } from "./store/reducers/auth.js";
 import { useEffect } from "react";
+import GuestGuard from "./components/auth/GuestGuard.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,15 +31,57 @@ function App() {
   return (
     <Routes>
       {/* Public */}
-      <Route path="" element={<Home />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/categories" element={<Categories />} />
-      <Route path="/providers" element={<Providers />} />
+      <Route
+        path=""
+        element={
+          <GuestGuard>
+            <Home />
+          </GuestGuard>
+        }
+      />
+      <Route
+        path="/services"
+        element={
+          <GuestGuard>
+            <Services />
+          </GuestGuard>
+        }
+      />
+      <Route
+        path="/categories"
+        element={
+          <GuestGuard>
+            <Categories />
+          </GuestGuard>
+        }
+      />
+      <Route
+        path="/providers"
+        element={
+          <GuestGuard>
+            <Providers />
+          </GuestGuard>
+        }
+      />
 
       {/* Guest Only */}
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={
+          <GuestGuard>
+            <Login />
+          </GuestGuard>
+        }
+      />
 
-      <Route path="/signup" element={<SignUp />} />
+      <Route
+        path="/signup"
+        element={
+          <GuestGuard>
+            <SignUp />
+          </GuestGuard>
+        }
+      />
 
       {/* Protected */}
       <Route

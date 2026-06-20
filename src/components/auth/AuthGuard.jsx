@@ -3,17 +3,17 @@ import { Navigate } from "react-router-dom";
 import Loading from "../Common/Loading";
 
 function AuthGuard({ children }) {
-   const { loading, isAuthenticated } = useSelector((state) => state.auth);
+  const { loading, isAuthenticated } = useSelector((state) => state.auth);
 
-   if (loading) {
-     return <Loading />;
-   }
+  if (loading) {
+    return <Loading />;
+  }
 
-   if (!isAuthenticated) {
-     return <Navigate to="/login" replace />;
-   }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
 
-   return children;
+  return children;
 }
 
 export default AuthGuard;
