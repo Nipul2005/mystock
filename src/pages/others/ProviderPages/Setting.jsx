@@ -1,4 +1,28 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useLogoutUserMutation } from "../../../store/reducers/user";
+import toast from "react-hot-toast";
+import { logOut } from "../../../store/reducers/auth";
+
 export default function Settings() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [logoutUser, { isLoading }] = useLogoutUserMutation();
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser().unwrap();
+
+      dispatch(logOut());
+
+      toast.success("Logged out successfully");
+
+      navigate("/", { replace: true });
+    } catch (error) {
+      toast.error(error?.data?.message || "Something went wrong");
+    }
+  };
   return (
     <main className="w-full min-h-full bg-bg">
       {/* HEADER */}
@@ -213,24 +237,55 @@ export default function Settings() {
         </section>
 
         {/* DANGER ZONE */}
-        <section className="bg-white border border-red-200 rounded-3xl p-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center">
-              <i className="ri-delete-bin-line text-2xl text-red-500"></i>
+        <section className="bg-white border border-border rounded-3xl p-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center">
+                <i className="ri-logout-box-r-line text-2xl text-orange-500"></i>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold text-text-primary">
+                  Logout Session
+                </h2>
+
+                <p className="text-text-secondary">
+                  Sign out of your account on this device.
+                </p>
+              </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold text-red-500">Danger Zone</h2>
-
-              <p className="text-text-secondary">
-                Permanently delete your account and services.
-              </p>
-            </div>
+            <button
+              onClick={handleLogout}
+              disabled={isLoading}
+              className="px-6 py-3 rounded-2xl cursor-pointer bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-medium transition"
+            >
+              {isLoading ? "Logging out..." : "Logout"}
+            </button>
           </div>
+        </section>
 
-          <button className="px-6 py-3 rounded-2xl bg-red-500 text-white font-medium">
-            Delete Account
-          </button>
+        {/* Danger Zone */}
+        <section className="bg-white border border-red-200 rounded-3xl p-8 mt-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center">
+                <i className="ri-delete-bin-line text-2xl text-red-500"></i>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold text-red-500">Danger Zone</h2>
+
+                <p className="text-text-secondary">
+                  Permanently delete your account and all associated data.
+                </p>
+              </div>
+            </div>
+
+            <button className="px-6 py-3 cursor-pointer rounded-2xl bg-red-500 hover:bg-red-600 text-white font-medium transition">
+              Delete Account
+            </button>
+          </div>
         </section>
       </div>
     </main>

@@ -1,9 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar_menues from "./Sidebar_menues";
-import Logout from "../../functions/Logout";
 
 function Sidebar() {
-  
   let manues = [
     {
       name: "Home",
@@ -31,8 +29,6 @@ function Sidebar() {
       page: 5,
     },
   ];
-
-
 
   return (
     <div className="md:h-full md:w-auto w-full text-black lg:px-2 px-4 shadow-2xl md:py-5 md:pt-3 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white transition-all duration-300 ease-in flex md:flex-col md:justify-between md:item-start flex-row justify-center items-center md:border-0 border-y border-border z-20">
@@ -68,7 +64,7 @@ function Sidebar() {
       <div className="hidden md:block w-full">
         <div className="mx-2 p-3 rounded-2xl bg-bg border border-border">
           <div className="flex items-center gap-3">
-            {/* <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-semibold">
+            <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-semibold">
               JD
             </div>
 
@@ -78,9 +74,7 @@ function Sidebar() {
               </h4>
 
               <p className="text-xs text-text-secondary">Business Owner</p>
-            </div> */}
-            <Logout/>
-            
+            </div>
           </div>
         </div>
       </div>
