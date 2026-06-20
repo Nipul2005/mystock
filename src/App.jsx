@@ -10,7 +10,7 @@ import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
 import AuthGuard from "./components/auth/AuthGuard";
 import { useGetCurrentUserQuery } from "./store/reducers/user.js";
-import { setCredentials } from "./store/reducers/auth.js";
+import { setCredentials, finishLoading } from "./store/reducers/auth.js";
 import { useEffect } from "react";
 
 function App() {
