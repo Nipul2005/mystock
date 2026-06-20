@@ -7,22 +7,28 @@ import toast from "react-hot-toast";
 function Logout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [logoutUser, { isLoading }] = useLogoutUserMutation();
 
   const handleLogout = async () => {
     try {
-      await logoutUser().unwrap();
+      const response = await logoutUser().unwrap();
+
       dispatch(logOut());
+
+      toast.success(response?.message || "Logged out successfully");
+
       navigate("/", { replace: true });
-      return toast.success("Logout succesfully");
     } catch (error) {
-      toast.error(err?.data?.message || "Something went wrong");
+      toast.error(error?.data?.message || "Something went wrong");
     }
   };
+
   return (
     <button
       onClick={handleLogout}
-      className="w-full bg-red-400 text-white rounded-full py-2 cursor-pointer z-20"
+      disabled={isLoading}
+      className="w-full bg-red-500 hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-full py-2 transition"
     >
       {isLoading ? "Logging out..." : "Logout"}
     </button>
