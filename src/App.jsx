@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import Home from "./pages/others/ConsumerPages/Home";
 import Layout from "./pages/others/ProviderPages/Layout";
-import Login from "./pages/auth/Login";
-import SignUp from "./pages/auth/SignUp";
+import Login from "./pages/authpages/Login.jsx";
+import SignUp from "./pages/authpages/SignUp.jsx";
 import Services from "./pages/others/ConsumerPages/Service";
 import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
@@ -23,6 +23,7 @@ function App() {
       dispatch(setCredentials(data.data));
     }
   }, [isSuccess, data, dispatch]);
+
   return (
     <Routes>
       {/* Public */}
@@ -37,7 +38,14 @@ function App() {
       <Route path="/signup" element={<SignUp />} />
 
       {/* Protected */}
-      <Route path="/dashboard" element={<Layout />} />
+      <Route
+        path="/dashboard"
+        element={
+          <AuthGuard>
+            <Layout />
+          </AuthGuard>
+        }
+      />
     </Routes>
   );
 }

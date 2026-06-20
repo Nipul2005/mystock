@@ -1,4 +1,5 @@
 import Icons from "../Common/Icons";
+import { useSelector } from "react-redux";
 
 function Header() {
   return (

@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     page: pageSlice,
     user: userSlice.reducer,
-    loggedIn: logged,
+    CurrentUser: logged,
   },
 
   middleware: (middlewares) => middlewares().concat(userSlice.middleware),

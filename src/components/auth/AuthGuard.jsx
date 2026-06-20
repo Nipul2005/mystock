@@ -1,15 +1,11 @@
-import { useGetCurrentUserQuery } from "../../store/reducers/user";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import Loading from "../Common/Loading";
 
-function AuthGuard() {
-  const { data, isLoading } = useGetCurrentUserQuery();
+function AuthGuard({ children }) {
+  const { isAuthenticated } = useSelector((state) => state.CurrentUser);
 
-  if (isLoading) return null;
-
-  if (data?.data) {
-    return <Navigate to="/dashboard" replace />;
-  }
-
+  if (!isAuthenticated) return <Loading />;
   return children;
 }
 
