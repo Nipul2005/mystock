@@ -26,7 +26,7 @@ const userSlice = createApi({
       providesTags: ["user"],
     }),
 
-    logout: builder.mutation({
+    logoutUser: builder.mutation({
       query: () => ({
         url: "/logout",
         method: "POST",
@@ -48,6 +48,6 @@ export const {
   useLoginMutation,
   useSignUpMutation,
   useGetCurrentUserQuery,
-  useLogoutMutation,
+  useLogoutUserMutation,
 } = userSlice;
 export default userSlice;

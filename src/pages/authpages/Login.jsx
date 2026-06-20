@@ -25,7 +25,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.email === "" || formData.password === "") {
-      return toast.error("Fill the all field");
+      toast.error("Fill the all field");
+      return;
     }
     try {
       const res = await login(formData).unwrap();
@@ -35,7 +36,8 @@ export default function Login() {
 
       return navigate("/dashboard");
     } catch (err) {
-      return toast.error(err?.data?.message || "Something went wrong");
+      toast.error(err?.data?.message || "Something went wrong");
+      return;
     }
   };
 
