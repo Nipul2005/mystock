@@ -10,19 +10,22 @@ import Categories from "./pages/others/ConsumerPages/Category";
 import Providers from "./pages/others/ConsumerPages/Providers";
 import AuthGuard from "./components/auth/AuthGuard";
 import { useGetCurrentUserQuery } from "./store/reducers/user.js";
-import { setCredentials } from "./store/reducers/loggedUser.js";
+import { setCredentials } from "./store/reducers/auth.js";
 import { useEffect } from "react";
 
 function App() {
   const dispatch = useDispatch();
-
-  const { data, isSuccess } = useGetCurrentUserQuery();
+  const { data, isLoading } = useGetCurrentUserQuery();
 
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(setCredentials(data.data));
+    if (!isLoading) {
+      if (data?.data) {
+        dispatch(setCredentials(data.data));
+      } else {
+        dispatch(finishLoading());
+      }
     }
-  }, [isSuccess, data, dispatch]);
+  }, [data, isLoading, dispatch]);
 
   return (
     <Routes>
