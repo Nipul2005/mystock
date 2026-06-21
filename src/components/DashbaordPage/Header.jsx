@@ -2,6 +2,7 @@ import Icons from "../Common/Icons";
 import { useSelector } from "react-redux";
 
 function Header() {
+  const { user } = useSelector((state) => state.auth);
   return (
     <header className="sticky top-0 z-10 bg-white border-b border-border">
       <div className="h-20 px-4 md:px-6 flex items-center justify-between gap-4">
@@ -53,12 +54,12 @@ function Header() {
 
           <button className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-2xl bg-primary flex items-center justify-center text-white font-semibold">
-              JD
+              {user.name[0]}
             </div>
 
             <div className="hidden lg:block text-left">
               <p className="font-semibold text-sm text-text-primary">
-                John Doe
+                {user.name}
               </p>
 
               <p className="text-xs text-text-secondary">Business Owner</p>

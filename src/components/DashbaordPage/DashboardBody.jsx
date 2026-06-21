@@ -1,8 +1,10 @@
 import React from "react";
 import StatsBoxes from "./StateBoxes";
 import InventoryShowPeace from "./InventoryShowPeace";
+import { useSelector } from "react-redux";
 
 function DashboardBody() {
+  const { user } = useSelector((state) => state.auth);
   return (
     <div className="space-y-8">
       {/* Welcome Banner */}
@@ -14,7 +16,7 @@ function DashboardBody() {
           </span>
 
           <h1 className="mt-5 text-4xl md:text-5xl font-bold text-white">
-            Welcome back, John 👋
+            Welcome back, {user.name} 👋
           </h1>
 
           <p className="mt-4 text-white/80 text-lg max-w-2xl">

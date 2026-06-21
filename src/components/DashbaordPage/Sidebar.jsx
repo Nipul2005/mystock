@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar_menues from "./Sidebar_menues";
+import { useSelector } from "react-redux";
 
 function Sidebar() {
+  const { user } = useSelector((state) => state.auth);
   let manues = [
     {
       name: "Home",
@@ -65,12 +67,12 @@ function Sidebar() {
         <div className="mx-2 p-3 rounded-2xl bg-bg border border-border">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-semibold">
-              JD
+              {user.name[0]}
             </div>
 
             <div className="hidden lg:block">
               <h4 className="font-semibold text-sm text-text-primary">
-                John Doe
+                {user.name}
               </h4>
 
               <p className="text-xs text-text-secondary">Business Owner</p>
