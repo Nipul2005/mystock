@@ -16,7 +16,8 @@ export default function SignUp() {
     name: "",
     email: "",
     password: "",
-    userName: "",
+    username: "",
+    type: "",
   });
 
   const handleChange = (e) => {
@@ -30,7 +31,8 @@ export default function SignUp() {
       formData.name === "" ||
       formData.email === "" ||
       formData.password === "" ||
-      formData.userName === ""
+      formData.username === "" ||
+      formData.type === ""
     ) {
       toast.error("Please fill in all fields");
       return;
@@ -41,7 +43,8 @@ export default function SignUp() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        userName: formData.userName,
+        userName: formData.username,
+        type: formData.type,
       }).unwrap();
       toast.success("Welcome to BizSphere");
 
@@ -56,93 +59,145 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-dvh bg-bg flex">
-      {/* LEFT */}
+    <div className="min-h-dvh bg-slate-50 flex">
+      {/* LEFT SIDE */}
 
-      <div className="hidden lg:flex lg:w-1/2 bg-linear-to-br from-primary to-blue-600 text-white p-14 flex-col justify-between relative overflow-hidden">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2">
-          <i className="ri-service-line text-[320px] text-white/10"></i>
+      <div className="hidden lg:flex lg:w-1/2 bg-primary relative overflow-hidden">
+        <div className="absolute right-10 top-1/2 -translate-y-1/2 opacity-10">
+          <i className="ri-user-star-line text-[320px] text-white"></i>
         </div>
 
-        <div className="relative z-10 max-w-lg">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
-            <span className="w-2 h-2 rounded-full bg-green-400"></span>
-            Join Thousands Of Providers
+        <div className="relative z-10 flex flex-col justify-center px-16 max-w-xl">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white w-fit">
+            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+            Join BizSphere
           </span>
 
-          <h1 className="mt-6 text-6xl font-bold leading-tight">
+          <h1 className="mt-8 text-6xl font-bold text-white leading-tight">
             Grow Your
             <br />
-            Service Business
+            Business Faster
           </h1>
 
-          <p className="mt-6 text-white/80 text-lg">
-            Create your provider account, list services, receive inquiries, and
-            connect with customers across BizSphere.
+          <p className="mt-6 text-blue-100 text-lg">
+            Join thousands of providers and consumers using BizSphere to
+            connect, collaborate and grow together.
           </p>
 
-          <div className="mt-10 space-y-4">
-            <div className="flex items-center gap-3">
-              <i className="ri-check-line text-xl"></i>
-              <span>List unlimited services</span>
-            </div>
+          <div className="space-y-4 mt-10">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                <i className="ri-briefcase-line text-xl text-white"></i>
+              </div>
 
-            <div className="flex items-center gap-3">
-              <i className="ri-check-line text-xl"></i>
-              <span>Receive customer inquiries</span>
-            </div>
+              <div>
+                <h3 className="font-semibold text-white">Offer Services</h3>
 
-            <div className="flex items-center gap-3">
-              <i className="ri-check-line text-xl"></i>
-              <span>Build your provider profile</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative z-10 text-white/60">© 2026 BizSphere</div>
-      </div>
-
-      {/* RIGHT */}
-
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
-        <div className="w-full max-w-md">
-          <div className="mb-8">
-            <h2 className="text-4xl font-bold text-text-primary">
-              Create Account
-            </h2>
-
-            <p className="text-text-secondary mt-2">
-              Start offering services on BizSphere
-            </p>
-          </div>
-
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            <div>
-              <label className="block mb-2 text-sm font-medium">
-                Full Name
-              </label>
-
-              <div className="relative">
-                <i className="ri-user-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
-
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
-                />
+                <p className="text-blue-100 text-sm">
+                  Reach customers actively looking for help.
+                </p>
               </div>
             </div>
 
-            <div>
-              <label className="block mb-2 text-sm font-medium">
-                Email Address
-              </label>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                <i className="ri-team-line text-xl text-white"></i>
+              </div>
 
-              <div className="relative">
-                <i className="ri-mail-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+              <div>
+                <h3 className="font-semibold text-white">Build Connections</h3>
+
+                <p className="text-blue-100 text-sm">
+                  Connect with trusted businesses and clients.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                <i className="ri-line-chart-line text-xl text-white"></i>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-white">Grow Revenue</h3>
+
+                <p className="text-blue-100 text-sm">
+                  Expand your business opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT SIDE */}
+
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-5">
+        <div className="w-full max-w-3xl bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
+          {/* Logo */}
+
+          <Link to="/" className="flex items-center justify-center gap-3 mb-8">
+            <img
+              src="/bizsphere_icon.png"
+              alt="BizSphere"
+              className="w-12 h-12"
+            />
+
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900">BizSphere</h2>
+
+              <p className="text-xs text-slate-500">Service Marketplace</p>
+            </div>
+          </Link>
+
+          {/* Heading */}
+
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-slate-900">
+              Create Account
+            </h1>
+
+            <p className="text-slate-500 mt-2">
+              Start your journey with BizSphere.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="grid md:grid-cols-2 gap-5">
+              <div>
+                <label className="block mb-2 text-sm font-medium text-slate-700">
+                  Full Name
+                </label>
+
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  className="w-full px-4 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-sm font-medium text-slate-700">
+                  Username
+                </label>
+
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  placeholder="johndoe"
+                  className="w-full px-4 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-sm font-medium text-slate-700">
+                  Email Address
+                </label>
 
                 <input
                   type="email"
@@ -150,75 +205,110 @@ export default function SignUp() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@example.com"
-                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
+                  className="w-full px-4 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:border-primary"
                 />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-sm font-medium text-slate-700">
+                  Password
+                </label>
+
+                <div className="relative">
+                  <input
+                    type={see ? "text" : "password"}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Create password"
+                    className="w-full px-4 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:border-primary"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setSee(!see)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"
+                  >
+                    <i className={`ri-${see ? "eye" : "eye-close"}-line`}></i>
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div>
-              <label className="block mb-2 text-sm font-medium">Password</label>
+            {/* Account Type */}
 
-              <div className="relative">
-                <i
-                  onClick={() => setSee((prev) => !prev)}
-                  className={`ri-${see ? "eye" : "eye-close"}-line absolute cursor-pointer left-4 top-1/2 -translate-y-1/2 text-text-secondary`}
-                ></i>
+            <div className="mt-6">
+              <label className="block mb-3 text-sm font-medium text-slate-700">
+                Account Type
+              </label>
 
-                <input
-                  type={see ? "text" : "password"}
-                  placeholder="Create password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
-                />
+              <div className="grid md:grid-cols-2 gap-4">
+                <label
+                  className={`cursor-pointer rounded-2xl border p-5 transition ${
+                    formData.type === "consumer"
+                      ? "border-primary bg-blue-50"
+                      : "border-slate-200"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    className="hidden"
+                    name="type"
+                    value="consumer"
+                    checked={formData.type === "consumer"}
+                    onChange={handleChange}
+                  />
+
+                  <i className="ri-user-line text-2xl text-primary"></i>
+
+                  <h3 className="font-semibold mt-3">Consumer</h3>
+
+                  <p className="text-slate-500 text-sm mt-1">
+                    Find and hire trusted service providers.
+                  </p>
+                </label>
+
+                <label
+                  className={`cursor-pointer rounded-2xl border p-5 transition ${
+                    formData.type === "provider"
+                      ? "border-primary bg-blue-50"
+                      : "border-slate-200"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    className="hidden"
+                    name="type"
+                    value="provider"
+                    checked={formData.type === "provider"}
+                    onChange={handleChange}
+                  />
+
+                  <i className="ri-briefcase-line text-2xl text-primary"></i>
+
+                  <h3 className="font-semibold mt-3">Provider</h3>
+
+                  <p className="text-slate-500 text-sm mt-1">
+                    Offer services and grow your business.
+                  </p>
+                </label>
               </div>
-            </div>
-
-            <div>
-              <label className="block mb-2 text-sm font-medium">UserName</label>
-
-              <div className="relative">
-                <i className="ri-at-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
-
-                <input
-                  type="text"
-                  placeholder="Enter Username"
-                  name="userName"
-                  value={formData.userName}
-                  onChange={handleChange}
-                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
-                />
-              </div>
-            </div>
-
-            <button className="w-full bg-primary hover:bg-primary-hover cursor-pointer text-white py-4 rounded-2xl font-semibold transition">
-              {isLoading ? "Creating Account..." : "Create Account"}
-            </button>
-
-            <div className="relative py-2">
-              <div className="border-t border-border"></div>
-
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-bg px-4 text-sm text-text-secondary">
-                OR
-              </span>
             </div>
 
             <button
-              type="button"
-              className="w-full py-4 rounded-2xl border border-border flex items-center justify-center gap-3 font-medium"
+              disabled={isLoading}
+              className="w-full mt-8 py-4 rounded-2xl bg-primary hover:bg-primary-hover text-white font-semibold transition"
             >
-              <i className="ri-google-fill text-lg"></i>
-              Continue with Google
+              {isLoading ? "Creating Account..." : "Create Account"}
             </button>
-
-            <p className="text-center text-text-secondary">
-              Already have an account?
-              <Link to="/login" className="text-primary ml-1 font-medium">
-                Sign In
-              </Link>
-            </p>
           </form>
+
+          <p className="text-center text-slate-500 mt-8">
+            Already have an account?
+            <Link to="/login" className="text-primary ml-1 font-semibold">
+              Sign In
+            </Link>
+          </p>
         </div>
       </div>
     </div>

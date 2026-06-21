@@ -42,134 +42,140 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-dvh bg-bg flex">
-      {/* LEFT */}
+    <div className="min-h-dvh bg-slate-50 flex">
+      {/* LEFT SIDE */}
 
-      <div className="hidden lg:flex lg:w-1/2 bg-linear-to-r from-primary to-blue-600 text-white p-14  relative overflow-hidden flex-col items-start justify-between pb-6">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2">
-          <i className="ri-user-star-line text-[320px] text-white/10"></i>
+      <div className="hidden lg:flex lg:w-1/2 bg-primary relative overflow-hidden">
+        {/* Background Icon */}
+
+        <div className="absolute right-10 top-1/2 -translate-y-1/2 opacity-10">
+          <i className="ri-shield-check-line text-[320px] text-white"></i>
         </div>
 
-        <div className="relative z-10 max-w-lg">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
-            <span className="w-2 h-2 rounded-full bg-green-400"></span>
-            Welcome Back
+        <div className="relative z-10 flex flex-col justify-center px-16 max-w-xl">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white w-fit">
+            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+            Trusted Marketplace
           </span>
 
-          <h1 className="mt-6 text-6xl font-bold leading-tight">
-            Continue
+          <h1 className="mt-8 text-6xl font-bold text-white leading-tight">
+            Find Trusted
             <br />
-            Growing Your Business
+            Service Providers
           </h1>
 
-          <p className="mt-6 text-white/80 text-lg">
-            Access your provider dashboard, manage services, respond to customer
-            inquiries and track your business performance.
+          <p className="mt-6 text-blue-100 text-lg">
+            Connect with verified professionals, discover quality services, and
+            grow your business with confidence.
           </p>
 
-          <div className="mt-6 space-y-2">
-            <div className="flex items-center gap-3">
-              <i className="ri-check-line text-xl"></i>
-              <span>Manage your listed services</span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <i className="ri-check-line text-xl"></i>
-              <span>Receive customer requests</span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <i className="ri-check-line text-xl"></i>
-              <span>Track business growth</span>
-            </div>
-          </div>
+          
         </div>
-
-        <div className="relative z-10 text-white/60 ">© 2026 BizSphere</div>
       </div>
 
-      {/* RIGHT */}
+      {/* RIGHT SIDE */}
 
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
-        <div className="w-full max-w-md">
-          <div className="mb-8">
-            <h2 className="text-4xl font-bold text-text-primary">Sign In</h2>
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6">
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl border border-slate-100 p-8">
+          {/* Logo */}
 
-            <p className="text-text-secondary mt-2">
-              Access your BizSphere account
+          <Link to="/" className="flex items-center justify-center gap-3 mb-8">
+            <img
+              src="/bizsphere_icon.png"
+              alt="BizSphere"
+              className="w-12 h-12"
+            />
+
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900">BizSphere</h2>
+
+              <p className="text-xs text-slate-500">Service Marketplace</p>
+            </div>
+          </Link>
+
+          {/* Header */}
+
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-slate-900">Welcome Back</h1>
+
+            <p className="text-slate-500 mt-2">
+              Sign in to access your account.
             </p>
           </div>
 
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          {/* Form */}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block mb-2 text-sm font-medium">
+              <label className="block text-sm font-medium text-slate-700 mb-2">
                 Email Address
               </label>
 
-              <div className="relative">
-                <i className="ri-mail-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
-
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
-                />
-              </div>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="john@example.com"
+                className="w-full px-4 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:border-primary"
+              />
             </div>
 
             <div>
-              <label className="block mb-2 text-sm font-medium">Password</label>
+              <div className="flex justify-between mb-2">
+                <label className="text-sm font-medium text-slate-700">
+                  Password
+                </label>
+
+                <Link to="/forgot-password" className="text-primary text-sm">
+                  Forgot Password?
+                </Link>
+              </div>
 
               <div className="relative">
-                <i
-                  onClick={() => setSee((prev) => !prev)}
-                  className={`ri-${see ? "eye" : "eye-close"}-line absolute cursor-pointer left-4 top-1/2 -translate-y-1/2 text-text-secondary`}
-                ></i>
-
                 <input
                   type={see ? "text" : "password"}
-                  placeholder="Enter password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-border bg-white outline-none focus:border-primary"
+                  placeholder="Enter password"
+                  className="w-full px-4 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:border-primary"
                 />
+
+                <button
+                  type="button"
+                  onClick={() => setSee(!see)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"
+                >
+                  <i className={`ri-${see ? "eye" : "eye-close"}-line`}></i>
+                </button>
               </div>
             </div>
 
             <button
               disabled={isLoading}
-              className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-2xl font-semibold transition"
+              className="w-full py-4 rounded-2xl bg-primary hover:bg-primary-hover text-white font-semibold transition"
             >
-              {isLoading ? "Logging..." : "Sign in"}
+              {isLoading ? "Signing In..." : "Sign In"}
             </button>
-
-            <div className="relative py-2">
-              <div className="border-t border-border"></div>
-
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-bg px-4 text-sm text-text-secondary">
-                OR
-              </span>
-            </div>
 
             <button
               type="button"
-              className="w-full py-4 rounded-2xl border border-border flex items-center justify-center gap-3 font-medium"
+              className="w-full py-4 rounded-2xl border border-slate-200 flex items-center justify-center gap-3 font-medium"
             >
               <i className="ri-google-fill text-lg"></i>
               Continue with Google
             </button>
-
-            <p className="text-center text-text-secondary">
-              Don't have an account?
-              <Link to="/signup" className="text-primary ml-1 font-medium">
-                Create Account
-              </Link>
-            </p>
           </form>
+
+          {/* Footer */}
+
+          <p className="text-center text-slate-500 mt-8">
+            Don't have an account?
+            <Link to="/signup" className="text-primary ml-1 font-semibold">
+              Create Account
+            </Link>
+          </p>
         </div>
       </div>
     </div>
