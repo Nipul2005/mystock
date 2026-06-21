@@ -4,7 +4,6 @@ function ProviderSection() {
     <section className="max-w-7xl mx-auto px-5 pb-24">
       <div className="mb-12 text-center">
         <p className="text-primary font-medium">Professionals</p>
-        
 
         <h2 className="text-4xl md:text-5xl font-bold">Top Providers</h2>
       </div>

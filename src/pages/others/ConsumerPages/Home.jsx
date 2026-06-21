@@ -80,7 +80,7 @@ export default function Home() {
       <HomePageHeader/>
       {/* HERO */}
 
-      <section className="max-w-full mx-auto">
+      <section className="max-w-full mx-auto pt-20 border bg-primary">
         <div className="relative overflow-hidden bg-linear-to-br from-primary to-blue-600 px-6 md:px-14 py-16 md:py-24 text-white">
           <div className="max-w-3xl relative z-10">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">

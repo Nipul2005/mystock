@@ -49,9 +49,9 @@ export default function Categories() {
 
   return (
     <main className="min-h-dvh bg-bg">
-        <HomePageHeader />
+      <HomePageHeader />
       {/* HERO */}
-      <section className="w-full text-white relative bg-linear-to-br from-primary to-blue-600">
+      <section className="w-full text-white relative bg-linear-to-br from-primary to-blue-600 pt-20">
         <div className="max-w-7xl mx-auto px-5 py-20 text-center">
           <span className="font-medium">Explore Categories</span>
 

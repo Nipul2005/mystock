@@ -57,14 +57,12 @@ export default function Providers() {
 
   return (
     <main className="min-h-dvh bg-bg">
-        <HomePageHeader />
+      <HomePageHeader />
       {/* HERO */}
 
-      <section className="w-full bg-linear-to-br from-primary to-blue-600 text-white">
+      <section className="w-full bg-linear-to-br from-primary to-blue-600 text-white pt-20">
         <div className="max-w-7xl mx-auto px-5 py-20 text-center">
-          <span className="font-medium">
-            Trusted Professionals
-          </span>
+          <span className="font-medium">Trusted Professionals</span>
 
           <h1 className="mt-3 text-4xl md:text-6xl font-bold">
             Discover Top Service Providers

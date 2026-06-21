@@ -63,7 +63,7 @@ export default function Services() {
     <main className="min-h-dvh bg-bg">
       <HomePageHeader />
       {/* HERO */}
-      <section className="w-full bg-linear-to-br from-primary to-blue-600 text-white relative">
+      <section className="w-full bg-linear-to-br from-primary to-blue-600 text-white relative pt-20">
         <div className="max-w-7xl mx-auto px-5 py-16">
           <div className="max-w-3xl">
             <span className="font-medium">Find Services</span>
@@ -232,7 +232,13 @@ export default function Services() {
 
       {/* CTA */}
 
-      <Cta heading={'Offer Your Services On BizSphere'} icon={'user-star-fill'} text={'Join thousands of providers and start receiving inquiries from customers looking for your expertise.'}/>
+      <Cta
+        heading={"Offer Your Services On BizSphere"}
+        icon={"user-star-fill"}
+        text={
+          "Join thousands of providers and start receiving inquiries from customers looking for your expertise."
+        }
+      />
       <HomePageFooter />
     </main>
   );
