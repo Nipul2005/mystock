@@ -5,8 +5,6 @@ import HomePageFooter from "../../../components/HomePage/HomePageFooter";
 import Cta from "../../../components/Common/Cta";
 
 export default function Home() {
-
-
   const services = [
     {
       id: 1,
@@ -14,8 +12,7 @@ export default function Home() {
       provider: "Turtlabs",
       price: "₹15,000",
       rating: "4.9",
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     },
     {
       id: 2,
@@ -23,8 +20,7 @@ export default function Home() {
       provider: "Creative Studio",
       price: "₹5,000",
       rating: "4.8",
-      image:
-        "https://images.unsplash.com/photo-1561070791-2526d30994b5",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5",
     },
     {
       id: 3,
@@ -32,8 +28,7 @@ export default function Home() {
       provider: "Vision Media",
       price: "₹8,000",
       rating: "4.7",
-      image:
-        "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d",
+      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d",
     },
     {
       id: 4,
@@ -41,8 +36,7 @@ export default function Home() {
       provider: "Growth Agency",
       price: "₹12,000",
       rating: "4.9",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
     },
   ];
 
@@ -77,10 +71,10 @@ export default function Home() {
     <main className="min-h-dvh bg-bg">
       {/* NAVBAR */}
 
-      <HomePageHeader/>
+      <HomePageHeader />
       {/* HERO */}
 
-      <section className="max-w-full mx-auto pt-20 border bg-primary">
+      <section className="max-w-full mx-auto pt-20 bg-primary">
         <div className="relative overflow-hidden bg-linear-to-br from-primary to-blue-600 px-6 md:px-14 py-16 md:py-24 text-white">
           <div className="max-w-3xl relative z-10">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
@@ -158,9 +152,7 @@ export default function Home() {
               className="bg-white rounded-3xl border border-border p-6 hover:border-primary transition-all cursor-pointer"
             >
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <i
-                  className={`${category.icon} text-primary text-2xl`}
-                ></i>
+                <i className={`${category.icon} text-primary text-2xl`}></i>
               </div>
 
               <h3 className="mt-5 font-semibold text-text-primary">
@@ -208,9 +200,7 @@ export default function Home() {
                   <div>
                     <h3 className="font-bold text-lg">{service.title}</h3>
 
-                    <p className="text-text-secondary">
-                      {service.provider}
-                    </p>
+                    <p className="text-text-secondary">{service.provider}</p>
                   </div>
 
                   <span className="text-amber-500 font-medium">
@@ -237,8 +227,6 @@ export default function Home() {
       </section>
 
       {/* PROVIDERS */}
-
-      
 
       {/* CTA */}
       <Cta

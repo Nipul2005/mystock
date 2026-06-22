@@ -51,21 +51,24 @@ export default function Categories() {
     <main className="min-h-dvh bg-bg">
       <HomePageHeader />
       {/* HERO */}
-      <section className="w-full text-white relative bg-linear-to-br from-primary to-blue-600 pt-20">
-        <div className="max-w-7xl mx-auto px-5 py-20 text-center">
-          <span className="font-medium">Explore Categories</span>
+      <section className="relative overflow-hidden bg-linear-to-br from-primary to-blue-600 px-6 md:px-14 py-16 md:py-24 text-white">
+        <div className="max-w-7xl mx-auto px-5 py-20">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
+            <span className="w-2 h-2 rounded-full bg-green-400"></span>
+            Explore Categories
+          </span>
 
           <h1 className="mt-3 text-4xl md:text-6xl font-bold">
             Browse Services By Category
           </h1>
 
-          <p className="mt-5 max-w-2xl mx-auto text-lg">
+          <p className="mt-5 max-w-2xl text-lg">
             Discover trusted providers across development, design, marketing,
             consulting and many more professional service categories.
           </p>
         </div>
 
-        <div className="absolute md:right-10 -right-30 top-1/2 -translate-y-1/2">
+        <div className="absolute md:right-10 -right-20 top-1/2 -translate-y-1/2">
           <i className="ri-menu-search-line text-[320px] text-white/20"></i>
         </div>
       </section>

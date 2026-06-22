@@ -60,20 +60,23 @@ export default function Providers() {
       <HomePageHeader />
       {/* HERO */}
 
-      <section className="w-full bg-linear-to-br from-primary to-blue-600 text-white pt-20">
-        <div className="max-w-7xl mx-auto px-5 py-20 text-center">
-          <span className="font-medium">Trusted Professionals</span>
+      <section className="relative overflow-hidden bg-linear-to-br from-primary to-blue-600 px-6 md:px-14 py-16 md:py-24 text-white">
+        <div className="max-w-7xl mx-auto px-5 py-20">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
+            <span className="w-2 h-2 rounded-full bg-green-400"></span>
+            Trusted Professionals
+          </span>
 
           <h1 className="mt-3 text-4xl md:text-6xl font-bold">
             Discover Top Service Providers
           </h1>
 
-          <p className="mt-5 text-lg max-w-2xl mx-auto">
+          <p className="mt-5 text-lg max-w-2xl">
             Connect with experienced professionals and businesses ready to help
             you achieve your goals.
           </p>
 
-          <div className="mt-8 max-w-xl mx-auto relative">
+          <div className="mt-8 max-w-xl relative">
             <i className="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
 
             <input
@@ -82,6 +85,9 @@ export default function Providers() {
               className="w-full pl-12 pr-4 py-4 rounded-2xl text-text-primary bg-white outline-none placeholder:text-text-secondary"
             />
           </div>
+        </div>
+        <div className="absolute md:right-10 -right-20 top-1/2 -translate-y-1/2">
+          <i className="ri-shopping-cart-line text-[320px] text-white/20"></i>
         </div>
       </section>
 

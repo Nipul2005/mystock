@@ -63,10 +63,13 @@ export default function Services() {
     <main className="min-h-dvh bg-bg">
       <HomePageHeader />
       {/* HERO */}
-      <section className="w-full bg-linear-to-br from-primary to-blue-600 text-white relative pt-20">
+      <section className="relative overflow-hidden bg-linear-to-br from-primary to-blue-600 px-6 md:px-14 py-16 md:py-24 text-white">
         <div className="max-w-7xl mx-auto px-5 py-16">
           <div className="max-w-3xl">
-            <span className="font-medium">Find Services</span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
+              <span className="w-2 h-2 rounded-full bg-green-400"></span>
+              Find Services
+            </span>
 
             <h1 className="mt-3 text-4xl md:text-6xl font-bold">
               Discover Trusted Service Providers

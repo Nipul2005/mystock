@@ -33,7 +33,10 @@ function Sidebar() {
   ];
 
   return (
-    <div className="md:h-full md:w-auto w-full text-black lg:px-2 px-4 shadow-2xl md:py-5 md:pt-3 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white transition-all duration-300 ease-in flex md:flex-col md:justify-between md:item-start flex-row justify-center items-center md:border-0 border-y border-border z-20 ">
+    <div
+      className="md:h-full text-black lg:px-2 px-4 shadow-2xl md:py-5 md:pt-3 lg:col-span-2 md:col-span-1 md:row-span-12 row-span-1 row-start-12 col-span-full bg-white/95 backdrop-blur-xl transition-all duration-300 ease-in flex md:flex-col md:justify-between md:items-start flex-row justify-center items-center md:border-0 border border-border z-50 fixed md:static bottom-4 md:bottom-auto left-4 md:left-auto right-4 md:right-auto w-auto md:w-auto rounded-3xl md:rounded-none
+  "
+    >
       <div className="w-full md:flex hidden flex-col items-center pt-4">
         <Link to="/">
           <img
@@ -50,7 +53,7 @@ function Sidebar() {
         </Link>
       </div>
 
-      <div className="w-full h-auto flex md:flex-col md:justify-start md:items-start flex-row justify-between items-center gap-x-4 md:gap-y-2">
+      <div className="w-full h-auto flex md:flex-col md:justify-start md:items-start flex-row justify-between items-center gap-x-4 md:gap-y-2 py-1">
         {manues.map((manue, index) => {
           return (
             <Sidebar_menues
