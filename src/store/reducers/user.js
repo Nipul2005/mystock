@@ -41,6 +41,15 @@ const userSlice = createApi({
       }),
       providesTags: ["user"],
     }),
+
+    createService: builder.mutation({
+      query: (formdata) => ({
+        url: "/createService",
+        method: "POST",
+        data: formdata,
+        headers: { "Content-Type": "multipart/form-data" },
+      }),
+    }),
   }),
 });
 
@@ -49,5 +58,6 @@ export const {
   useSignUpMutation,
   useGetCurrentUserQuery,
   useLogoutUserMutation,
+  useCreateServiceMutation,
 } = userSlice;
 export default userSlice;

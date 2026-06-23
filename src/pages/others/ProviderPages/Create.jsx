@@ -1,203 +1,344 @@
+import { useState } from "react";
+import { useCreateServiceMutation } from "../../../store/reducers/user";
+
 export default function Create() {
+  const [createService, { isLoading, error, isSuccess }] =
+    useCreateServiceMutation();
+  const [formData, setFormData] = useState({
+    serviceName: "",
+    serviceCategory: "",
+    sortDescription: "",
+    description: "",
+    price: "",
+    features: [""],
+    media: [],
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const addFeature = () => {
+    setFormData((prev) => ({
+      ...prev,
+      features: [...prev.features, ""],
+    }));
+  };
+
+  const handleFeatureChange = (index, value) => {
+    const updatedFeatures = [...formData.features];
+    updatedFeatures[index] = value;
+
+    setFormData((prev) => ({
+      ...prev,
+      features: updatedFeatures,
+    }));
+  };
+  const removeFeature = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      features: prev.features.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleMediaChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      media: [...e.target.files],
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = new FormData();
+
+      data.append("serviceName", formData.serviceName);
+
+      formData.media.forEach((file) => {
+        data.append("files", file);
+      });
+
+      const response = await createService(data).unwrap();
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <main className="w-full min-h-full bg-bg">
+    <main className="w-full min-h-screen bg-bg p-6 lg:p-8">
       {/* HEADER */}
-      <section className="bg-white border-b border-border">
-        <div className="p-8">
-          <p className="text-primary font-medium">Service Creation</p>
 
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center mt-2 gap-4">
-            <div>
-              <h1 className="text-4xl font-bold">Create New Service</h1>
+      <section className="bg-white border border-border rounded-3xl p-8 mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium">
+              <i className="ri-store-2-line"></i>
+              Service Creation
+            </span>
 
-              <p className="text-text-secondary mt-2">
-                Publish a new service and start receiving customer requests.
-              </p>
-            </div>
+            <h1 className="text-4xl font-bold text-text-primary mt-4">
+              Create New Service
+            </h1>
 
-            <div className="flex gap-3">
-              <button className="px-5 py-3 rounded-2xl border border-border">
-                Save Draft
-              </button>
+            <p className="text-text-secondary mt-2">
+              Publish a professional service and start receiving customer
+              requests.
+            </p>
+          </div>
 
-              <button className="px-5 py-3 rounded-2xl bg-primary text-white">
-                Publish
-              </button>
-            </div>
+          <div className="flex gap-3">
+            <button className="px-6 py-3 rounded-2xl border border-border font-medium">
+              Save Draft
+            </button>
+
+            <button
+              onClick={handleSubmit}
+              className="px-6 py-3 rounded-2xl bg-primary text-white font-medium"
+            >
+              Publish Service
+            </button>
           </div>
         </div>
       </section>
 
-      <section className="p-8">
-        <div className="grid xl:grid-cols-3 gap-8">
-          {/* FORM */}
-          <div className="xl:col-span-2 space-y-6">
-            {/* BASIC INFO */}
-            <div className="bg-white border border-border rounded-3xl p-6">
-              <h2 className="text-2xl font-bold mb-6">Service Information</h2>
+      <div className="grid xl:grid-cols-3 gap-8">
+        {/* LEFT SIDE */}
+        <form className="xl:col-span-2 space-y-8">
+          {/* SERVICE INFO */}
 
-              <div className="space-y-5">
-                <div>
-                  <label className="block mb-2 font-medium">Service Name</label>
+          <section className="bg-white border border-border rounded-3xl p-8">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <i className="ri-information-line text-2xl text-primary"></i>
+              </div>
 
-                  <input
-                    type="text"
-                    placeholder="Website Development"
-                    className="w-full border border-border rounded-2xl px-4 py-3 outline-none"
-                  />
-                </div>
+              <div>
+                <h2 className="text-2xl font-bold">Service Information</h2>
 
-                <div>
-                  <label className="block mb-2 font-medium">Category</label>
-
-                  <select className="w-full border border-border rounded-2xl px-4 py-3 outline-none">
-                    <option>Web Development</option>
-                    <option>Graphic Design</option>
-                    <option>Marketing</option>
-                    <option>Video Editing</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block mb-2 font-medium">
-                    Short Description
-                  </label>
-
-                  <input
-                    type="text"
-                    placeholder="Professional responsive websites"
-                    className="w-full border border-border rounded-2xl px-4 py-3 outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block mb-2 font-medium">
-                    Detailed Description
-                  </label>
-
-                  <textarea
-                    rows={6}
-                    className="w-full border border-border rounded-2xl px-4 py-3 outline-none resize-none"
-                    placeholder="Describe your service..."
-                  />
-                </div>
+                <p className="text-text-secondary">
+                  Tell customers what you're offering.
+                </p>
               </div>
             </div>
 
-            {/* PRICING */}
-            <div className="bg-white border border-border rounded-3xl p-6">
-              <h2 className="text-2xl font-bold mb-6">Pricing & Delivery</h2>
+            <div className="space-y-5">
+              {/* service name */}
+              <div>
+                <label className="block mb-2 font-medium">Service Name</label>
 
-              <div className="grid md:grid-cols-3 gap-5">
-                <div>
-                  <label className="block mb-2 font-medium">
-                    Starting Price
-                  </label>
+                <input
+                  type="text"
+                  name="serviceName"
+                  value={formData.serviceName}
+                  onChange={handleChange}
+                  placeholder="Professional Website Development"
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+                />
+              </div>
+              {/* category */}
+              <div>
+                <label className="block mb-2 font-medium">Category</label>
 
-                  <input
-                    type="number"
-                    placeholder="15000"
-                    className="w-full border border-border rounded-2xl px-4 py-3"
-                  />
-                </div>
+                <select
+                  name="serviceCategory"
+                  value={formData.serviceCategory}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+                >
+                  <option>Web Development</option>
+                  <option>Graphic Design</option>
+                  <option>Digital Marketing</option>
+                  <option>Video Editing</option>
+                </select>
+              </div>
+              {/* sort descrition */}
+              <div>
+                <label className="block mb-2 font-medium">
+                  Short Description
+                </label>
 
-                <div>
-                  <label className="block mb-2 font-medium">
-                    Delivery Time
-                  </label>
+                <input
+                  type="text"
+                  name="sortDescription"
+                  value={formData.sortDescription}
+                  onChange={handleChange}
+                  placeholder="Modern responsive websites for businesses"
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+                />
+              </div>
+              {/* descrition */}
+              <div>
+                <label className="block mb-2 font-medium">
+                  Detailed Description
+                </label>
 
-                  <input
-                    type="text"
-                    placeholder="7 Days"
-                    className="w-full border border-border rounded-2xl px-4 py-3"
-                  />
-                </div>
+                <textarea
+                  rows={6}
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  placeholder="Describe your service in detail..."
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary resize-none"
+                />
+              </div>
+            </div>
+          </section>
 
-                <div>
-                  <label className="block mb-2 font-medium">Revisions</label>
+          {/* PRICING */}
 
-                  <input
-                    type="number"
-                    placeholder="3"
-                    className="w-full border border-border rounded-2xl px-4 py-3"
-                  />
-                </div>
+          <section className="bg-white border border-border rounded-3xl p-8">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center">
+                <i className="ri-money-dollar-circle-line text-2xl text-green-600"></i>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold">Pricing & Delivery</h2>
+
+                <p className="text-text-secondary">
+                  Set pricing and delivery expectations.
+                </p>
               </div>
             </div>
 
-            {/* MEDIA */}
-            <div className="bg-white border border-border rounded-3xl p-6">
-              <h2 className="text-2xl font-bold mb-6">Service Media</h2>
+            <div className="w-full">
+              <div>
+                <label className="block mb-2 font-medium">Starting Price</label>
 
-              <div className="border-2 border-dashed border-border rounded-3xl h-52 flex flex-col justify-center items-center text-text-secondary">
-                <i className="ri-image-add-line text-5xl"></i>
-
-                <p className="mt-3">Upload Thumbnail or Gallery Images</p>
+                <input
+                  type="number"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  placeholder="15000"
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-bg"
+                />
               </div>
             </div>
+          </section>
 
-            {/* FEATURES */}
-            <div className="bg-white border border-border rounded-3xl p-6">
-              <div className="flex justify-between items-center mb-6">
+          {/* FEATURES */}
+
+          <section className="bg-white border border-border rounded-3xl p-8">
+            <div className="flex items-center justify-between mb-8">
+              <div>
                 <h2 className="text-2xl font-bold">Service Features</h2>
 
-                <button className="bg-primary text-white px-4 py-2 rounded-xl">
-                  Add Feature
-                </button>
+                <p className="text-text-secondary">
+                  Highlight what customers will receive.
+                </p>
               </div>
 
-              <div className="space-y-3">
-                <input
-                  type="text"
-                  placeholder="Responsive Design"
-                  className="w-full border border-border rounded-2xl px-4 py-3"
-                />
+              <button className="px-4 py-2 rounded-xl bg-primary text-white">
+                Add Feature
+              </button>
+            </div>
 
+            <div className="space-y-3">
+              {formData.features.map((feature, index) => (
                 <input
-                  type="text"
-                  placeholder="SEO Optimization"
-                  className="w-full border border-border rounded-2xl px-4 py-3"
+                  key={index}
+                  value={feature}
+                  onChange={(e) => handleFeatureChange(index, e.target.value)}
                 />
+              ))}
+            </div>
+          </section>
+
+          {/* MEDIA */}
+
+          <section className="bg-white border border-border rounded-3xl p-8">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center">
+                <i className="ri-image-add-line text-2xl text-purple-600"></i>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold">Service Gallery</h2>
+
+                <p className="text-text-secondary">
+                  Upload images that showcase your work.
+                </p>
               </div>
             </div>
-          </div>
 
-          {/* PREVIEW */}
-          <div>
-            <div className="sticky top-24">
-              <div className="bg-white border border-border rounded-3xl overflow-hidden">
-                <div className="h-48 bg-primary/10 flex justify-center items-center">
-                  <i className="ri-layout-4-line text-7xl text-primary"></i>
+            <label className="border-2 border-dashed border-border rounded-3xl h-56 flex flex-col justify-center items-center cursor-pointer hover:border-primary transition">
+              <i className="ri-upload-cloud-2-line text-5xl text-primary"></i>
+
+              <h3 className="font-semibold text-lg mt-4">
+                Upload Service Images
+              </h3>
+
+              <p className="text-text-secondary mt-1">
+                PNG, JPG, WEBP up to 10MB
+              </p>
+
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                name="files"
+                onChange={handleMediaChange}
+              />
+            </label>
+          </section>
+        </form>
+        {/* RIGHT SIDEBAR */}
+        <div>
+          <div className="sticky top-24">
+            <div className="bg-white border border-border rounded-3xl overflow-hidden shadow-sm">
+              <div className="h-56 bg-linear-to-br from-primary/10 to-accent/10 flex justify-center items-center">
+                <i className="ri-layout-grid-line text-7xl text-primary"></i>
+              </div>
+
+              <div className="p-6">
+                <span className="inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                  Web Development
+                </span>
+
+                <h3 className="text-2xl font-bold mt-4">
+                  Professional Website Development
+                </h3>
+
+                <p className="text-text-secondary mt-3">
+                  Modern responsive websites designed to help businesses grow
+                  online.
+                </p>
+
+                <div className="mt-6 flex justify-between items-center">
+                  <span className="text-text-secondary">Starting At</span>
+
+                  <span className="text-2xl font-bold text-primary">
+                    ₹15,000
+                  </span>
                 </div>
 
-                <div className="p-6">
-                  <span className="bg-green-100 text-green-600 text-xs px-3 py-1 rounded-full">
-                    Preview
-                  </span>
-
-                  <h3 className="text-2xl font-bold mt-4">
-                    Website Development
-                  </h3>
-
-                  <p className="text-text-secondary mt-2">
-                    Professional modern website development service.
-                  </p>
-
-                  <div className="mt-5 flex justify-between">
-                    <span className="font-semibold">Starting From</span>
-
-                    <span className="text-primary font-bold">₹15,000</span>
+                <div className="mt-6 pt-6 border-t border-border space-y-3">
+                  <div className="flex items-center gap-2">
+                    <i className="ri-check-line text-green-500"></i>
+                    Responsive Design
                   </div>
 
-                  <button className="w-full mt-6 bg-primary text-white py-3 rounded-2xl">
-                    View Service
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <i className="ri-check-line text-green-500"></i>
+                    SEO Optimized
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <i className="ri-check-line text-green-500"></i>
+                    Fast Delivery
+                  </div>
                 </div>
+
+                <button className="w-full mt-6 py-3 rounded-2xl bg-primary text-white font-medium">
+                  Preview Service
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
