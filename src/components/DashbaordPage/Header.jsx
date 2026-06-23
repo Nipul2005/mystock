@@ -1,10 +1,11 @@
 import Icons from "../Common/Icons";
 import { useSelector } from "react-redux";
+import Profile from "../Common/Profile";
 
 function Header() {
   const { user } = useSelector((state) => state.auth);
   return (
-    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-xl border-b border-slate-200 py-1">
+    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-xl border-b border-primary/10 py-1">
       <div className="h-16 px-4 lg:px-6 flex items-center justify-between gap-6">
         {/* Left */}
         <div className="flex items-center gap-3">
@@ -43,21 +44,7 @@ function Header() {
           <div className="w-px h-7 bg-slate-200 mx-1"></div>
 
           {/* Profile */}
-          <button className="flex items-center gap-3 pl-2 pr-3 py-1.5 rounded-xl hover:bg-slate-100 transition">
-            <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-semibold">
-              {user.name[0]}
-            </div>
-
-            <div className="hidden lg:block text-left">
-              <p className="text-sm font-semibold text-slate-900">
-                {user.name}
-              </p>
-
-              <p className="text-xs text-slate-500">Business Owner</p>
-            </div>
-
-            <i className="ri-arrow-down-s-line text-slate-500"></i>
-          </button>
+          <Profile/>
         </div>
       </div>
     </header>
