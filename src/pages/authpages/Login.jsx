@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useLoginMutation } from "../../store/reducers/user.js";
 import { setCredentials, finishLoading } from "../../store/reducers/auth.js";
+import LoadingAnime from "../../components/Common/LoadingAnime.jsx";
 
 export default function Login() {
   const [see, setSee] = useState(false);
@@ -157,6 +158,7 @@ export default function Login() {
               className="w-full py-4 rounded-2xl bg-primary hover:bg-primary-hover text-white font-semibold transition"
             >
               {isLoading ? "Signing In..." : "Sign In"}
+              <LoadingAnime/>
             </button>
 
             <button
