@@ -5,15 +5,15 @@ import Loading from "../Common/Loading";
 function AuthGuard({ children }) {
   const { loading, isAuthenticated } = useSelector((state) => state.auth);
 
-  if (true) {
+  if (loading) {
     return <Loading />;
   }
 
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/login" replace />;
-  // }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
 
-  // return children;
+  return children;
 }
 
 export default AuthGuard;

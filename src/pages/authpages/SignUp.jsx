@@ -298,7 +298,7 @@ export default function SignUp() {
 
             <button
               disabled={isLoading}
-              className="w-full py-3 rounded-full border-primary border bg-primary text-white font-semibold flex justify-center items-center transition-all ease-in-out cursor-pointer hover:bg-white hover:text-primary"
+              className="w-full py-3 rounded-full border-primary border bg-primary text-white font-semibold flex justify-center items-center transition-all ease-in-out cursor-pointer hover:bg-white hover:text-primary mt-6"
             >
               {isLoading ? <LoadingAnime /> : "SignUp"}
             </button>

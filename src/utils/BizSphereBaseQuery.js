@@ -5,11 +5,11 @@ const BizSphereBaseQuery =
   async ({ url, method, body, params, headers }) => {
     try {
       const res = await BizSphere({
-        url: url,
-        method: method ?? "GET",
-        data: body ?? [], // in params changes data to body
-        params: params ?? {},
-        headers: headers ?? { "Content-Type": "application/json" },
+        url,
+        method,
+        data: body,
+        params,
+        headers,
       });
       return { data: res.data };
     } catch (error) {

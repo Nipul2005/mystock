@@ -5,9 +5,9 @@ const BizSphere = axios.create({
       ? import.meta.env.VITE_DEV_URL
       : import.meta.env.VITE_PROD_URL,
   withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  // headers: {
+  //   "Content-Type": "application/json",
+  // },
 });
 
 BizSphere.interceptors.response.use(

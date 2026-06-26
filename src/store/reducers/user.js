@@ -46,8 +46,7 @@ const userSlice = createApi({
       query: (formdata) => ({
         url: "/createService",
         method: "POST",
-        data: formdata,
-        headers: { "Content-Type": "multipart/form-data" },
+        body: formdata,
       }),
     }),
   }),

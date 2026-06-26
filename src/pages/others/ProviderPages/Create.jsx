@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useCreateServiceMutation } from "../../../store/reducers/user";
+import toast from "react-hot-toast";
+import LoadingAnime from "../../../components/Common/LoadingAnime";
 
 export default function Create() {
   const [createService, { isLoading, error, isSuccess }] =
@@ -10,35 +12,11 @@ export default function Create() {
     sortDescription: "",
     description: "",
     price: "",
-    features: [""],
     media: [],
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const addFeature = () => {
-    setFormData((prev) => ({
-      ...prev,
-      features: [...prev.features, ""],
-    }));
-  };
-
-  const handleFeatureChange = (index, value) => {
-    const updatedFeatures = [...formData.features];
-    updatedFeatures[index] = value;
-
-    setFormData((prev) => ({
-      ...prev,
-      features: updatedFeatures,
-    }));
-  };
-  const removeFeature = (index) => {
-    setFormData((prev) => ({
-      ...prev,
-      features: prev.features.filter((_, i) => i !== index),
-    }));
   };
 
   const handleMediaChange = (e) => {
@@ -47,20 +25,32 @@ export default function Create() {
       media: [...e.target.files],
     }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (
+        Object.values(formData).some(
+          (value) => typeof value === "string" && value.trim() === "",
+        )
+      ) {
+        return toast.error("Please fill in all fields.");
+      }
+
       const data = new FormData();
 
       data.append("serviceName", formData.serviceName);
+      data.append("serviceCategory", formData.serviceCategory);
+      data.append("sortDescription", formData.sortDescription);
+      data.append("description", formData.description);
+      data.append("price", formData.price);
+      data.append("media", formData.media);
 
       formData.media.forEach((file) => {
         data.append("files", file);
       });
 
       const response = await createService(data).unwrap();
-
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -96,7 +86,7 @@ export default function Create() {
               onClick={handleSubmit}
               className="px-6 py-3 rounded-2xl bg-primary text-white font-medium"
             >
-              Publish Service
+              {isLoading ? "Publicing..." : "Public service"}
             </button>
           </div>
         </div>
@@ -215,34 +205,6 @@ export default function Create() {
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-bg"
                 />
               </div>
-            </div>
-          </section>
-
-          {/* FEATURES */}
-
-          <section className="bg-white border border-border rounded-3xl p-8">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h2 className="text-2xl font-bold">Service Features</h2>
-
-                <p className="text-text-secondary">
-                  Highlight what customers will receive.
-                </p>
-              </div>
-
-              <button className="px-4 py-2 rounded-xl bg-primary text-white">
-                Add Feature
-              </button>
-            </div>
-
-            <div className="space-y-3">
-              {formData.features.map((feature, index) => (
-                <input
-                  key={index}
-                  value={feature}
-                  onChange={(e) => handleFeatureChange(index, e.target.value)}
-                />
-              ))}
             </div>
           </section>
 
