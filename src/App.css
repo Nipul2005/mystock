@@ -24,34 +24,134 @@
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
+}
 
-  /* Shadows */
-  --shadow-soft: 0 4px 12px rgba(0, 91, 255, 0.08);
-  --shadow-card: 0 10px 30px rgba(0, 91, 255, 0.12);
+.layer{
+  position:absolute;
+  left:50%;
+  width:92px;
+  height:92px;
 
-  /* Radius */
-  --radius-card: 24px;
-  --radius-button: 16px;
+  border-radius:24px;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(
+  transform:translateX(-50%) rotate(45deg);
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,.9);
+
+  box-shadow:
+    0 12px 35px rgba(15,23,42,.08),
+    inset 0 1px 0 rgba(255,255,255,.9);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Bottom Glass */
+
+.layer-bottom{
+
+  top:90px;
+
+  background:
+    linear-gradient(
     135deg,
-    #0030C5 0%,
-    #005BFF 50%,
-    #1A8CFF 100%
-  );
+    rgba(255,255,255,.55),
+    rgba(248,250,252,.9));
 
-  --gradient-accent: linear-gradient(
-    135deg,
-    #FF8A00 0%,
-    #FF9D00 100%
-  );
+  animation:bottomFloat 3s ease-in-out infinite;
+}
 
-  --gradient-brand: linear-gradient(
+/* Middle Glass */
+
+.layer-middle{
+
+  top:58px;
+
+  background:
+    linear-gradient(
     135deg,
-    #0030C5 0%,
-    #005BFF 45%,
-    #1A8CFF 70%,
-    #FF8A00 100%
-  );
+    rgba(255,255,255,.7),
+    rgba(255,255,255,.95));
+
+  animation:middleFloat 3s ease-in-out infinite;
+}
+
+/* Top Primary */
+
+.layer-top{
+
+  top:26px;
+
+  background:
+    linear-gradient(
+    135deg,
+    #6366F1,
+    #4F46E5);
+
+  animation:topFloat 3s ease-in-out infinite;
+}
+
+/* ---------------- */
+
+@keyframes topFloat{
+
+  0%,100%{
+      transform:translateX(-50%) translateY(0) rotate(45deg);
+  }
+
+  18%{
+      transform:translateX(-50%) translateY(-22px) rotate(38deg);
+  }
+
+  30%{
+      transform:translateX(-50%) translateY(-30px) rotate(45deg);
+  }
+
+  45%{
+      transform:translateX(-50%) translateY(0) rotate(45deg);
+  }
+
+}
+
+@keyframes middleFloat{
+
+  0%,20%,100%{
+      transform:translateX(-50%) translateY(0) rotate(45deg);
+  }
+
+  42%{
+      transform:translateX(-50%) translateY(-18px) rotate(39deg);
+  }
+
+  55%{
+      transform:translateX(-50%) translateY(-24px) rotate(45deg);
+  }
+
+  68%{
+      transform:translateX(-50%) translateY(0) rotate(45deg);
+  }
+
+}
+
+@keyframes bottomFloat{
+
+  0%,45%,100%{
+      transform:translateX(-50%) translateY(0) rotate(45deg);
+  }
+
+  70%{
+      transform:translateX(-50%) translateY(-14px) rotate(41deg);
+  }
+
+  82%{
+      transform:translateX(-50%) translateY(-18px) rotate(45deg);
+  }
+
+  94%{
+      transform:translateX(-50%) translateY(0) rotate(45deg);
+  }
+
 }

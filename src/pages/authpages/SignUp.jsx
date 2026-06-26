@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useSignUpMutation } from "../../store/reducers/user";
 import { finishLoading, setCredentials } from "../../store/reducers/auth";
+import LoadingAnime from "../../components/Common/LoadingAnime";
 
 export default function SignUp() {
   const [see, setSee] = useState(false);
@@ -14,7 +15,7 @@ export default function SignUp() {
 
   const [formData, setFormData] = useState({
     name: "",
-    email: "", 
+    email: "",
     password: "",
     username: "",
     type: "",
@@ -297,9 +298,9 @@ export default function SignUp() {
 
             <button
               disabled={isLoading}
-              className="w-full mt-8 py-4 rounded-2xl bg-primary hover:bg-primary-hover text-white font-semibold transition"
+              className="w-full py-3 rounded-full border-primary border bg-primary text-white font-semibold flex justify-center items-center transition-all ease-in-out cursor-pointer hover:bg-white hover:text-primary"
             >
-              {isLoading ? "Creating Account..." : "Create Account"}
+              {isLoading ? <LoadingAnime /> : "SignUp"}
             </button>
           </form>
 

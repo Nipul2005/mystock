@@ -69,8 +69,6 @@ export default function Login() {
             Connect with verified professionals, discover quality services, and
             grow your business with confidence.
           </p>
-
-          
         </div>
       </div>
 
@@ -155,10 +153,9 @@ export default function Login() {
 
             <button
               disabled={isLoading}
-              className="w-full py-4 rounded-2xl bg-primary hover:bg-primary-hover text-white font-semibold transition"
+              className="w-full py-3 rounded-full border-primary border bg-primary text-white font-semibold flex justify-center items-center transition-all ease-in-out cursor-pointer hover:bg-white hover:text-primary"
             >
-              {isLoading ? "Signing In..." : "Sign In"}
-              <LoadingAnime/>
+              {isLoading ? <LoadingAnime /> : "Login"}
             </button>
 
             <button
