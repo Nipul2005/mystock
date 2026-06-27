@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCreateServiceMutation } from "../../../store/reducers/user";
 import toast from "react-hot-toast";
 import LoadingAnime from "../../../components/Common/LoadingAnime";
+import ImageSlider from "../../../components/Common/ImageSlider";
 
 export default function Create() {
   const [createService, { isLoading, error, isSuccess }] =
@@ -249,9 +250,9 @@ export default function Create() {
         {/* RIGHT SIDEBAR */}
         <div>
           <div className="sticky top-24">
-            <div className="bg-white border border-border rounded-3xl overflow-hidden shadow-sm">
-              <div className="h-56 bg-linear-to-br from-primary/10 to-accent/10 flex justify-center items-center">
-                <i className="ri-layout-grid-line text-7xl text-primary"></i>
+            <div className="bg-white border border-border rounded-3xl shadow-sm overflow-hidden">
+              <div className="h-56 flex justify-start items-center overflow-hidden relative group cursor-pointer">
+                <ImageSlider />
               </div>
 
               <div className="p-6">
