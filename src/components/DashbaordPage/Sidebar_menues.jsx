@@ -1,16 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setPage } from "../../store/reducers/pageSlice";
+import { NavLink } from "react-router-dom";
 
-function Sidebar_menues({ name, icon_name, classes, page }) {
-  const pageState = useSelector((state) => state.page.page);
-  const dispatch = useDispatch();
+function Sidebar_menues({ name, icon_name }) {
   return (
-    <span
-      className={`md:w-full flex items-center justify-center lg:justify-start gap-3 rounded-2xl md:py-2 cursor-pointer hover:bg-accent/60 hover:text-white shrink-0 transition-all duration-200 px-4 py-0.5
-        ${page === pageState && "bg-accent text-white"}
-        ${classes}
-      `}
-      onClick={() => dispatch(setPage(page))}
+    <NavLink
+      to={`/dashboard/${name}`}
+      className={({
+        isActive,
+      }) => `md:w-full flex items-center justify-center lg:justify-start gap-3 rounded-2xl md:py-2 cursor-pointer shrink-0 transition-all duration-200 px-4 py-0.5
+      ${isActive ? "bg-accent text-white" : "hover:bg-accent/60 hover:text-white "}`}
     >
       <i
         className={`ri-${icon_name}-line text-xl w-auto h-auto rounded-full`}
@@ -27,7 +24,7 @@ function Sidebar_menues({ name, icon_name, classes, page }) {
       >
         {name}
       </h2>
-    </span>
+    </NavLink>
   );
 }
 

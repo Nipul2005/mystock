@@ -13,6 +13,11 @@ import { useGetCurrentUserQuery } from "./store/reducers/user.js";
 import { setCredentials, finishLoading } from "./store/reducers/auth.js";
 import { useEffect } from "react";
 import GuestGuard from "./components/auth/GuestGuard.jsx";
+import Manage from "./pages/others/ProviderPages/Manage.jsx";
+import Create from "./pages/others/ProviderPages/Create.jsx";
+import Search from "./pages/others/ProviderPages/Search.jsx";
+import Settings from "./pages/others/ProviderPages/Setting.jsx";
+import DashboardBody from "./components/DashbaordPage/DashboardBody.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,9 +35,9 @@ function App() {
 
   return (
     <Routes>
-      {/* Public */}
+      {/* Public Routes */}
       <Route
-        path=""
+        path="/"
         element={
           <GuestGuard>
             <Home />
@@ -73,7 +78,6 @@ function App() {
           </GuestGuard>
         }
       />
-
       <Route
         path="/signup"
         element={
@@ -83,7 +87,7 @@ function App() {
         }
       />
 
-      {/* Protected */}
+      {/* Dashboard */}
       <Route
         path="/dashboard"
         element={
@@ -91,7 +95,13 @@ function App() {
             <Layout />
           </AuthGuard>
         }
-      />
+      >
+        <Route index element={<DashboardBody />} />
+        <Route path="manage" element={<Manage />} />
+        <Route path="create" element={<Create />} />
+        <Route path="search" element={<Search />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
     </Routes>
   );
 }

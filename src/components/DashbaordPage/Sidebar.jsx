@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Sidebar_menues from "./Sidebar_menues";
 import { useSelector } from "react-redux";
 import Profile from "../Common/Profile";
@@ -6,29 +6,20 @@ import Profile from "../Common/Profile";
 function Sidebar() {
   let manues = [
     {
-      name: "Home",
-      icon: "home-4",
-      page: 0,
-    },
-    {
       name: "Manage",
       icon: "store",
-      page: 1,
     },
     {
       name: "Create",
       icon: "apps-2-add",
-      page: 3,
     },
     {
       name: "Search",
       icon: "search",
-      page: 4,
     },
     {
       name: "Settings",
       icon: "settings-2",
-      page: 5,
     },
   ];
 
@@ -51,11 +42,34 @@ function Sidebar() {
       </div>
 
       <div className="w-full h-auto flex md:flex-col md:justify-start md:items-start flex-row justify-between items-center gap-x-4 md:gap-y-2 py-1">
+        <NavLink
+          to={`/dashboard`}
+          end
+          className={({ isActive }) =>
+            `md:w-full flex items-center justify-center lg:justify-start gap-3 rounded-2xl md:py-2 cursor-pointer  hover:text-white shrink-0 transition-all duration-200 px-4 py-0.5 ${isActive ? "bg-accent text-white" : "hover:bg-accent/60 hover:text-white "}`
+          }
+        >
+          <i
+            className={`ri-home-4-line text-xl w-auto h-auto rounded-full`}
+            title={"dashboard"}
+          ></i>
+
+          <h2
+            className={`
+          hidden
+          lg:block
+          font-medium
+          text-[15px]
+        `}
+          >
+            Home
+          </h2>
+        </NavLink>
         {manues.map((manue, index) => {
           return (
             <Sidebar_menues
               key={index}
-              name={manue.name}
+              name={manue.name.toLowerCase()}
               icon_name={manue.icon}
               page={manue.page}
             />

@@ -26,7 +26,7 @@ function ImageSlider() {
         src={`${image[currentIdx]}`}
         alt={`post image`}
         loading="lazy"
-        className={`w-full h-full object-fit object-cover transition-all duration-200 `}
+        className={`w-full h-full object-center object-cover transition-all duration-200 `}
       />
 
       {image.length > 1 && (

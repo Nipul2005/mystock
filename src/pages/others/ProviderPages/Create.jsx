@@ -251,7 +251,7 @@ export default function Create() {
         <div>
           <div className="sticky top-24">
             <div className="bg-white border border-border rounded-3xl shadow-sm overflow-hidden">
-              <div className="h-56 flex justify-start items-center overflow-hidden relative group cursor-pointer">
+              <div className="h-auto flex justify-start items-center overflow-hidden relative group cursor-pointer">
                 <ImageSlider />
               </div>
 
