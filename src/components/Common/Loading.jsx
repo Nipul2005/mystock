@@ -16,10 +16,10 @@ export default function Loading() {
       />
 
       {/* Glow */}
-      <div className="absolute left-1/2 top-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
+      <div className="absolute left-1/2 top-1/2 h-112.5 w-112.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
 
       {/* Card */}
-      <div className="relative w-[430px] rounded-[32px] border border-slate-200/70 bg-white/70 px-12 py-14 backdrop-blur-xl shadow-[0_25px_80px_rgba(15,23,42,.08)]">
+      <div className="relative w-107.5 rounded-4xl border border-slate-200/70 bg-white/70 px-12 py-14 backdrop-blur-xl shadow-[0_25px_80px_rgba(15,23,42,.08)]">
         {/* Stack */}
         <div className="relative mx-auto h-40 w-40">
           {/* Bottom */}
