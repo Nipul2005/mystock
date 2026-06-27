@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { useMyServicesQuery } from "../../../store/reducers/user";
 
 export default function Manage() {
+  const {data}=useMyServicesQuery()
+  console.log(data)
   const services = [
     {
       id: 1,

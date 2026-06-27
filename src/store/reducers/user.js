@@ -49,6 +49,13 @@ const userSlice = createApi({
         body: formdata,
       }),
     }),
+
+    myServices: builder.query({
+      query: () => ({
+        url: "/myServices",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -58,5 +65,6 @@ export const {
   useGetCurrentUserQuery,
   useLogoutUserMutation,
   useCreateServiceMutation,
+  useMyServicesQuery,
 } = userSlice;
 export default userSlice;
