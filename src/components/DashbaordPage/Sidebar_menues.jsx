@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function Sidebar_menues({ name, icon_name }) {
+function Sidebar_menues({ name, icon_name, fieldName }) {
   return (
     <NavLink
       to={`/dashboard/${name}`}
@@ -22,7 +22,7 @@ function Sidebar_menues({ name, icon_name }) {
           text-[15px]
         `}
       >
-        {name}
+        {fieldName}
       </h2>
     </NavLink>
   );

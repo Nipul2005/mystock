@@ -123,7 +123,7 @@ export default function Create() {
                   name="serviceName"
                   value={formData.serviceName}
                   onChange={handleChange}
-                  placeholder="Professional Website Development"
+                  placeholder="Service name"
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
                 />
               </div>
@@ -154,7 +154,7 @@ export default function Create() {
                   name="sortDescription"
                   value={formData.sortDescription}
                   onChange={handleChange}
-                  placeholder="Modern responsive websites for businesses"
+                  placeholder="Add a sort description of your service"
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
                 />
               </div>
@@ -202,7 +202,7 @@ export default function Create() {
                   name="price"
                   value={formData.price}
                   onChange={handleChange}
-                  placeholder="15000"
+                  placeholder="Enter serive charges"
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-bg"
                 />
               </div>

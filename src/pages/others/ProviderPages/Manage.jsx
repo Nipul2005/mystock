@@ -1,8 +1,7 @@
 import { useMyServicesQuery } from "../../../store/reducers/user";
 
 export default function Manage() {
-  const {data}=useMyServicesQuery()
-  console.log(data)
+  const { data } = useMyServicesQuery();
   const services = [
     {
       id: 1,
@@ -114,115 +113,89 @@ export default function Manage() {
 
       {/* STATS */}
       <section className="p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {[
-            {
-              title: "Active Services",
-              value: "12",
-              icon: "ri-briefcase-line",
-            },
-            {
-              title: "Pending Requests",
-              value: "28",
-              icon: "ri-notification-3-line",
-            },
-            {
-              title: "Customers",
-              value: "184",
-              icon: "ri-user-heart-line",
-            },
-            {
-              title: "Revenue",
-              value: "₹48K",
-              icon: "ri-money-rupee-circle-line",
-            },
-          ].map((item) => (
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 py-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+          {data?.data?.length === 0 && (
+            <p>No services founded, create a service</p>
+          )}
+          {data?.data?.map((item, idx) => (
             <div
-              key={item.title}
-              className="bg-white rounded-3xl border border-border p-6 hover:shadow-lg transition"
+              key={idx}
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-2xl cursor-pointer"
             >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-text-secondary text-sm">{item.title}</p>
+              {/* Thumbnail */}
+              <div className="relative aspect-16/10 overflow-hidden">
+                <img
+                  src={item.media[0]?.secure_url}
+                  alt={item.serviceName}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
 
-                  <h2 className="text-4xl font-bold mt-2">{item.value}</h2>
-                </div>
-
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex justify-center items-center">
-                  <i className={`${item.icon} text-2xl text-primary`}></i>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="px-8 pb-8">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <p className="text-primary font-medium">My Services</p>
-
-            <h2 className="text-3xl font-bold mt-1 text-text-primary">
-              Service Listings
-            </h2>
-          </div>
-
-          <span className="text-text-secondary">
-            {services.length} Services
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {services.map((service) => (
-            <div
-              key={service.id}
-              className="bg-white border border-border rounded-3xl p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-            >
-              <div className="flex justify-between items-start">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex justify-center items-center">
-                  <i className={`ri-${service.icon} text-2xl text-primary`}></i>
-                </div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent"></div>
 
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    service.status === "Active"
-                      ? "bg-green-100 text-green-600"
-                      : service.status === "Pending"
-                        ? "bg-yellow-100 text-yellow-600"
-                        : "bg-red-100 text-red-600"
+                  className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-md ${
+                    item.status === "active"
+                      ? "bg-green-500/90 text-white"
+                      : "bg-red-500/90 text-white"
                   }`}
                 >
-                  {service.status}
+                  {item.status}
                 </span>
               </div>
 
-              <h3 className="text-xl font-semibold mt-5">{service.title}</h3>
+              {/* Content */}
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                      {item.serviceCategory}
+                    </span>
 
-              <p className="text-text-secondary mt-1">{service.category}</p>
+                    <h2 className="mt-3 line-clamp-2 text-xl font-bold text-slate-900">
+                      {item.serviceName}
+                    </h2>
+                  </div>
 
-              <div className="mt-5 space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-text-secondary">Price</span>
-
-                  <span className="font-semibold">{service.price}</span>
+                  <div className="text-right">
+                    <p className="text-xs text-text-primary/50">Starting</p>
+                    <h3 className="text-2xl font-bold text-primary">
+                      ₹{item.price.toLocaleString()}
+                    </h3>
+                  </div>
                 </div>
 
-                <div className="flex justify-between">
-                  <span className="text-text-secondary">Requests</span>
+                <p className="mt-4 line-clamp-3 text-sm leading-7 text-text-primary/50">
+                  {item.sortDescription}
+                </p>
 
-                  <span className="font-semibold">{service.requests}</span>
+                {/* Stats */}
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  <div className="rounded-2xl border border-slate-100 bg-primary/5 p-4">
+                    <p className="text-xs text-text-primary/50 ">Reviews</p>
+                    <h4 className="mt-1 text-lg font-semibold">
+                      {item.totalReviews}
+                    </h4>
+                  </div>
+
+                  <div className="rounded-2xl border border-border bg-primary/5 p-4">
+                    <p className="text-xs text-slate-500">Rating</p>
+                    <h4 className="mt-1 flex items-center gap-1 text-lg font-semibold">
+                      <i className="ri-star-fill text-accent/95"></i>
+                      {item.ratings}
+                    </h4>
+                  </div>
                 </div>
-              </div>
 
-              <div className="mt-6 flex gap-2">
-                <button className="flex-1 py-3 rounded-xl border border-border hover:bg-bg transition">
-                  Edit
-                </button>
+                {/* Push buttons to bottom */}
+                <div className="mt-auto pt-6 flex gap-3">
+                  <button className="flex-1 rounded-xl bg-primary py-3 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-primary/90">
+                    Edit Service
+                  </button>
 
-                <button className="flex-1 py-3 rounded-xl bg-primary text-white hover:opacity-90 transition">
-                  View
-                </button>
+                  <button className="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 transition hover:bg-slate-100">
+                    <i className="ri-more-2-fill text-lg"></i>
+                  </button>
+                </div>
               </div>
             </div>
           ))}

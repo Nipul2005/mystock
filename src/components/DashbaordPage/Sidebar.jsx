@@ -71,7 +71,7 @@ function Sidebar() {
               key={index}
               name={manue.name.toLowerCase()}
               icon_name={manue.icon}
-              page={manue.page}
+              fieldName={manue.name}
             />
           );
         })}
