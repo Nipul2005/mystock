@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function ImageSlider({ images }) {
+function ImageSlider({ mode, images, imageObjects }) {
   const [currentIdx, setCurrentIdx] = useState(0);
 
   function prevSlide() {
@@ -10,7 +10,7 @@ function ImageSlider({ images }) {
   }
 
   function nextSlide() {
-    if (currentIdx < images.length - 1) {
+    if (currentIdx < (mode ? images.length - 1 : imageObjects.length - 1)) {
       setCurrentIdx((prev) => prev + 1);
     }
   }
@@ -18,15 +18,20 @@ function ImageSlider({ images }) {
   return (
     <>
       <img
-        src={`${images[currentIdx].secure_url}`}
+        src={`${mode ? images[currentIdx].secure_url : imageObjects.length > 0 && URL.createObjectURL(imageObjects[currentIdx])}`}
         alt={`post image`}
         loading="lazy"
         className={`object-center h-full w-full object-cover transition-transform duration-700 group-hover:scale-110`}
+        onLoad={() =>
+          imageObjects.length > 0 &&
+          URL.revokeObjectURL(imageObjects[currentIdx])
+        }
       />
 
-      {images.length > 1 && (
+      {(mode ? images.length > 1 : imageObjects.length > 1) && (
         <>
-          {currentIdx !== images.length - 1 && (
+          {currentIdx !==
+            (mode ? images.length - 1 : imageObjects.length - 1) && (
             <i
               className="ri-arrow-right-double-line absolute text-xl md:-right-10 right-5 top-1/2 transform -translate-y-1/2 sm:group-hover:right-4 transition-all duration-200 bg-white text-primary rounded-full w-6 h-6 flex justify-center items-center select-none z-20"
               onClick={nextSlide}
@@ -42,12 +47,20 @@ function ImageSlider({ images }) {
       )}
 
       <div className="z-20 absolute bottom-3 w-full flex justify-center items-center gap-2">
-        {images.map((_, idx) => (
-          <span
-            key={idx}
-            className={`w-1.5 h-1.5 ${idx === currentIdx ? "bg-white" : "bg-white/30"}  rounded-full`}
-          ></span>
-        ))}
+        {mode
+          ? images.map((_, idx) => (
+              <span
+                key={idx}
+                className={`w-1.5 h-1.5 ${idx === currentIdx ? "bg-white" : "bg-white/30"}  rounded-full`}
+              ></span>
+            ))
+          : imageObjects.length > 1 &&
+            imageObjects.map((_, idx) => (
+              <span
+                key={idx}
+                className={`w-1.5 h-1.5 ${idx === currentIdx ? "bg-white" : "bg-white/30"}  rounded-full`}
+              ></span>
+            ))}
       </div>
     </>
   );

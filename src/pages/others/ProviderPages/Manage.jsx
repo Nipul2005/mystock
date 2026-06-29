@@ -131,12 +131,7 @@ export default function Manage() {
               >
                 {/* Thumbnail */}
                 <div className="aspect-16/10 overflow-hidden relative">
-                  {/* <img
-                    src={item.media[0]?.secure_url}
-                    alt={item.serviceName}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  /> */}
-                  <ImageSlider images={item.media}/>
+                  <ImageSlider images={item.media} mode={true} />
 
                   <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent"></div>
 

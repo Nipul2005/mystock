@@ -252,7 +252,7 @@ export default function Create() {
           <div className="sticky top-24">
             <div className="bg-white border border-border rounded-3xl shadow-sm overflow-hidden">
               <div className="h-auto flex justify-start items-center overflow-hidden relative group cursor-pointer">
-                <ImageSlider />
+                <ImageSlider mode={false} imageObjects={formData.media}/>
               </div>
 
               <div className="p-6">
