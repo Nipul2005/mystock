@@ -60,7 +60,7 @@ export default function Create() {
     <main className="w-full min-h-screen bg-bg p-6 lg:p-8">
       {/* HEADER */}
 
-      <section className="bg-white border border-border rounded-3xl p-8 mb-8">
+      <section className="bg-white border border-border rounded-3xl p-8 mb-8 w-full">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium">
@@ -78,24 +78,18 @@ export default function Create() {
             </p>
           </div>
 
-          <div className="flex gap-3">
-            <button className="px-6 py-3 rounded-2xl border border-border font-medium">
-              Save Draft
-            </button>
-
-            <button
-              onClick={handleSubmit}
-              className="px-6 py-3 rounded-2xl bg-primary text-white font-medium"
-            >
-              {isLoading ? "Publicing..." : "Public service"}
-            </button>
-          </div>
+          <button
+            onClick={handleSubmit}
+            className="px-6 py-3 rounded-2xl bg-primary text-white font-medium"
+          >
+            {isLoading ? "Publicing..." : "Public service"}
+          </button>
         </div>
       </section>
 
-      <div className="grid xl:grid-cols-3 gap-8">
+      <div className="grid xl:grid-cols-3 gap-8 w-full">
         {/* LEFT SIDE */}
-        <form className="xl:col-span-2 space-y-8">
+        <form className="xl:col-span-2 space-y-8 w-full">
           {/* SERVICE INFO */}
 
           <section className="bg-white border border-border rounded-3xl p-8">
@@ -114,7 +108,6 @@ export default function Create() {
             </div>
 
             <div className="space-y-5">
-              {/* service name */}
               <div>
                 <label className="block mb-2 font-medium">Service Name</label>
 
@@ -127,7 +120,7 @@ export default function Create() {
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
                 />
               </div>
-              {/* category */}
+
               <div>
                 <label className="block mb-2 font-medium">Category</label>
 
@@ -143,7 +136,7 @@ export default function Create() {
                   <option>Video Editing</option>
                 </select>
               </div>
-              {/* sort descrition */}
+
               <div>
                 <label className="block mb-2 font-medium">
                   Short Description
@@ -158,7 +151,7 @@ export default function Create() {
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
                 />
               </div>
-              {/* descrition */}
+
               <div>
                 <label className="block mb-2 font-medium">
                   Detailed Description
@@ -178,7 +171,7 @@ export default function Create() {
 
           {/* PRICING */}
 
-          <section className="bg-white border border-border rounded-3xl p-8">
+          <section className="bg-white border border-border rounded-3xl p-8 w-full">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center">
                 <i className="ri-money-dollar-circle-line text-2xl text-green-600"></i>
@@ -211,7 +204,7 @@ export default function Create() {
 
           {/* MEDIA */}
 
-          <section className="bg-white border border-border rounded-3xl p-8">
+          <section className="bg-white border border-border rounded-3xl p-8 w-full">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center">
                 <i className="ri-image-add-line text-2xl text-purple-600"></i>
@@ -238,10 +231,12 @@ export default function Create() {
               </p>
 
               <input
+                id="image"
                 type="file"
                 multiple
                 accept="image/*"
                 name="files"
+                hidden
                 onChange={handleMediaChange}
               />
             </label>
@@ -249,31 +244,30 @@ export default function Create() {
         </form>
         {/* RIGHT SIDEBAR */}
         <div>
-          <div className="sticky top-24">
+          <div className="sticky top-24 overflow-hidden">
             <div className="bg-white border border-border rounded-3xl shadow-sm overflow-hidden">
-              <div className="h-auto flex justify-start items-center overflow-hidden relative group cursor-pointer">
-                <ImageSlider mode={false} imageObjects={formData.media}/>
+              <div className="h-auto w-full flex justify-start items-center overflow-hidden relative group cursor-pointer">
+                <ImageSlider mode={false} imageObjects={formData.media} />
               </div>
 
               <div className="p-6">
                 <span className="inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                  Web Development
+                  {formData.serviceCategory || "Your service category"}
                 </span>
 
                 <h3 className="text-2xl font-bold mt-4">
-                  Professional Website Development
+                  {formData.serviceName || "Your service sort descrition"}
                 </h3>
 
                 <p className="text-text-secondary mt-3">
-                  Modern responsive websites designed to help businesses grow
-                  online.
+                  {formData.description || "Your Service Descrition"}
                 </p>
 
                 <div className="mt-6 flex justify-between items-center">
                   <span className="text-text-secondary">Starting At</span>
 
                   <span className="text-2xl font-bold text-primary">
-                    ₹15,000
+                    {formData.price || "000"}
                   </span>
                 </div>
 
@@ -293,10 +287,6 @@ export default function Create() {
                     Fast Delivery
                   </div>
                 </div>
-
-                <button className="w-full mt-6 py-3 rounded-2xl bg-primary text-white font-medium">
-                  Preview Service
-                </button>
               </div>
             </div>
           </div>
