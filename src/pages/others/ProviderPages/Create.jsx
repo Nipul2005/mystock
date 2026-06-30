@@ -3,6 +3,7 @@ import { useCreateServiceMutation } from "../../../store/reducers/user";
 import toast from "react-hot-toast";
 import ImageSlider from "../../../components/Common/ImageSlider";
 import ServiceCategory from "../../../components/Common/ServiceCategory";
+import AddServiceFeature from "../../../components/createPage/AddServiceFeature";
 
 export default function Create() {
   const [createService, { isLoading, error, isSuccess }] =
@@ -14,6 +15,7 @@ export default function Create() {
     description: "",
     price: "",
     media: [],
+    features: [],
   });
 
   const handleChange = (e) => {
@@ -202,12 +204,14 @@ export default function Create() {
                   name="price"
                   value={formData.price}
                   onChange={handleChange}
-                  placeholder="Enter serive charges"
+                  placeholder="Enter service charges"
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-bg"
                 />
               </div>
             </div>
           </section>
+
+          <AddServiceFeature handler={handleChange} feature={formData.features}/>
 
           {/* MEDIA */}
 
