@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useCreateServiceMutation } from "../../../store/reducers/user";
 import toast from "react-hot-toast";
-import LoadingAnime from "../../../components/Common/LoadingAnime";
 import ImageSlider from "../../../components/Common/ImageSlider";
+import ServiceCategory from "../../../components/Common/ServiceCategory";
 
 export default function Create() {
   const [createService, { isLoading, error, isSuccess }] =
@@ -52,8 +52,17 @@ export default function Create() {
       });
 
       const response = await createService(data).unwrap();
+      toast.success("Your serice is live");
+      setFormData({
+        serviceName: "",
+        serviceCategory: "",
+        sortDescription: "",
+        description: "",
+        price: "",
+        media: [],
+      });
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong");
     }
   };
   return (
@@ -82,7 +91,7 @@ export default function Create() {
             onClick={handleSubmit}
             className="px-6 py-3 rounded-2xl bg-primary text-white font-medium"
           >
-            {isLoading ? "Publicing..." : "Public service"}
+            {isLoading ? "Publishing..." : "Public service"}
           </button>
         </div>
       </section>
@@ -122,19 +131,17 @@ export default function Create() {
               </div>
 
               <div>
-                <label className="block mb-2 font-medium">Category</label>
-
-                <select
-                  name="serviceCategory"
-                  value={formData.serviceCategory}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+                <label
+                  className="block mb-2 font-medium"
+                  htmlFor="serviceCategory"
                 >
-                  <option>Web Development</option>
-                  <option>Graphic Design</option>
-                  <option>Digital Marketing</option>
-                  <option>Video Editing</option>
-                </select>
+                  Category
+                </label>
+
+                <ServiceCategory
+                  handler={handleChange}
+                  serviceValue={formData.serviceCategory}
+                />
               </div>
 
               <div>
@@ -256,7 +263,7 @@ export default function Create() {
                 </span>
 
                 <h3 className="text-2xl font-bold mt-4">
-                  {formData.serviceName || "Your service sort descrition"}
+                  {formData.serviceName || "Your service name"}
                 </h3>
 
                 <p className="text-text-secondary mt-3">
