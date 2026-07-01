@@ -49,6 +49,9 @@ export default function Create() {
       data.append("price", formData.price);
       data.append("media", formData.media);
 
+      formData.features.forEach((val) => {
+        data.append("features", val);
+      });
       formData.media.forEach((file) => {
         data.append("files", file);
       });
@@ -62,9 +65,10 @@ export default function Create() {
         description: "",
         price: "",
         media: [],
+        features: [],
       });
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error(error?.data?.message || "Something went wrong");
     }
   };
   return (
@@ -211,7 +215,10 @@ export default function Create() {
             </div>
           </section>
 
-          <AddServiceFeature handler={handleChange} feature={formData.features}/>
+          <AddServiceFeature
+            formHandler={setFormData}
+            feature={formData.features}
+          />
 
           {/* MEDIA */}
 
@@ -283,20 +290,12 @@ export default function Create() {
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-border space-y-3">
-                  <div className="flex items-center gap-2">
-                    <i className="ri-check-line text-green-500"></i>
-                    Responsive Design
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <i className="ri-check-line text-green-500"></i>
-                    SEO Optimized
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <i className="ri-check-line text-green-500"></i>
-                    Fast Delivery
-                  </div>
+                  {formData.features.map((val, idx) => (
+                    <div className="flex items-center gap-2" key={idx}>
+                      <i className="ri-check-line text-green-500"></i>
+                      {val}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

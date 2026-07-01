@@ -1,6 +1,14 @@
-import React from "react";
+import { useState } from "react";
 
-function AddServiceFeature({handler, feature}) {
+function AddServiceFeature({ formHandler, feature }) {
+  const [featureData, setFeatureData] = useState("");
+  const handleFeaturee = () => {
+    formHandler((prev) => ({
+      ...prev,
+      features: [...feature, featureData.trim()],
+    }));
+    setFeatureData("");
+  };
   return (
     <section className="bg-white border border-border rounded-3xl p-8 w-full">
       <div className="flex items-center gap-4 mb-8">
@@ -22,18 +30,28 @@ function AddServiceFeature({handler, feature}) {
           <input
             type="text"
             name="features"
+            value={featureData}
+            onChange={(e) => setFeatureData(e.target.value)}
             placeholder="What makes your serice unique"
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg"
           />
           <button
             type="button"
             className="px-10 py-3 bg-primary text-white rounded-lg md:w-auto w-full"
+            onClick={() => handleFeaturee()}
           >
             Add
           </button>
         </div>
-        <div className="flex flex-wrap justify-start items-center">
-          <div className="border border-success rounded-full px-5 py-1 bg-success/10 text-success">Border apporch</div>
+        <div className="flex flex-wrap justify-start items-center gap-4">
+          {feature.map((val, idx) => (
+            <div
+              key={idx}
+              className="border border-success rounded-full px-5 py-1 bg-success/10 text-success"
+            >
+              {val}
+            </div>
+          ))}
         </div>
       </div>
     </section>

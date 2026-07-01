@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function Sidebar_menues({ name, icon_name, fieldName }) {
   return (
     <NavLink
-      to={`/dashboard/${name}`}
+      to={`/home/${name}`}
       className={({
         isActive,
       }) => `md:w-full flex items-center justify-center lg:justify-start gap-3 rounded-2xl md:py-2 cursor-pointer shrink-0 transition-all duration-200 px-4 py-0.5

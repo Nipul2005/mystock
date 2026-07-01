@@ -43,7 +43,7 @@ function Sidebar() {
 
       <div className="w-full h-auto flex md:flex-col md:justify-start md:items-start flex-row justify-between items-center gap-x-4 md:gap-y-2 py-1">
         <NavLink
-          to={`/dashboard`}
+          to={`/home`}
           end
           className={({ isActive }) =>
             `md:w-full flex items-center justify-center lg:justify-start gap-3 rounded-2xl md:py-2 cursor-pointer  hover:text-white shrink-0 transition-all duration-200 px-4 py-0.5 ${isActive ? "bg-accent text-white" : "hover:bg-accent/60 hover:text-white "}`

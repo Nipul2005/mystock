@@ -6,7 +6,7 @@ function Profile() {
     const { user } = useSelector((state) => state.auth);
   return (
     <Link
-      to={`/profile/${user.userName}`}
+      to={`/home/settings`}
       className="flex items-center gap-3 cursor-pointer lg:p-2 p-0 rounded-xl hover:bg-primary/20"
     >
       <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-semibold">
