@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import HomePageHeader from "../../../components/HomePage/HomePageHeader";
 import HomePageFooter from "../../../components/HomePage/HomePageFooter";
 import Cta from "../../../components/Common/Cta";
+import { useGetServicesQuery } from "../../../store/reducers/consumer.js";
+import ServicesCards from "../../../components/Common/ServicesCards.jsx";
 
 export default function Home() {
+  const { data, isLoading } = useGetServicesQuery();
+  console.log(data);
   const services = [
     {
       id: 1,
@@ -37,33 +41,6 @@ export default function Home() {
       price: "₹12,000",
       rating: "4.9",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
-    },
-  ];
-
-  const categories = [
-    {
-      name: "Web Development",
-      icon: "ri-code-s-slash-line",
-    },
-    {
-      name: "Graphic Design",
-      icon: "ri-palette-line",
-    },
-    {
-      name: "Marketing",
-      icon: "ri-megaphone-line",
-    },
-    {
-      name: "Video Editing",
-      icon: "ri-video-line",
-    },
-    {
-      name: "Photography",
-      icon: "ri-camera-line",
-    },
-    {
-      name: "Consulting",
-      icon: "ri-briefcase-line",
     },
   ];
 
@@ -134,38 +111,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CATEGORIES */}
-
-      <section className="max-w-7xl mx-auto px-5 py-24">
-        <div className="mb-12">
-          <p className="text-primary font-medium">Explore</p>
-
-          <h2 className="text-4xl md:text-5xl font-bold text-text-primary">
-            Popular Categories
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-          {categories.map((category) => (
-            <div
-              key={category.name}
-              className="bg-white rounded-3xl border border-border p-6 hover:border-primary transition-all cursor-pointer"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <i className={`${category.icon} text-primary text-2xl`}></i>
-              </div>
-
-              <h3 className="mt-5 font-semibold text-text-primary">
-                {category.name}
-              </h3>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* SERVICES */}
 
-      <section className="max-w-7xl mx-auto px-5 pb-24">
+      <section className="max-w-7xl mx-auto px-5 py-24">
         <div className="flex justify-between items-center mb-10">
           <div>
             <p className="text-primary font-medium">Marketplace</p>
@@ -184,44 +132,8 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {services.map((service) => (
-            <article
-              key={service.id}
-              className="bg-white rounded-[30px] border border-border overflow-hidden hover:-translate-y-1 transition-all duration-300"
-            >
-              <img
-                src={service.image}
-                alt={service.title}
-                className="w-full h-52 object-cover"
-              />
-
-              <div className="p-6">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-bold text-lg">{service.title}</h3>
-
-                    <p className="text-text-secondary">{service.provider}</p>
-                  </div>
-
-                  <span className="text-amber-500 font-medium">
-                    ⭐ {service.rating}
-                  </span>
-                </div>
-
-                <div className="mt-6 flex justify-between items-center">
-                  <span className="text-2xl font-bold text-primary">
-                    {service.price}
-                  </span>
-
-                  <Link
-                    to={`/service/${service.id}`}
-                    className="px-4 py-2 rounded-xl bg-primary text-white"
-                  >
-                    View
-                  </Link>
-                </div>
-              </div>
-            </article>
+          {data?.data.map((item, idx) => (
+            <ServicesCards item={item} key={idx} />
           ))}
         </div>
       </section>

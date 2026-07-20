@@ -1,8 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import BizSphereBaseQuery from "../../utils/BizSphereBaseQuery";
-import BizSphere from "../../utils/BizSphere";
 
-const userSlice = createApi({
+const userApi = createApi({
   reducerPath: "user",
   baseQuery: BizSphereBaseQuery(),
   tagTypes: ["user"],
@@ -66,5 +65,5 @@ export const {
   useLogoutUserMutation,
   useCreateServiceMutation,
   useMyServicesQuery,
-} = userSlice;
-export default userSlice;
+} = userApi;
+export default userApi;
