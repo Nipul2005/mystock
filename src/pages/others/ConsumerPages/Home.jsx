@@ -5,6 +5,7 @@ import HomePageFooter from "../../../components/HomePage/HomePageFooter";
 import Cta from "../../../components/Common/Cta";
 import { useGetServicesQuery } from "../../../store/reducers/consumer.js";
 import ServicesCards from "../../../components/Common/ServicesCards.jsx";
+import LoadingAnime from "../../../components/Common/LoadingAnime.jsx";
 
 export default function Home() {
   const { data, isLoading } = useGetServicesQuery();
@@ -131,6 +132,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {isLoading && <LoadingAnime />}
           {data?.data.map((item, idx) => (
             <ServicesCards item={item} key={idx} />
           ))}
