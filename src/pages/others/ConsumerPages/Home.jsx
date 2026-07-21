@@ -8,7 +8,6 @@ import ServicesCards from "../../../components/Common/ServicesCards.jsx";
 
 export default function Home() {
   const { data, isLoading } = useGetServicesQuery();
-  console.log(data);
   const services = [
     {
       id: 1,
