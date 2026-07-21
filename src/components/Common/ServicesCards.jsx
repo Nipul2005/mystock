@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 function ServicesCards({ item }) {
   const { user } = useSelector((state) => state.auth);
-  console.log(user?._id, item.provider);
+
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-2xl cursor-pointer">
       {/* Thumbnail */}
