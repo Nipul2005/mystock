@@ -14,10 +14,6 @@ function Sidebar() {
       icon: "apps-2-add",
     },
     {
-      name: "Search",
-      icon: "search",
-    },
-    {
       name: "Settings",
       icon: "settings-2",
     },
