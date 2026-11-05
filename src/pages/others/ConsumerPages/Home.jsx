@@ -131,8 +131,13 @@ export default function Home() {
           </Link>
         </div>
 
+        {isLoading && (
+          <div className="w-full flex jusitfy-center align-center pt-6">
+            <LoadingAnime />
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {isLoading && <LoadingAnime />}
           {data?.data.map((item, idx) => (
             <ServicesCards item={item} key={idx} />
           ))}
