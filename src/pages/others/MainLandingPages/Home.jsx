@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HomePageHeader from "../../../components/HomePage/HomePageHeader";
-import HomePageFooter from "../../../components/HomePage/HomePageFooter";
-import Cta from "../../../components/Common/Cta";
+import HomePageHeader from "../../../components/HomePage/HomePageHeader.jsx";
+import HomePageFooter from "../../../components/HomePage/HomePageFooter.jsx";
+import Cta from "../../../components/Common/Cta.jsx";
 import { useGetServicesQuery } from "../../../store/reducers/consumer.js";
 import ServicesCards from "../../../components/Common/ServicesCards.jsx";
 import LoadingAnime from "../../../components/Common/LoadingAnime.jsx";

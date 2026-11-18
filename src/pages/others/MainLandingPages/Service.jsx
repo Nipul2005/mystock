@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import HomePageHeader from "../../../components/HomePage/HomePageHeader";
-import HomePageFooter from "../../../components/HomePage/HomePageFooter";
+import HomePageHeader from "../../../components/HomePage/HomePageHeader.jsx";
+import HomePageFooter from "../../../components/HomePage/HomePageFooter.jsx";
 import Cta from "../../../components/Common/Cta.jsx";
 
 export default function Services() {
