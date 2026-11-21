@@ -8,56 +8,6 @@ import LoadingAnime from "../../../components/Common/LoadingAnime";
 
 export default function Providers() {
   const { data, isLoading } = useGetProviderListQuery();
-  const providers = [
-    {
-      id: 1,
-      name: "Turtlabs",
-      category: "Web Development",
-      rating: "4.9",
-      services: 24,
-      avatar: "T",
-    },
-    {
-      id: 2,
-      name: "Pixel Studio",
-      category: "Graphic Design",
-      rating: "4.8",
-      services: 18,
-      avatar: "P",
-    },
-    {
-      id: 3,
-      name: "Growthify",
-      category: "Marketing",
-      rating: "4.9",
-      services: 31,
-      avatar: "G",
-    },
-    {
-      id: 4,
-      name: "Vision Media",
-      category: "Video Editing",
-      rating: "4.7",
-      services: 12,
-      avatar: "V",
-    },
-    {
-      id: 5,
-      name: "CodeCraft",
-      category: "Mobile Apps",
-      rating: "5.0",
-      services: 20,
-      avatar: "C",
-    },
-    {
-      id: 6,
-      name: "Lens Studio",
-      category: "Photography",
-      rating: "4.8",
-      services: 16,
-      avatar: "L",
-    },
-  ];
 
   return (
     <main className="min-h-dvh bg-bg">
@@ -126,7 +76,7 @@ export default function Providers() {
           <h2 className="text-3xl font-bold">Featured Providers</h2>
 
           <span className="text-text-secondary">
-            {providers?.length} Providers
+            {data?.data.length} Providers
           </span>
         </div>
 
