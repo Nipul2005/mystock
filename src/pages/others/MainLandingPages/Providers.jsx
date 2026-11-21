@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import Cta from "../../../components/Common/Cta";
 import HomePageFooter from "../../../components/HomePage/HomePageFooter";
 import HomePageHeader from "../../../components/HomePage/HomePageHeader";
+import { useGetProviderListQuery } from "../../../store/reducers/consumer";
+import ShowProvidersList from "../../../components/MainLandingServicePage/showProvidersList";
+
 
 export default function Providers() {
+  const { data } = useGetProviderListQuery();
   const providers = [
     {
       id: 1,
@@ -127,59 +131,8 @@ export default function Providers() {
         </div>
 
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {providers.map((provider) => (
-            <article
-              key={provider.id}
-              className="
-                bg-white
-                border
-                border-border
-                rounded-4xl
-                p-7
-                hover:-translate-y-1
-                hover:shadow-xl
-                transition-all
-              "
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center text-xl font-bold">
-                  {provider.avatar}
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-xl">{provider.name}</h3>
-
-                  <p className="text-text-secondary">{provider.category}</p>
-                </div>
-              </div>
-
-              <div className="mt-6 flex justify-between">
-                <div>
-                  <p className="text-sm text-text-secondary">Rating</p>
-
-                  <p className="font-semibold">⭐ {provider.rating}</p>
-                </div>
-
-                <div>
-                  <p className="text-sm text-text-secondary">Services</p>
-
-                  <p className="font-semibold">{provider.services}</p>
-                </div>
-              </div>
-
-              <div className="mt-6 flex gap-3">
-                <Link
-                  to={`/provider/${provider.id}`}
-                  className="flex-1 text-center py-3 rounded-2xl bg-primary text-white font-medium"
-                >
-                  View Profile
-                </Link>
-
-                <button className="w-12 h-12 rounded-2xl border border-border">
-                  <i className="ri-message-3-line"></i>
-                </button>
-              </div>
-            </article>
+          {data?.data.map((provider, id) => (
+            <ShowProvidersList data={provider} key={id}/>
           ))}
         </div>
       </section>

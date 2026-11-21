@@ -16,7 +16,14 @@ const consumerApi = createApi({
       }),
       providesTags: ["consumer"],
     }),
+
+    getProviderList: builder.query({
+      query: () => ({
+        url: "/consumer/getProvidersList",
+        method: "GET",
+      }),
+    }),
   }),
 });
-export const { useGetServicesQuery } = consumerApi;
+export const { useGetServicesQuery, useGetProviderListQuery } = consumerApi;
 export default consumerApi;

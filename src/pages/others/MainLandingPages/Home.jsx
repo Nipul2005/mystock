@@ -9,40 +9,6 @@ import LoadingAnime from "../../../components/Common/LoadingAnime.jsx";
 
 export default function Home() {
   const { data, isLoading } = useGetServicesQuery();
-  const services = [
-    {
-      id: 1,
-      title: "Website Development",
-      provider: "Turtlabs",
-      price: "₹15,000",
-      rating: "4.9",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    },
-    {
-      id: 2,
-      title: "Graphic Design",
-      provider: "Creative Studio",
-      price: "₹5,000",
-      rating: "4.8",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5",
-    },
-    {
-      id: 3,
-      title: "Video Editing",
-      provider: "Vision Media",
-      price: "₹8,000",
-      rating: "4.7",
-      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d",
-    },
-    {
-      id: 4,
-      title: "SEO Services",
-      provider: "Growth Agency",
-      price: "₹12,000",
-      rating: "4.9",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
-    },
-  ];
 
   return (
     <main className="min-h-dvh bg-bg">
