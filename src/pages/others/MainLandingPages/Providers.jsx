@@ -3,7 +3,7 @@ import Cta from "../../../components/Common/Cta";
 import HomePageFooter from "../../../components/HomePage/HomePageFooter";
 import HomePageHeader from "../../../components/HomePage/HomePageHeader";
 import { useGetProviderListQuery } from "../../../store/reducers/consumer";
-import ShowProvidersList from "../../../components/MainLandingServicePage/showProvidersList";
+import ShowProvidersList from "../../../components/MainLandingServicePage/ShowProvidersList";
 
 
 export default function Providers() {
