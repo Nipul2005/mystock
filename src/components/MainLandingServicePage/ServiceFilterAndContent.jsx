@@ -14,8 +14,6 @@ function ServiceFilterAndContent({ data }) {
     "Consulting",
   ];
 
-  
-
   useEffect(() => {
     if (clickedValue === "All") {
       setService(data?.data);
@@ -86,7 +84,7 @@ function ServiceFilterAndContent({ data }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {service.length == 0 ? (
+            {service?.length == 0 ? (
               <h4 className="text-2xl font-semibold flex justify-center items-center py-8">
                 No service available
               </h4>
