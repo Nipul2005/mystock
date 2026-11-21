@@ -5,9 +5,8 @@ import HomePageHeader from "../../../components/HomePage/HomePageHeader";
 import { useGetProviderListQuery } from "../../../store/reducers/consumer";
 import ShowProvidersList from "../../../components/MainLandingServicePage/ShowProvidersList";
 
-
 export default function Providers() {
-  const { data } = useGetProviderListQuery();
+  const { data, isLoading } = useGetProviderListQuery();
   const providers = [
     {
       id: 1,
@@ -130,9 +129,14 @@ export default function Providers() {
           </span>
         </div>
 
+        {isLoading && (
+          <div className="w-full flex jusitfy-center align-center pt-6">
+            <LoadingAnime />
+          </div>
+        )}
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {data?.data.map((provider, id) => (
-            <ShowProvidersList data={provider} key={id}/>
+            <ShowProvidersList data={provider} key={id} />
           ))}
         </div>
       </section>

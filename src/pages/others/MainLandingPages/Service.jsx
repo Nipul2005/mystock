@@ -105,6 +105,11 @@ export default function Services() {
         </div>
       </section>
 
+      {isLoading && (
+        <div className="w-full flex jusitfy-center align-center pt-6">
+          <LoadingAnime />
+        </div>
+      )}
       <ServiceFilterAndContent data={data} />
 
       {/* CTA */}
