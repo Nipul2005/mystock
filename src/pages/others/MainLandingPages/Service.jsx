@@ -4,6 +4,7 @@ import HomePageFooter from "../../../components/HomePage/HomePageFooter.jsx";
 import Cta from "../../../components/Common/Cta.jsx";
 import { useGetServicesQuery } from "../../../store/reducers/consumer.js";
 import ServiceFilterAndContent from "../../../components/MainLandingServicePage/ServiceFilterAndContent.jsx";
+import LoadingAnime from "../../../components/Common/LoadingAnime.jsx";
 
 export default function Services() {
   const { data, isLoading } = useGetServicesQuery();

@@ -4,6 +4,7 @@ import HomePageFooter from "../../../components/HomePage/HomePageFooter";
 import HomePageHeader from "../../../components/HomePage/HomePageHeader";
 import { useGetProviderListQuery } from "../../../store/reducers/consumer";
 import ShowProvidersList from "../../../components/MainLandingServicePage/ShowProvidersList";
+import LoadingAnime from "../../../components/Common/LoadingAnime";
 
 export default function Providers() {
   const { data, isLoading } = useGetProviderListQuery();
