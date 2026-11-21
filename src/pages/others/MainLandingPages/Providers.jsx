@@ -125,7 +125,7 @@ export default function Providers() {
           <h2 className="text-3xl font-bold">Featured Providers</h2>
 
           <span className="text-text-secondary">
-            {providers.length} Providers
+            {providers?.length} Providers
           </span>
         </div>
 
