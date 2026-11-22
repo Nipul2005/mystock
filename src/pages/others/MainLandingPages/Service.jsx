@@ -8,60 +8,6 @@ import LoadingAnime from "../../../components/Common/LoadingAnime.jsx";
 
 export default function Services() {
   const { data, isLoading } = useGetServicesQuery();
-  // const services = [
-  //   {
-  //     id: 1,
-  //     title: "Website Development",
-  //     provider: "Turtlabs",
-  //     rating: "4.9",
-  //     price: "₹15,000",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Graphic Design",
-  //     provider: "Pixel Studio",
-  //     rating: "4.8",
-  //     price: "₹5,000",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "SEO Optimization",
-  //     provider: "Growthify",
-  //     rating: "4.9",
-  //     price: "₹8,500",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Video Editing",
-  //     provider: "Vision Media",
-  //     rating: "4.7",
-  //     price: "₹7,500",
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Mobile App Development",
-  //     provider: "CodeCraft",
-  //     rating: "5.0",
-  //     price: "₹25,000",
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Photography",
-  //     provider: "Lens Studio",
-  //     rating: "4.8",
-  //     price: "₹4,500",
-  //   },
-  // ];
-
-  const categories = [
-    "All",
-    "Web Development",
-    "Design",
-    "Marketing",
-    "Video",
-    "Photography",
-    "Consulting",
-  ];
 
   return (
     <main className="min-h-dvh bg-bg">

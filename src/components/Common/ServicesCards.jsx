@@ -56,13 +56,19 @@ function ServicesCards({ item }) {
             <h4 className="mt-1 text-lg font-semibold">{item.totalReviews}</h4>
           </div>
 
-          <div className="rounded-2xl border border-border bg-primary/5 p-4">
+          <div className="rounded-2xl border border-border bg-primary/5 p-4 ">
             <p className="text-xs text-slate-500">Rating</p>
             <h4 className="mt-1 flex items-center gap-1 text-lg font-semibold">
               <i className="ri-star-fill text-accent/95"></i>
               {item.ratings}
             </h4>
           </div>
+        </div>
+
+        <div href="tel" className="w-full border mt-4 flex justify-center items-center bg-primary-dark text-white  rounded-xl h-12">
+          <a href="tel:+" w-full h-full inline-block>
+            Contact Now
+          </a>
         </div>
 
         {/* Push buttons to bottom */}
