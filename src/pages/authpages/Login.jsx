@@ -41,7 +41,7 @@ export default function Login() {
       return;
     }
   };
-
+ 
   return (
     <div className="min-h-dvh bg-slate-50 flex">
       {/* LEFT SIDE */}

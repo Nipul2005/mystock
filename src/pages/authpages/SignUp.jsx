@@ -238,64 +238,6 @@ export default function SignUp() {
 
             {/* Account Type */}
 
-            <div className="mt-6">
-              <label className="block mb-3 text-sm font-medium text-slate-700">
-                Account Type
-              </label>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <label
-                  className={`cursor-pointer rounded-2xl border p-5 transition ${
-                    formData.type === "consumer"
-                      ? "border-primary bg-blue-50"
-                      : "border-slate-200"
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    className="hidden"
-                    name="type"
-                    value="consumer"
-                    checked={formData.type === "consumer"}
-                    onChange={handleChange}
-                  />
-
-                  <i className="ri-user-line text-2xl text-primary"></i>
-
-                  <h3 className="font-semibold mt-3">Consumer</h3>
-
-                  <p className="text-slate-500 text-sm mt-1">
-                    Find and hire trusted service providers.
-                  </p>
-                </label>
-
-                <label
-                  className={`cursor-pointer rounded-2xl border p-5 transition ${
-                    formData.type === "provider"
-                      ? "border-primary bg-blue-50"
-                      : "border-slate-200"
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    className="hidden"
-                    name="type"
-                    value="provider"
-                    checked={formData.type === "provider"}
-                    onChange={handleChange}
-                  />
-
-                  <i className="ri-briefcase-line text-2xl text-primary"></i>
-
-                  <h3 className="font-semibold mt-3">Provider</h3>
-
-                  <p className="text-slate-500 text-sm mt-1">
-                    Offer services and grow your business.
-                  </p>
-                </label>
-              </div>
-            </div>
-
             <button
               disabled={isLoading}
               className="w-full py-3 rounded-full border-primary border bg-primary text-white font-semibold flex justify-center items-center transition-all ease-in-out cursor-pointer hover:bg-white hover:text-primary mt-6"

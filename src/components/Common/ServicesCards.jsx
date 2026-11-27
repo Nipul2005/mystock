@@ -64,15 +64,19 @@ function ServicesCards({ item }) {
             </h4>
           </div>
         </div>
-
-        <div href="tel" className="w-full border mt-4 flex justify-center items-center bg-primary-dark text-white  rounded-xl h-12">
-          <a href="tel:+" w-full h-full inline-block>
-            Contact Now
-          </a>
-        </div>
-
+        <div className="w-full flex justify-between items-center"></div>
+        <a href={`tel:+${item.phone}`}>
+          <div className="w-full border mt-4 flex justify-center items-center bg-primary-dark/90 text-white  rounded-xl h-12">
+            Call Us
+          </div>
+        </a>
+        <a href={`mailto:${item.email}`}>
+          <div className="w-full border mt-4 flex justify-center items-center bg-primary-dark text-white  rounded-xl h-12">
+            Email Us
+          </div>
+        </a>
         {/* Push buttons to bottom */}
-        {user?._id == item.provider && (
+        {user && (
           <div className="mt-auto pt-6 flex gap-3">
             <button className="flex-1 rounded-xl bg-primary py-3 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-primary/90">
               Edit Service

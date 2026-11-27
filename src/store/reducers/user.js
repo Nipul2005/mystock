@@ -56,7 +56,13 @@ const userApi = createApi({
       }),
     }),
 
-    
+    updateProviderDetails: builder.mutation({
+      query: (data) => ({
+        url: `/updateme/${data.type}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -67,5 +73,6 @@ export const {
   useLogoutUserMutation,
   useCreateServiceMutation,
   useMyServicesQuery,
+  useUpdateProviderDetailsMutation,
 } = userApi;
 export default userApi;

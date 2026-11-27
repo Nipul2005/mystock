@@ -48,10 +48,6 @@ function ShowProvidersList({ data }) {
         >
           View Profile
         </Link>
-
-        <button className="w-12 h-12 rounded-2xl border border-border">
-          <i className="ri-message-3-line"></i>
-        </button>
       </div>
     </article>
   );

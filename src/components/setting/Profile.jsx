@@ -1,7 +1,30 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useUpdateProviderDetailsMutation } from "../../store/reducers/user";
 
 function Profile() {
   const { user } = useSelector((state) => state.auth);
+  const [formData, setFormData] = useState({
+    type: "Profile",
+    name: "",
+    userName: "",
+    number: "",
+    gender: "",
+    location: "",
+    bio: "",
+  });
+
+  const [updateProviderDetails] = useUpdateProviderDetailsMutation();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(
+      Object.entries(formData).filter(([_, val]) => val !== ""),
+    );
+
+    console.log(data);
+    const res = await updateProviderDetails(data).unwrap();
+  };
   return (
     <section className="bg-white border border-border rounded-xl p-8">
       {/* Header */}
@@ -64,6 +87,7 @@ function Profile() {
             type="text"
             defaultValue={user.name}
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
         </div>
 
@@ -74,6 +98,9 @@ function Profile() {
             type="text"
             defaultValue={user.userName}
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+            onChange={(e) =>
+              setFormData({ ...formData, userName: e.target.value })
+            }
           />
         </div>
 
@@ -84,6 +111,9 @@ function Profile() {
             type="email"
             defaultValue={user.email}
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
           />
         </div>
 
@@ -94,6 +124,9 @@ function Profile() {
             type="text"
             defaultValue={user.phone}
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+            onChange={(e) =>
+              setFormData({ ...formData, number: e.target.value })
+            }
           />
         </div>
 
@@ -103,6 +136,9 @@ function Profile() {
           <select
             defaultValue={user.gender}
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
+            onChange={(e) =>
+              setFormData({ ...formData, gender: e.target.value })
+            }
           >
             <option value="">Select Gender</option>
             <option value="Male">Male</option>
@@ -119,17 +155,9 @@ function Profile() {
             defaultValue={user.location}
             placeholder="New Delhi, India"
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none focus:border-primary"
-          />
-        </div>
-
-        <div>
-          <label className="block mb-2 font-medium">Account Type</label>
-
-          <input
-            type="text"
-            value={user.type}
-            disabled
-            className="w-full px-4 py-3 rounded-2xl border border-border bg-slate-100 text-slate-500 capitalize"
+            onChange={(e) =>
+              setFormData({ ...formData, location: e.target.value })
+            }
           />
         </div>
 
@@ -138,7 +166,6 @@ function Profile() {
 
           <input
             type="text"
-            disabled
             value={new Date(user.createdAt).toLocaleDateString()}
             className="w-full px-4 py-3 rounded-2xl border border-border bg-slate-100 text-slate-500"
           />
@@ -151,6 +178,7 @@ function Profile() {
             rows={4}
             defaultValue={user.bio}
             placeholder="Tell people a little about yourself..."
+            onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
             className="w-full px-4 py-3 rounded-2xl border border-border bg-bg outline-none resize-none focus:border-primary"
           />
         </div>
@@ -159,7 +187,10 @@ function Profile() {
       {/* Actions */}
 
       <div className="flex flex-wrap gap-4 mt-8">
-        <button className="bg-primary text-white px-8 py-3 rounded-2xl font-medium hover:bg-primary-hover transition">
+        <button
+          onClick={(e) => handleSubmit(e)}
+          className="bg-primary text-white px-8 py-3 rounded-2xl font-medium hover:bg-primary-hover transition"
+        >
           Save Changes
         </button>
 
